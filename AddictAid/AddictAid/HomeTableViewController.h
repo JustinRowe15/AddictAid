@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  HomeTableViewController.h
 //  AddictAid
 //
 //  Created by Justin Rowe on 8/23/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface HomeTableViewController : UITableViewController
 
 @end

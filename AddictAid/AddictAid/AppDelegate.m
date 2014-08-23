@@ -6,10 +6,24 @@
 //  Copyright (c) 2014 Justin Rowe. All rights reserved.
 //
 
+static NSString * const defaultsFilterDistanceKey = @"filterDistance";
+static NSString * const defaultsLocationKey = @"currentLocation";
+
 #import "AppDelegate.h"
+#import "LoginViewController.h"
+#import "SWRevealViewController.h"
+#import "HomeTableViewController.h"
+#import "SidebarTableViewController.h"
+#import "Constants.h"
 #import <Parse/Parse.h>
 
+@interface AppDelegate()<SWRevealViewControllerDelegate>
+@end
+
 @implementation AppDelegate
+
+@synthesize filterDistance, currentLocation;
+@synthesize revealViewController = _revealViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -19,10 +33,84 @@
     [Parse setApplicationId:@"nQdJZ7nnfvI7BVXFdv9vnSPMIn8bfj7VKq4xDk7c"
                   clientKey:@"l5mSFdBZqCCGyUSWQ6qZi2YuWbgSkTgYqqqtGdez"];
     
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
+    //Set Navigation Bar Text Attributes
+    NSShadow *shadow = [[NSShadow alloc] init];
+    [shadow setShadowColor:[UIColor colorWithWhite:0.0f alpha:0.750f]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:0.8f]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{
+                                                           NSForegroundColorAttributeName: [UIColor colorWithRed:140.0f/255.0f green:169.0f/255.0f blue:165.0f/255.0f alpha:1.0f],
+                                                           NSShadowAttributeName: shadow,
+                                                           NSFontAttributeName: [UIFont fontWithName:@"Avenir-Light" size:20]
+                                                           }];
+    [[UITableViewHeaderFooterView appearance] setTintColor:[UIColor colorWithRed:83.0f/255.0f green:83.0f/255.0f blue:83.0f/255.0f alpha:0.5f]];
+    
+    // Desired search radius:
+	if ([userDefaults doubleForKey:defaultsFilterDistanceKey]) {
+		// use the ivar instead of self.accuracy to avoid an unnecessary write to NAND on launch.
+		filterDistance = [userDefaults doubleForKey:defaultsFilterDistanceKey];
+	} else {
+		// if we have no accuracy in defaults, set it to 3000 feet.
+		self.filterDistance = 3000 * kAAFeetToMeters;
+	}
+    
+    //Check to see if user is logged in
+	PFUser *currentUser = [PFUser currentUser];
+	if (currentUser) {
+		// User is logged in.  Skip straight to the main view.
+		[self presentMainViewController];
+	} else {
+		// Not logged in.  Go to the welcome screen and have them log in or create an account.
+		[self presentLoginViewController];
+	}
+    
+    //Tracking Shara analytics in Parse
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    [self.window makeKeyAndVisible];
     return YES;
 }
+
+- (void)presentLoginViewController;
+{
+	// Go to the welcome screen and have them log in or create an account.
+	self.loginViewController = [[LoginViewController alloc] init];
+	self.loginViewController.title = @"Welcome to AddictAid";
+    
+	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.loginViewController];
+	navController.navigationBarHidden = YES;
+    
+	self.viewController = navController;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
+    {
+        self.viewController.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+	self.window.rootViewController = self.viewController;
+}
+
+-(void)presentMainViewController{
+    // Go to the welcome screen and have them log in or create an account.
+	HomeTableViewController *homeTableViewController = [[HomeTableViewController alloc] init];
+    SidebarTableViewController * sideBarViewController = [[SidebarTableViewController alloc] init];
+    
+	homeTableViewController.title = @"AddictAid";
+    
+	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:homeTableViewController];
+    UINavigationController *sideBarNavController = [[UINavigationController alloc] initWithRootViewController:sideBarViewController     ];
+	navController.navigationBarHidden = NO;
+    sideBarNavController.navigationBarHidden = NO;
+    
+    SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:sideBarNavController frontViewController:navController];
+    revealController.delegate = self;
+    
+	self.revealViewController = revealController;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
+    {
+        self.revealViewController.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+	self.window.rootViewController = self.revealViewController;
+}
+
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
