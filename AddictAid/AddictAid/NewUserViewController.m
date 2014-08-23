@@ -54,7 +54,7 @@
     //Setting colors in Welcome Label
     NSMutableAttributedString * welcomeStr = [[NSMutableAttributedString alloc] initWithString:welcomeString];
     [welcomeStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1] range:NSMakeRange(0,11)];
-    [welcomeStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:140.0/255.0 green:169.0/255.0 blue:165.0/255.0 alpha:1] range:NSMakeRange(11,9)];
+    [welcomeStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:149.0/255.0 green:213.0/255.0 blue:230.0/255.0 alpha:1] range:NSMakeRange(11,9)];
     [welcomeLabel setAttributedText:welcomeStr];
     
     // Set Login Label Attributes
@@ -71,7 +71,8 @@
     usernameField = [[UITextField alloc] initWithFrame:CGRectMake(35.0, 140.0, 250.0, 50.0)];
     usernameField.borderStyle = UITextBorderStyleNone;
     usernameField.font = [UIFont fontWithName:@"Avenir-Light" size:16];
-    usernameField.placeholder = @"Enter Username";
+    NSAttributedString *usernameStr = [[NSAttributedString alloc] initWithString:@"Enter Username" attributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }];
+    usernameField.attributedPlaceholder = usernameStr;
     usernameField.autocorrectionType = UITextAutocorrectionTypeNo;
     usernameField.keyboardType = UIKeyboardTypeDefault;
     usernameField.returnKeyType = UIReturnKeyDone;
@@ -84,7 +85,8 @@
     passwordField = [[UITextField alloc] initWithFrame:CGRectMake(35.0, 204.0, 250.0, 50.0)];
     passwordField.borderStyle = UITextBorderStyleNone;
     passwordField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16];
-    passwordField.placeholder = @"Enter Password";
+    NSAttributedString *passwordStr = [[NSAttributedString alloc] initWithString:@"Enter Password" attributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }];
+    passwordField.attributedPlaceholder = passwordStr;
     passwordField.autocorrectionType = UITextAutocorrectionTypeNo;
     passwordField.keyboardType = UIKeyboardTypeDefault;
     passwordField.returnKeyType = UIReturnKeyDone;
@@ -98,17 +100,10 @@
     [loginButton setFrame:CGRectMake(25.0, 284.0, 270.0, 50.0)];
     [loginButton setTitle:@"Log in" forState:UIControlStateNormal];
     loginButton.titleLabel.font = [UIFont fontWithName:@"Avenir-Light" size:18];
-    loginButton.backgroundColor = [UIColor colorWithRed:0.0/255.0 green:173.0/255.0 blue:239.0/255.0 alpha:1];
+    loginButton.backgroundColor = [UIColor colorWithRed:196.0/255.0 green:47.0/255.0 blue:40.0/255.0 alpha:1];
     [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [loginButton addTarget:self action:@selector(done:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:loginButton];
-    
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)done:(id)sender
@@ -175,6 +170,23 @@
         [(AppDelegate*)[[UIApplication sharedApplication] delegate] presentMainViewController];
         [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 	}];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end
