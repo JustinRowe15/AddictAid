@@ -25,11 +25,20 @@
     [super viewDidLoad];
     
     //Setting background image here
-    UIGraphicsBeginImageContext(self.view.frame.size);
-    [[UIImage imageNamed:@"welcome5.png"] drawInRect:self.view.bounds];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    self.view.backgroundColor = [UIColor colorWithPatternImage:newImage];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
+    {
+        UIGraphicsBeginImageContext(self.view.frame.size);
+        [[UIImage imageNamed:@"welcome5.png"] drawInRect:self.view.bounds];
+        UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.view.backgroundColor = [UIColor colorWithPatternImage:newImage];
+    } else {
+        UIGraphicsBeginImageContext(self.view.frame.size);
+        [[UIImage imageNamed:@"welcome4.png"] drawInRect:self.view.bounds];
+        UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.view.backgroundColor = [UIColor colorWithPatternImage:newImage];
+    }
 	
     //Set View Strings
     welcomeString = @"Welcome To AddictAid.";

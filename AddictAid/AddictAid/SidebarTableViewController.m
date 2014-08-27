@@ -7,6 +7,15 @@
 //
 
 #import "SidebarTableViewController.h"
+#import "SWRevealViewController.h"
+#import "HomeViewController.h"
+#import "MeetingsTableViewController.h"
+#import "AboutAddTableViewController.h"
+#import "QuotesTableViewController.h"
+#import "YourGoalsTableViewController.h"
+#import "ContactUsViewController.h"
+#import "AppDelegate.h"
+#import <Parse/Parse.h>
 
 @interface SidebarTableViewController ()
 
@@ -27,11 +36,26 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
+    {
+        UIGraphicsBeginImageContext(self.view.frame.size);
+        [[UIImage imageNamed:@"background5.png"] drawInRect:self.view.bounds];
+        UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        UIImageView * imageView = [[UIImageView alloc] initWithImage:newImage];
+        [self.tableView setBackgroundView:imageView];
+    } else {
+        UIGraphicsBeginImageContext(self.view.frame.size);
+        [[UIImage imageNamed:@"background4.png"] drawInRect:self.view.bounds];
+        UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        UIImageView * imageView = [[UIImageView alloc] initWithImage:newImage];
+        [self.tableView setBackgroundView:imageView];
+    }
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationController.navigationBar.barTintColor = [UIColor clearColor];
+    self.navigationController.navigationBar.translucent = YES;
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,76 +68,168 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return 7;
 }
 
-/*
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50.0f;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *cellIdentifier = @"Cell";
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    NSInteger row = indexPath.row;
+	
+	if (nil == cell)
+	{
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+        [cell.textLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
+        cell.textLabel.textColor = [UIColor colorWithRed:149.0f/255.0f green:213.0f/255.0f blue:230.0f/255.0f alpha:1.0f];
+        cell.backgroundColor = [UIColor clearColor];
+	}
+	
+	if (row == 0)
+	{
+		cell.textLabel.text = @"HOME";
+	}
+	else if (row == 1)
+	{
+		cell.textLabel.text = @"YOUR GOALS";
+	}
+	else if (row == 2)
+	{
+		cell.textLabel.text = @"MEETING INFO";
+	}
+	else if (row == 3)
+	{
+		cell.textLabel.text = @"ABOUT ADDICTIONS";
+	}
+    else if (row == 4)
+	{
+		cell.textLabel.text = @"QUOTES";
+	}
+    else if (row == 5)
+	{
+		cell.textLabel.text = @"CONTACT US";
+	}
+    else if (row == 6)
+	{
+		cell.textLabel.text = @"LOG OUT";
+	}
+	
+	return cell;
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    // Configure the cell...
-    
-    return cell;
-}
-*/
+    SWRevealViewController *revealController = self.revealViewController;
+    UINavigationController *frontNavigationController = (id)revealController.frontViewController;
+    NSInteger row = indexPath.row;
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+	if (row == 0)
+	{
+        if ( ![frontNavigationController.topViewController isKindOfClass:[HomeViewController class]] )
+        {
+			HomeViewController * homeViewController = [[HomeViewController alloc] init];
+            homeViewController.title = @"Welcome to AddictAid";
+			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
+			[revealController setFrontViewController:navigationController animated:YES];
+        }
+		else
+		{
+			[revealController revealToggle:self];
+		}
+	}
+	else if (row == 1)
+	{
+        if ( ![frontNavigationController.topViewController isKindOfClass:[YourGoalsTableViewController class]] )
+        {
+			YourGoalsTableViewController *yourGoalsViewController = [[YourGoalsTableViewController alloc] init];
+            yourGoalsViewController.title = @"Your Goals";
+			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:yourGoalsViewController];
+			[revealController setFrontViewController:navigationController animated:YES];
+		}
+		else
+		{
+			[revealController revealToggle:self];
+		}
+	}
+	else if (row == 2)
+	{
+        if ( ![frontNavigationController.topViewController isKindOfClass:[MeetingsTableViewController class]] )
+        {
+			MeetingsTableViewController *meetingsTableViewController = [[MeetingsTableViewController alloc] init];
+            meetingsTableViewController.title = @"Meetings";
+			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:meetingsTableViewController];
+			[revealController setFrontViewController:navigationController animated:YES];
+        }
+		else
+		{
+			[revealController revealToggle:self];
+		}
+	}
+    else if (row == 3)
+	{
+        if ( ![frontNavigationController.topViewController isKindOfClass:[AboutAddTableViewController class]] )
+        {
+			AboutAddTableViewController *aboutAddViewController = [[AboutAddTableViewController alloc] init];
+            aboutAddViewController.title = @"About Addictions";
+			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:aboutAddViewController];
+			[revealController setFrontViewController:navigationController animated:YES];
+        }
+		else
+		{
+			[revealController revealToggle:self];
+		}
+	}
+    else if (row == 4)
+	{
+        if ( ![frontNavigationController.topViewController isKindOfClass:[QuotesTableViewController class]] )
+        {
+			QuotesTableViewController *quotesTableViewController = [[QuotesTableViewController alloc] init];
+            quotesTableViewController.title = @"Meetings";
+			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:quotesTableViewController];
+			[revealController setFrontViewController:navigationController animated:YES];
+        }
+		else
+		{
+			[revealController revealToggle:self];
+		}
+	}
+    else if (row == 5)
+	{
+        if ( ![frontNavigationController.topViewController isKindOfClass:[ContactUsViewController class]] )
+        {
+			ContactUsViewController *contactUsViewController = [[ContactUsViewController alloc] init];
+            contactUsViewController.title = @"Meetings";
+			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:contactUsViewController];
+			[revealController setFrontViewController:navigationController animated:YES];
+        }
+		else
+		{
+			[revealController revealToggle:self];
+		}
+	}
+    else if (row == 6)
+	{
+        [PFUser logOut];
+        PFUser *currentUser = [PFUser currentUser];
+        [(AppDelegate*)[[UIApplication sharedApplication] delegate] presentLoginViewController];
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+	}
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
