@@ -12,7 +12,7 @@ static NSString * const defaultsLocationKey = @"currentLocation";
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "SWRevealViewController.h"
-#import "HomeTableViewController.h"
+#import "HomeViewController.h"
 #import "SidebarTableViewController.h"
 #import "Constants.h"
 #import <Parse/Parse.h>
@@ -38,10 +38,10 @@ static NSString * const defaultsLocationKey = @"currentLocation";
     //Set Navigation Bar Text Attributes
     NSShadow *shadow = [[NSShadow alloc] init];
     [shadow setShadowColor:[UIColor colorWithWhite:0.0f alpha:0.750f]];
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:0.8f]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:149.0f/255.0f green:213.0f/255.0f blue:230.0f/255.0f alpha:1.0f]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{
-                                                           NSForegroundColorAttributeName: [UIColor colorWithRed:140.0f/255.0f green:169.0f/255.0f blue:165.0f/255.0f alpha:1.0f],
-                                                           NSShadowAttributeName: shadow,
+                                                           NSForegroundColorAttributeName: [UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f],
+                                                           NSShadowAttributeName:shadow,
                                                            NSFontAttributeName: [UIFont fontWithName:@"Avenir-Light" size:20]
                                                            }];
     [[UITableViewHeaderFooterView appearance] setTintColor:[UIColor colorWithRed:83.0f/255.0f green:83.0f/255.0f blue:83.0f/255.0f alpha:0.5f]];
@@ -90,13 +90,13 @@ static NSString * const defaultsLocationKey = @"currentLocation";
 
 -(void)presentMainViewController{
     // Go to the welcome screen and have them log in or create an account.
-	HomeTableViewController *homeTableViewController = [[HomeTableViewController alloc] init];
+	HomeViewController *homeViewController = [[HomeViewController alloc] init];
     SidebarTableViewController * sideBarViewController = [[SidebarTableViewController alloc] init];
     
-	homeTableViewController.title = @"AddictAid";
+	homeViewController.title = @"Welcome to AddictAid";
     
-	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:homeTableViewController];
-    UINavigationController *sideBarNavController = [[UINavigationController alloc] initWithRootViewController:sideBarViewController     ];
+	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
+    UINavigationController *sideBarNavController = [[UINavigationController alloc] initWithRootViewController:sideBarViewController];
 	navController.navigationBarHidden = NO;
     sideBarNavController.navigationBarHidden = NO;
     
@@ -104,6 +104,7 @@ static NSString * const defaultsLocationKey = @"currentLocation";
     revealController.delegate = self;
     
 	self.revealViewController = revealController;
+    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
     {
         self.revealViewController.edgesForExtendedLayout = UIRectEdgeNone;

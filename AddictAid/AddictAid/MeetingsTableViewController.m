@@ -6,13 +6,15 @@
 //  Copyright (c) 2014 Justin Rowe. All rights reserved.
 //
 
-#import "HomeTableViewController.h"
+#import "MeetingsTableViewController.h"
 
-@interface HomeTableViewController ()
+@interface MeetingsTableViewController ()
 
 @end
 
-@implementation HomeTableViewController
+@implementation MeetingsTableViewController
+
+@synthesize tableBackgroundImageView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,11 +29,8 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    tableBackgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.png"]];
+    [self.tableView setBackgroundView:tableBackgroundImageView];
 }
 
 - (void)didReceiveMemoryWarning

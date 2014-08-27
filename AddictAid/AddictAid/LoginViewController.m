@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "NewUserViewController.h"
+#import "HomeViewController.h"
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 
@@ -17,7 +18,7 @@
 
 @implementation LoginViewController
 
-@synthesize welcomeString, loginString, userString, forgotString, welcomeLabel, loginLabel, userLabel, forgotLabel, loginButton, usernameField, passwordField;
+@synthesize welcomeString, loginString, userString, forgotString, welcomeLabel, loginLabel, userLabel, forgotLabel, loginButton, usernameField, passwordField, guestString, guestLabel;
 
 - (void)viewDidLoad
 {
@@ -34,6 +35,7 @@
     welcomeString = @"Welcome To AddictAid.";
     loginString = @"Please Log In To Your Account";
     userString = @"New user?  Click here.";
+    guestString = @"Skip login as guest? Click here.";
     
     //Set Welcome Label Attributes
     welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(25.0, 40.0, 270.0, 50.0)];
@@ -89,8 +91,8 @@
     passwordField.delegate = self;
     [self.view addSubview:passwordField];
     
-    // Set Login Label Attributes
-    userLabel = [[UILabel alloc] initWithFrame:CGRectMake(25.0, 338.0, 270.0, 50.0)];
+    // Set New User Label Attributes
+    userLabel = [[UILabel alloc] initWithFrame:CGRectMake(25.0, 358.0, 270.0, 20.0)];
     [userLabel setTextAlignment:NSTextAlignmentCenter];
     [userLabel setTextColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1]];
     [userLabel setNumberOfLines:1];
@@ -99,7 +101,7 @@
     [userLabel setText:userString];
     [self.view addSubview:userLabel];
     
-    //Setting colors in Welcome Label
+    //Setting colors in User Label
     NSMutableAttributedString * userStr = [[NSMutableAttributedString alloc] initWithString:userString];
     [userStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1] range:NSMakeRange(0,10)];
     [userStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:149.0/255.0 green:213.0/255.0 blue:230.0/255.0 alpha:1] range:NSMakeRange(10,11)];
@@ -109,6 +111,27 @@
     tapGestureRecognizer.numberOfTapsRequired = 1;
     [userLabel addGestureRecognizer:tapGestureRecognizer];
     [userLabel setUserInteractionEnabled:YES];
+    
+    // Set Guest Label Attributes
+    guestLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0, 392.0, 290.0, 20.0)];
+    [guestLabel setTextAlignment:NSTextAlignmentCenter];
+    [guestLabel setTextColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1]];
+    [guestLabel setNumberOfLines:1];
+    [guestLabel setLineBreakMode:NSLineBreakByWordWrapping];
+    [guestLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:16]];
+    [guestLabel setText:guestString];
+    [self.view addSubview:guestLabel];
+    
+    //Setting colors in Guest Label
+    NSMutableAttributedString * guestStr = [[NSMutableAttributedString alloc] initWithString:guestString];
+    [guestStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1] range:NSMakeRange(0,21)];
+    [guestStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:149.0/255.0 green:213.0/255.0 blue:230.0/255.0 alpha:1] range:NSMakeRange(21,10)];
+    [guestLabel setAttributedText:guestStr];
+    
+    UITapGestureRecognizer *guestTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(skipLogin:)];
+    guestTapGestureRecognizer.numberOfTapsRequired = 1;
+    [guestLabel addGestureRecognizer:guestTapGestureRecognizer];
+    [guestLabel setUserInteractionEnabled:YES];
     
     //Log In Button Attributes
     loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -125,6 +148,12 @@
 {
     NewUserViewController * newUserViewController = [[NewUserViewController alloc] init];
     [self presentViewController:newUserViewController animated:YES completion:nil];
+}
+
+- (IBAction)skipLogin:(id)sender
+{
+    [(AppDelegate*)[[UIApplication sharedApplication] delegate] presentMainViewController];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)done:(id)sender

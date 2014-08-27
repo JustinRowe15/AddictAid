@@ -46,10 +46,13 @@
 		0B8EAD6619A9214D00A1C8C0 /* welcome4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B8EAD6419A9214D00A1C8C0 /* welcome4.png */; };
 		0B8EAD6719A9214D00A1C8C0 /* welcome5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B8EAD6519A9214D00A1C8C0 /* welcome5.png */; };
 		0B9E31BE19A9244700C06D82 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E31BD19A9244700C06D82 /* Constants.m */; };
-		0B9E31C219A9252A00C06D82 /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E31C119A9252A00C06D82 /* HomeTableViewController.m */; };
+		0B9E31C219A9252A00C06D82 /* MeetingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E31C119A9252A00C06D82 /* MeetingsTableViewController.m */; };
 		0B9E31C519A9257C00C06D82 /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E31C419A9257C00C06D82 /* SidebarTableViewController.m */; };
 		0B9E31C819A926F700C06D82 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9E31C719A926F700C06D82 /* Bolts.framework */; };
 		0B9E31CD19A92A0000C06D82 /* Avenir_35_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B9E31CC19A92A0000C06D82 /* Avenir_35_Light.ttf */; };
+		0BE6048A19AD6BCE00BDEE58 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6048919AD6BCE00BDEE58 /* HomeViewController.m */; };
+		0BE6048D19AD715800BDEE58 /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BE6048B19AD715800BDEE58 /* reveal-icon.png */; };
+		0BE6048E19AD715800BDEE58 /* reveal-icon@2xpng in Resources */ = {isa = PBXBuildFile; fileRef = 0BE6048C19AD715800BDEE58 /* reveal-icon@2xpng */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,12 +124,16 @@
 		0B8EAD6519A9214D00A1C8C0 /* welcome5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome5.png; sourceTree = "<group>"; };
 		0B9E31BC19A9244700C06D82 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		0B9E31BD19A9244700C06D82 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
-		0B9E31C019A9252A00C06D82 /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewController.h; sourceTree = "<group>"; };
-		0B9E31C119A9252A00C06D82 /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewController.m; sourceTree = "<group>"; };
+		0B9E31C019A9252A00C06D82 /* MeetingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingsTableViewController.h; sourceTree = "<group>"; };
+		0B9E31C119A9252A00C06D82 /* MeetingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetingsTableViewController.m; sourceTree = "<group>"; };
 		0B9E31C319A9257C00C06D82 /* SidebarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarTableViewController.h; sourceTree = "<group>"; };
 		0B9E31C419A9257C00C06D82 /* SidebarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTableViewController.m; sourceTree = "<group>"; };
 		0B9E31C719A926F700C06D82 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		0B9E31CC19A92A0000C06D82 /* Avenir_35_Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Avenir_35_Light.ttf; sourceTree = "<group>"; };
+		0BE6048819AD6BCE00BDEE58 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		0BE6048919AD6BCE00BDEE58 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		0BE6048B19AD715800BDEE58 /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
+		0BE6048C19AD715800BDEE58 /* reveal-icon@2xpng */ = {isa = PBXFileReference; lastKnownFileType = file; path = "reveal-icon@2xpng"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +230,8 @@
 		0B0AAE2919A90D0000C8674D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0BE6048B19AD715800BDEE58 /* reveal-icon.png */,
+				0BE6048C19AD715800BDEE58 /* reveal-icon@2xpng */,
 				0B9E31CC19A92A0000C06D82 /* Avenir_35_Light.ttf */,
 				0B0AAE3A19A90D0000C8674D /* Images.xcassets */,
 				0B8EAD6419A9214D00A1C8C0 /* welcome4.png */,
@@ -323,8 +332,10 @@
 		0B9E31C619A925B900C06D82 /* Home | Menu View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0B9E31C019A9252A00C06D82 /* HomeTableViewController.h */,
-				0B9E31C119A9252A00C06D82 /* HomeTableViewController.m */,
+				0BE6048819AD6BCE00BDEE58 /* HomeViewController.h */,
+				0BE6048919AD6BCE00BDEE58 /* HomeViewController.m */,
+				0B9E31C019A9252A00C06D82 /* MeetingsTableViewController.h */,
+				0B9E31C119A9252A00C06D82 /* MeetingsTableViewController.m */,
 				0B9E31C319A9257C00C06D82 /* SidebarTableViewController.h */,
 				0B9E31C419A9257C00C06D82 /* SidebarTableViewController.m */,
 			);
@@ -419,6 +430,8 @@
 				0B8EAD6719A9214D00A1C8C0 /* welcome5.png in Resources */,
 				0B0AAE2D19A90D0000C8674D /* InfoPlist.strings in Resources */,
 				0B8EAD6619A9214D00A1C8C0 /* welcome4.png in Resources */,
+				0BE6048E19AD715800BDEE58 /* reveal-icon@2xpng in Resources */,
+				0BE6048D19AD715800BDEE58 /* reveal-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,7 +453,7 @@
 				0B8EAD4919A9185200A1C8C0 /* AFHTTPRequestOperation.m in Sources */,
 				0B0AAE3919A90D0000C8674D /* LoginViewController.m in Sources */,
 				0B8EAD4A19A9185200A1C8C0 /* AFHTTPRequestOperationManager.m in Sources */,
-				0B9E31C219A9252A00C06D82 /* HomeTableViewController.m in Sources */,
+				0B9E31C219A9252A00C06D82 /* MeetingsTableViewController.m in Sources */,
 				0B9E31BE19A9244700C06D82 /* Constants.m in Sources */,
 				0B8EAD4C19A9185200A1C8C0 /* AFNetworkReachabilityManager.m in Sources */,
 				0B8EAD6319A91D9700A1C8C0 /* NewUserViewController.m in Sources */,
@@ -454,6 +467,7 @@
 				0B8EAD5119A9185200A1C8C0 /* AFURLSessionManager.m in Sources */,
 				0B0AAE3319A90D0000C8674D /* AppDelegate.m in Sources */,
 				0B9E31C519A9257C00C06D82 /* SidebarTableViewController.m in Sources */,
+				0BE6048A19AD6BCE00BDEE58 /* HomeViewController.m in Sources */,
 				0B0AAE2F19A90D0000C8674D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

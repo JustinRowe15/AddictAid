@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeTableViewController : UITableViewController
+@interface MeetingsTableViewController : UITableViewController
+
+@property (strong, nonatomic) UIImageView *tableBackgroundImageView;
 
 @end
