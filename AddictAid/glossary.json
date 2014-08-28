@@ -9,12 +9,12 @@
     "Definition":"Pain relievers (e.g. Tylenol) used to treat headaches, muscle aches, headaches, etc."
   },
   {
-    "Term":"ACOA",
-    "Definition":"A support group for adult children of alcoholics"
-  },
-  {
     "Term":"Addict",
     "Definition":"A stigmatizing slang term for an individual with an addictive disorder"
+  },
+  {
+    "Term":"Addiction",
+    "Definition":"A repeated activity that continuously causes harm to oneself or others (e.g. a substance's continuous presence in the bloodstream)."
   },
   {
     "Term":"Addiction Assessment",
@@ -23,10 +23,6 @@
   {
     "Term":"Addiction Treatment",
     "Definition":"Aims to reduce addiction"
-  },
-  {
-    "Term":"Addiction",
-    "Definition":"A repeated activity that continuously causes harm to oneself or others (e.g. a substance's continuous presence in the bloodstream)."
   },
   {
     "Term":"Addictive Personality",
@@ -67,14 +63,6 @@
   {
     "Term":"Antagonist",
     "Definition":"A substance that can nullify another's effects (a drug that does not elicit a response)"
-  },
-  {
-    "Term":"AOD",
-    "Definition":"Stands for (Alcohol and Other Drugs)"
-  },
-  {
-    "Term":"AODA",
-    "Definition":"Stands for (Alcohol and Other Drug Abuse)"
   },
   {
     "Term":"Aspirin",
@@ -197,12 +185,12 @@
     "Definition":"The process of removing a toxic substance (e.g. a drug) from the body"
   },
   {
-    "Term":"Disease Model",
-    "Definition":"A theory of alcoholism that considers the addiction a disease rather than a social or psychological issue."
-  },
-  {
     "Term":"Disease",
     "Definition":"A condition featuring medically significant symptoms that often have a known cause"
+  },
+  {
+    "Term":"Disease Model",
+    "Definition":"A theory of alcoholism that considers the addiction a disease rather than a social or psychological issue."
   },
   {
     "Term":"Doctor Shopping",
@@ -493,20 +481,20 @@
     "Definition":"One's return to a negative behavior (relapse) (e.g. drug use)"
   },
   {
-    "Term":"Recovery Rates",
-    "Definition":"The percentage of addicted persons undergoing treatment who partake in abstinence in their first year"
-  },
-  {
     "Term":"Recovery",
     "Definition":"Reducing or ceasing substance abuse; often followed by one's personal life being turned around by way of a supportive environment"
   },
   {
-    "Term":"Relapse Prevention",
-    "Definition":"A therapeutic process that interrupts believes and behaviors that result in lifestyle dysfunction"
+    "Term":"Recovery Rates",
+    "Definition":"The percentage of addicted persons undergoing treatment who partake in abstinence in their first year"
   },
   {
     "Term":"Relapse",
     "Definition":"Symptom recurrence after a period of sobriety or drug use cessation"
+  },
+  {
+    "Term":"Relapse Prevention",
+    "Definition":"A therapeutic process that interrupts believes and behaviors that result in lifestyle dysfunction"
   },
   {
     "Term":"Remission",
@@ -597,12 +585,12 @@
     "Definition":"Drugs that produce a euphoric effect (e.g. stimulants, amphetamines)"
   },
   {
-    "Term":"Urge-Peak Cycle",
-    "Definition":"Ongoing urge-peaks, usually followed by relapse"
-  },
-  {
     "Term":"Urge-Peak",
     "Definition":"A sudden, unpredictable increase in addiction cravings; they usually involve temporary mental unawareness (e.g. not realizing the amount of drinks one has had)"
+  },
+  {
+    "Term":"Urge-Peak Cycle",
+    "Definition":"Ongoing urge-peaks, usually followed by relapse"
   },
   {
     "Term":"Urges",

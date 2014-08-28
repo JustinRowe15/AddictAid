@@ -60,8 +60,6 @@
     
     glossaryList = [jsonObject glossaryArray];
     
-    //NSLog(@"%@", glossaryList);
-    
     sections = [[NSMutableDictionary alloc] init];
     BOOL found;
     for (NSDictionary *temp in glossaryList){
@@ -146,7 +144,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DefinitionDetailViewController *definitionDetailViewController = [[DefinitionDetailViewController alloc]init];
-    definitionDetailViewController.detailDefinition = [self.glossaryList objectAtIndex:indexPath.row];
+    definitionDetailViewController.detailDefinition = [[[self.sections valueForKey:[[[self.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] definitionsString];
+    definitionDetailViewController.title = [[[self.sections valueForKey:[[[self.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] termsString];
     [self.navigationController pushViewController:definitionDetailViewController animated:YES];
 }
 

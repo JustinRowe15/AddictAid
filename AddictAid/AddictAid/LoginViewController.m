@@ -122,7 +122,7 @@
     [userLabel setUserInteractionEnabled:YES];
     
     // Set Guest Label Attributes
-    guestLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0, 392.0, 290.0, 20.0)];
+    guestLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0, 396.0, 290.0, 20.0)];
     [guestLabel setTextAlignment:NSTextAlignmentCenter];
     [guestLabel setTextColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1]];
     [guestLabel setNumberOfLines:1];

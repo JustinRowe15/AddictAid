@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MeetingsTableViewController : UITableViewController
+@interface MeetingsTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) UIImageView *tableBackgroundImageView;
+@property (strong, nonatomic) NSMutableDictionary *sections;
+@property (strong, nonatomic) UIImageView *backgroundImageView;
 
 @end

@@ -46,7 +46,7 @@
     }
     
     //Set Definition TextView
-    detailDefinitionTextView = [[UITextView alloc] initWithFrame:CGRectMake(20.0f, 20.0f, 170.0f, 280.0f)];
+    detailDefinitionTextView = [[UITextView alloc] initWithFrame:CGRectMake(20.0f, 20.0f, 280.0f, 480.0f)];
     [detailDefinitionTextView setTextColor:[UIColor colorWithRed:149.0f/255.0f green:213.0f/255.0f blue:230.0f/255.0f alpha:1.0f]];
     [detailDefinitionTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
     [detailDefinitionTextView setBackgroundColor:[UIColor clearColor]];
