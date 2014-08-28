@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface SidebarTableViewController : UITableViewController
+
+@property (nonatomic, strong) PFUser *currentUser;
 
 @end

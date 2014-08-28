@@ -70,10 +70,6 @@
     for (NSDictionary *temp in locationList){
         [[sections objectForKey:[temp objectForKey:@"Day"]] addObject:temp];
     }
-    for (NSString *key in [sections allKeys])
-    {
-        [[sections objectForKey:key] sortUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"Day" ascending:YES]]];
-    }
     
     [self.tableView reloadData];
 }

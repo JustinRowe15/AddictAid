@@ -23,6 +23,8 @@
 
 @implementation SidebarTableViewController
 
+@synthesize currentUser;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -73,7 +75,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return 7;
 }
 
@@ -122,7 +123,12 @@
 	}
     else if (row == 6)
 	{
-		cell.textLabel.text = @"LOG OUT";
+        currentUser = [PFUser currentUser];
+        if (!currentUser){
+            cell.textLabel.text = @"LOG IN";
+        } else {
+            cell.textLabel.text = @"LOG OUT";
+        }
 	}
 	
 	return cell;

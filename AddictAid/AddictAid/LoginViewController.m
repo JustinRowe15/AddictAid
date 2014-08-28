@@ -97,6 +97,7 @@
     passwordField.returnKeyType = UIReturnKeyDone;
     passwordField.clearButtonMode = UITextFieldViewModeWhileEditing;
     passwordField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    passwordField.secureTextEntry = YES;
     passwordField.delegate = self;
     [self.view addSubview:passwordField];
     
