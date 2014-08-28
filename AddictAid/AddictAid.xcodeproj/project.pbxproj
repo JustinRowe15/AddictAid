@@ -49,6 +49,7 @@
 		0B99959719AFA169002F95D6 /* glossary.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B99959619AFA169002F95D6 /* glossary.json */; };
 		0B99959919AFA17D002F95D6 /* locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B99959819AFA17D002F95D6 /* locations.json */; };
 		0B99959C19AFA2B3002F95D6 /* NSDictionary+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B99959B19AFA2B3002F95D6 /* NSDictionary+Data.m */; };
+		0B99959F19AFB98B002F95D6 /* DefinitionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B99959E19AFB98B002F95D6 /* DefinitionDetailViewController.m */; };
 		0B9E31BE19A9244700C06D82 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E31BD19A9244700C06D82 /* Constants.m */; };
 		0B9E31C219A9252A00C06D82 /* MeetingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E31C119A9252A00C06D82 /* MeetingsTableViewController.m */; };
 		0B9E31C519A9257C00C06D82 /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E31C419A9257C00C06D82 /* SidebarTableViewController.m */; };
@@ -136,6 +137,8 @@
 		0B99959819AFA17D002F95D6 /* locations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = locations.json; path = ../locations.json; sourceTree = "<group>"; };
 		0B99959A19AFA2B3002F95D6 /* NSDictionary+Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Data.h"; sourceTree = "<group>"; };
 		0B99959B19AFA2B3002F95D6 /* NSDictionary+Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Data.m"; sourceTree = "<group>"; };
+		0B99959D19AFB98B002F95D6 /* DefinitionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefinitionDetailViewController.h; sourceTree = "<group>"; };
+		0B99959E19AFB98B002F95D6 /* DefinitionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefinitionDetailViewController.m; sourceTree = "<group>"; };
 		0B9E31BC19A9244700C06D82 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		0B9E31BD19A9244700C06D82 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		0B9E31C019A9252A00C06D82 /* MeetingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingsTableViewController.h; sourceTree = "<group>"; };
@@ -377,6 +380,8 @@
 				0B9E31C119A9252A00C06D82 /* MeetingsTableViewController.m */,
 				0BE6049319AD76CA00BDEE58 /* AboutAddTableViewController.h */,
 				0BE6049419AD76CA00BDEE58 /* AboutAddTableViewController.m */,
+				0B99959D19AFB98B002F95D6 /* DefinitionDetailViewController.h */,
+				0B99959E19AFB98B002F95D6 /* DefinitionDetailViewController.m */,
 				0BE6049619AD76DA00BDEE58 /* QuotesTableViewController.h */,
 				0BE6049719AD76DA00BDEE58 /* QuotesTableViewController.m */,
 				0BE6049919AD76F400BDEE58 /* YourGoalsTableViewController.h */,
@@ -508,6 +513,7 @@
 				0B9E31BE19A9244700C06D82 /* Constants.m in Sources */,
 				0B8EAD4C19A9185200A1C8C0 /* AFNetworkReachabilityManager.m in Sources */,
 				0B8EAD6319A91D9700A1C8C0 /* NewUserViewController.m in Sources */,
+				0B99959F19AFB98B002F95D6 /* DefinitionDetailViewController.m in Sources */,
 				0B8EAD5019A9185200A1C8C0 /* AFURLResponseSerialization.m in Sources */,
 				0B8EAD4E19A9185200A1C8C0 /* AFURLConnectionOperation.m in Sources */,
 				0B8EAD4D19A9185200A1C8C0 /* AFSecurityPolicy.m in Sources */,

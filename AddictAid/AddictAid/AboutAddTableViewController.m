@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "NSDictionary+Data.h"
 #import "MBProgressHUD.h"
+#import "DefinitionDetailViewController.h"
 
 @interface AboutAddTableViewController ()
 
@@ -34,6 +35,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.tableView.delegate = self;
     
     backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background5.png"]];
     [self.tableView setBackgroundView:backgroundImageView];
@@ -138,6 +141,13 @@
     [cell.textLabel setText:[NSString stringWithFormat:@"%@",[glossaryDict termsString]]];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DefinitionDetailViewController *definitionDetailViewController = [[DefinitionDetailViewController alloc]init];
+    definitionDetailViewController.detailDefinition = [self.glossaryList objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:definitionDetailViewController animated:YES];
 }
 
 @end
