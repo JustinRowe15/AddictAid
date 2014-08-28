@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AboutAddTableViewController : UITableViewController
+@interface AboutAddTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) NSMutableDictionary *sections;
+@property (strong, nonatomic) UIImageView *backgroundImageView;
 
 @end

@@ -45,6 +45,10 @@
 		0B8EAD6319A91D9700A1C8C0 /* NewUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8EAD6219A91D9700A1C8C0 /* NewUserViewController.m */; };
 		0B8EAD6619A9214D00A1C8C0 /* welcome4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B8EAD6419A9214D00A1C8C0 /* welcome4.png */; };
 		0B8EAD6719A9214D00A1C8C0 /* welcome5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B8EAD6519A9214D00A1C8C0 /* welcome5.png */; };
+		0B99958D19AF9F97002F95D6 /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B99958C19AF9F97002F95D6 /* reveal-icon@2x.png */; };
+		0B99959719AFA169002F95D6 /* glossary.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B99959619AFA169002F95D6 /* glossary.json */; };
+		0B99959919AFA17D002F95D6 /* locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B99959819AFA17D002F95D6 /* locations.json */; };
+		0B99959C19AFA2B3002F95D6 /* NSDictionary+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B99959B19AFA2B3002F95D6 /* NSDictionary+Data.m */; };
 		0B9E31BE19A9244700C06D82 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E31BD19A9244700C06D82 /* Constants.m */; };
 		0B9E31C219A9252A00C06D82 /* MeetingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E31C119A9252A00C06D82 /* MeetingsTableViewController.m */; };
 		0B9E31C519A9257C00C06D82 /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E31C419A9257C00C06D82 /* SidebarTableViewController.m */; };
@@ -52,7 +56,6 @@
 		0B9E31CD19A92A0000C06D82 /* Avenir_35_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B9E31CC19A92A0000C06D82 /* Avenir_35_Light.ttf */; };
 		0BE6048A19AD6BCE00BDEE58 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6048919AD6BCE00BDEE58 /* HomeViewController.m */; };
 		0BE6048D19AD715800BDEE58 /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BE6048B19AD715800BDEE58 /* reveal-icon.png */; };
-		0BE6048E19AD715800BDEE58 /* reveal-icon@2xpng in Resources */ = {isa = PBXBuildFile; fileRef = 0BE6048C19AD715800BDEE58 /* reveal-icon@2xpng */; };
 		0BE6049119AD74AB00BDEE58 /* background4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BE6048F19AD74AB00BDEE58 /* background4.png */; };
 		0BE6049219AD74AB00BDEE58 /* background5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BE6049019AD74AB00BDEE58 /* background5.png */; };
 		0BE6049519AD76CA00BDEE58 /* AboutAddTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6049419AD76CA00BDEE58 /* AboutAddTableViewController.m */; };
@@ -128,6 +131,11 @@
 		0B8EAD6219A91D9700A1C8C0 /* NewUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUserViewController.m; sourceTree = "<group>"; };
 		0B8EAD6419A9214D00A1C8C0 /* welcome4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome4.png; sourceTree = "<group>"; };
 		0B8EAD6519A9214D00A1C8C0 /* welcome5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome5.png; sourceTree = "<group>"; };
+		0B99958C19AF9F97002F95D6 /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
+		0B99959619AFA169002F95D6 /* glossary.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = glossary.json; path = ../glossary.json; sourceTree = "<group>"; };
+		0B99959819AFA17D002F95D6 /* locations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = locations.json; path = ../locations.json; sourceTree = "<group>"; };
+		0B99959A19AFA2B3002F95D6 /* NSDictionary+Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Data.h"; sourceTree = "<group>"; };
+		0B99959B19AFA2B3002F95D6 /* NSDictionary+Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Data.m"; sourceTree = "<group>"; };
 		0B9E31BC19A9244700C06D82 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		0B9E31BD19A9244700C06D82 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		0B9E31C019A9252A00C06D82 /* MeetingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingsTableViewController.h; sourceTree = "<group>"; };
@@ -139,7 +147,6 @@
 		0BE6048819AD6BCE00BDEE58 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		0BE6048919AD6BCE00BDEE58 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		0BE6048B19AD715800BDEE58 /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
-		0BE6048C19AD715800BDEE58 /* reveal-icon@2xpng */ = {isa = PBXFileReference; lastKnownFileType = file; path = "reveal-icon@2xpng"; sourceTree = "<group>"; };
 		0BE6048F19AD74AB00BDEE58 /* background4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background4.png; sourceTree = "<group>"; };
 		0BE6049019AD74AB00BDEE58 /* background5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background5.png; sourceTree = "<group>"; };
 		0BE6049319AD76CA00BDEE58 /* AboutAddTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutAddTableViewController.h; sourceTree = "<group>"; };
@@ -246,14 +253,15 @@
 		0B0AAE2919A90D0000C8674D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0BE6048F19AD74AB00BDEE58 /* background4.png */,
-				0BE6049019AD74AB00BDEE58 /* background5.png */,
+				0B99959619AFA169002F95D6 /* glossary.json */,
+				0B99959819AFA17D002F95D6 /* locations.json */,
+				0B99959A19AFA2B3002F95D6 /* NSDictionary+Data.h */,
+				0B99959B19AFA2B3002F95D6 /* NSDictionary+Data.m */,
+				0B99958E19AF9FA3002F95D6 /* Images */,
 				0BE6048B19AD715800BDEE58 /* reveal-icon.png */,
-				0BE6048C19AD715800BDEE58 /* reveal-icon@2xpng */,
+				0B99958C19AF9F97002F95D6 /* reveal-icon@2x.png */,
 				0B9E31CC19A92A0000C06D82 /* Avenir_35_Light.ttf */,
 				0B0AAE3A19A90D0000C8674D /* Images.xcassets */,
-				0B8EAD6419A9214D00A1C8C0 /* welcome4.png */,
-				0B8EAD6519A9214D00A1C8C0 /* welcome5.png */,
 				0B0AAE2A19A90D0000C8674D /* AddictAid-Info.plist */,
 				0B0AAE2B19A90D0000C8674D /* InfoPlist.strings */,
 				0B0AAE2E19A90D0000C8674D /* main.m */,
@@ -334,6 +342,17 @@
 				0B8EAD5919A9199F00A1C8C0 /* SWRevealViewController.m */,
 			);
 			path = SWRevealViewController;
+			sourceTree = "<group>";
+		};
+		0B99958E19AF9FA3002F95D6 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				0BE6048F19AD74AB00BDEE58 /* background4.png */,
+				0BE6049019AD74AB00BDEE58 /* background5.png */,
+				0B8EAD6419A9214D00A1C8C0 /* welcome4.png */,
+				0B8EAD6519A9214D00A1C8C0 /* welcome5.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		0B9E31BF19A9250D00C06D82 /* Login | New User View Controllers */ = {
@@ -451,13 +470,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B99959919AFA17D002F95D6 /* locations.json in Resources */,
+				0B99959719AFA169002F95D6 /* glossary.json in Resources */,
 				0B9E31CD19A92A0000C06D82 /* Avenir_35_Light.ttf in Resources */,
 				0BE6049219AD74AB00BDEE58 /* background5.png in Resources */,
 				0B0AAE3B19A90D0000C8674D /* Images.xcassets in Resources */,
 				0B8EAD6719A9214D00A1C8C0 /* welcome5.png in Resources */,
 				0B0AAE2D19A90D0000C8674D /* InfoPlist.strings in Resources */,
+				0B99958D19AF9F97002F95D6 /* reveal-icon@2x.png in Resources */,
 				0B8EAD6619A9214D00A1C8C0 /* welcome4.png in Resources */,
-				0BE6048E19AD715800BDEE58 /* reveal-icon@2xpng in Resources */,
 				0BE6049119AD74AB00BDEE58 /* background4.png in Resources */,
 				0BE6048D19AD715800BDEE58 /* reveal-icon.png in Resources */,
 			);
@@ -480,6 +501,7 @@
 			files = (
 				0B8EAD4919A9185200A1C8C0 /* AFHTTPRequestOperation.m in Sources */,
 				0BE6049819AD76DA00BDEE58 /* QuotesTableViewController.m in Sources */,
+				0B99959C19AFA2B3002F95D6 /* NSDictionary+Data.m in Sources */,
 				0B0AAE3919A90D0000C8674D /* LoginViewController.m in Sources */,
 				0B8EAD4A19A9185200A1C8C0 /* AFHTTPRequestOperationManager.m in Sources */,
 				0B9E31C219A9252A00C06D82 /* MeetingsTableViewController.m in Sources */,
