@@ -96,7 +96,7 @@
     [goalsTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:26]];
     [goalsTextView setBackgroundColor:[UIColor clearColor]];
     [goalsTextView setTextAlignment:NSTextAlignmentCenter];
-    [goalsTextView setEditable:NO];
+    [goalsTextView setEditable:YES];
     [self.view addSubview:goalsTextView];
 
 }
