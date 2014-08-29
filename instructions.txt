@@ -1,0 +1,17 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red52\green110\blue183;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs30 \cf2 Developer: Justin Rowe\
+\
+Welcome to AddictAid!\
+\
+This mobile application for iOS features support addictions therapy and support by providing motivational quotes, meeting locations, personal goals set up and more!\
+\
+You have the decision to set up a personal account or use the application as a guest!  Search around and begin your journey towards recovery!\
+\
+Github Repo: \cf3 https://github.com/JustinRowe15/AddictAid\
+}
