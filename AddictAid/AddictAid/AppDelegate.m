@@ -46,12 +46,9 @@ static NSString * const defaultsLocationKey = @"currentLocation";
                                                            }];
     [[UITableViewHeaderFooterView appearance] setTintColor:[UIColor colorWithRed:83.0f/255.0f green:83.0f/255.0f blue:83.0f/255.0f alpha:0.5f]];
     
-    // Desired search radius:
 	if ([userDefaults doubleForKey:defaultsFilterDistanceKey]) {
-		// use the ivar instead of self.accuracy to avoid an unnecessary write to NAND on launch.
 		filterDistance = [userDefaults doubleForKey:defaultsFilterDistanceKey];
 	} else {
-		// if we have no accuracy in defaults, set it to 3000 feet.
 		self.filterDistance = 3000 * kAAFeetToMeters;
 	}
     
@@ -65,7 +62,7 @@ static NSString * const defaultsLocationKey = @"currentLocation";
 		[self presentLoginViewController];
 	}
     
-    //Tracking Shara analytics in Parse
+    //Tracking AddictAid analytics in Parse
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     [self.window makeKeyAndVisible];
     return YES;

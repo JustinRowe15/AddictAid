@@ -7,12 +7,22 @@
 //
 
 #import "QuotesTableViewController.h"
+#import "QuoteDetailViewController.h"
+#import "SWRevealViewController.h"
+#import "NSDictionary+Data.h"
+#import "MBProgressHUD.h"
 
 @interface QuotesTableViewController ()
+
+@property (nonatomic, strong) NSArray * quotesList;
+@property (nonatomic, strong) NSDictionary * quotesDict;
+@property (nonatomic, strong) NSDictionary *jsonObject;
 
 @end
 
 @implementation QuotesTableViewController
+
+@synthesize backgroundImageView, quotesList, quotesDict, jsonObject;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,11 +37,19 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background5.png"]];
+    [self.tableView setBackgroundView:backgroundImageView];
+    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    SWRevealViewController *revealController = [self revealViewController];
+    [revealController panGestureRecognizer];
+    [revealController tapGestureRecognizer];
+    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reveal-icon.png"]
+                                                                         style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
+    [revealButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
+    self.navigationItem.leftBarButtonItem = revealButtonItem;
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,76 +62,56 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return 75;
 }
 
-/*
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60.0f;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *cellIdentifier = @"Cell";
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    // Configure the cell...
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"quotes" ofType:@"json"];
+    NSData *JSONData = [[NSData alloc] initWithContentsOfFile:filePath];
+    jsonObject = [NSJSONSerialization JSONObjectWithData:JSONData options:kNilOptions error:nil];
+    quotesList = [jsonObject quotesArray];
+    
+    NSString *quote = [[quotesList objectAtIndex:indexPath.row] quoteString];
+    NSString *author = [[quotesList objectAtIndex:indexPath.row] authorString];
+    
+    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+	
+	if (nil == cell)
+	{
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        [cell.textLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
+        [cell.detailTextLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:12]];
+        cell.textLabel.textColor = [UIColor colorWithRed:149.0f/255.0f green:213.0f/255.0f blue:230.0f/255.0f alpha:1.0f];
+        cell.detailTextLabel.textColor = [UIColor colorWithRed:149.0f/255.0f green:213.0f/255.0f blue:230.0f/255.0f alpha:1.0f];
+        cell.backgroundColor = [UIColor clearColor];
+	}
+    
+    [cell.textLabel setText:[NSString stringWithFormat:@"%@",quote]];
+    [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@",author]];
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    QuoteDetailViewController *quoteDetailViewController = [[QuoteDetailViewController alloc]init];
+    quoteDetailViewController.detailQuote = [[quotesList objectAtIndex:indexPath.row] quoteString];
+    quoteDetailViewController.title = [[quotesList objectAtIndex:indexPath.row] authorString];
+    [self.navigationController pushViewController:quoteDetailViewController animated:YES];
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

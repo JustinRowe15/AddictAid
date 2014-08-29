@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QuotesTableViewController : UITableViewController
+@interface QuotesTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) UIImageView *backgroundImageView;
 
 @end

@@ -23,4 +23,9 @@
 -(NSString *)addressString;
 -(NSString *)cityString;
 
+//From quotes JSON array
+-(NSArray *)quotesArray;
+-(NSString *)authorString;
+-(NSString *)quoteString;
+
 @end

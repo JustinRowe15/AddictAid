@@ -21,6 +21,8 @@
 		0B0AAE4C19A90D0000C8674D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B0AAE4A19A90D0000C8674D /* InfoPlist.strings */; };
 		0B0AAE4E19A90D0000C8674D /* AddictAidTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0AAE4D19A90D0000C8674D /* AddictAidTests.m */; };
 		0B0AAE5819A90F0B00C8674D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B0AAE5719A90F0B00C8674D /* MapKit.framework */; };
+		0B0F205719AFF485005A9D02 /* quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B0F205619AFF485005A9D02 /* quotes.json */; };
+		0B0F205B19B001EB005A9D02 /* QuoteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F205A19B001EB005A9D02 /* QuoteDetailViewController.m */; };
 		0B8EAD2219A9137200A1C8C0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8EAD2119A9137200A1C8C0 /* Parse.framework */; };
 		0B8EAD2419A913AC00A1C8C0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8EAD2319A913AC00A1C8C0 /* AudioToolbox.framework */; };
 		0B8EAD2619A913B500A1C8C0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8EAD2519A913B500A1C8C0 /* CFNetwork.framework */; };
@@ -61,7 +63,6 @@
 		0BE6049219AD74AB00BDEE58 /* background5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BE6049019AD74AB00BDEE58 /* background5.png */; };
 		0BE6049519AD76CA00BDEE58 /* AboutAddTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6049419AD76CA00BDEE58 /* AboutAddTableViewController.m */; };
 		0BE6049819AD76DA00BDEE58 /* QuotesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6049719AD76DA00BDEE58 /* QuotesTableViewController.m */; };
-		0BE6049B19AD76F400BDEE58 /* YourGoalsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6049A19AD76F400BDEE58 /* YourGoalsTableViewController.m */; };
 		0BE6049E19AD771800BDEE58 /* ContactUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6049D19AD771800BDEE58 /* ContactUsViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +96,9 @@
 		0B0AAE4B19A90D0000C8674D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0B0AAE4D19A90D0000C8674D /* AddictAidTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddictAidTests.m; sourceTree = "<group>"; };
 		0B0AAE5719A90F0B00C8674D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0B0F205619AFF485005A9D02 /* quotes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = quotes.json; path = ../quotes.json; sourceTree = "<group>"; };
+		0B0F205919B001EB005A9D02 /* QuoteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuoteDetailViewController.h; sourceTree = "<group>"; };
+		0B0F205A19B001EB005A9D02 /* QuoteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuoteDetailViewController.m; sourceTree = "<group>"; };
 		0B8EAD2119A9137200A1C8C0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		0B8EAD2319A913AC00A1C8C0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0B8EAD2519A913B500A1C8C0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -156,8 +160,6 @@
 		0BE6049419AD76CA00BDEE58 /* AboutAddTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutAddTableViewController.m; sourceTree = "<group>"; };
 		0BE6049619AD76DA00BDEE58 /* QuotesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuotesTableViewController.h; sourceTree = "<group>"; };
 		0BE6049719AD76DA00BDEE58 /* QuotesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuotesTableViewController.m; sourceTree = "<group>"; };
-		0BE6049919AD76F400BDEE58 /* YourGoalsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YourGoalsTableViewController.h; sourceTree = "<group>"; };
-		0BE6049A19AD76F400BDEE58 /* YourGoalsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YourGoalsTableViewController.m; sourceTree = "<group>"; };
 		0BE6049C19AD771800BDEE58 /* ContactUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUsViewController.h; sourceTree = "<group>"; };
 		0BE6049D19AD771800BDEE58 /* ContactUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -247,6 +249,7 @@
 				0B0AAE3219A90D0000C8674D /* AppDelegate.m */,
 				0B9E31BF19A9250D00C06D82 /* Login | New User View Controllers */,
 				0B9E31C619A925B900C06D82 /* Home | Menu View Controllers */,
+				0B0F205819AFF510005A9D02 /* Other View Controllers */,
 				0B8EAD5219A918BE00A1C8C0 /* Supporting Classes */,
 				0B0AAE2919A90D0000C8674D /* Supporting Files */,
 			);
@@ -256,6 +259,7 @@
 		0B0AAE2919A90D0000C8674D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0B0F205619AFF485005A9D02 /* quotes.json */,
 				0B99959619AFA169002F95D6 /* glossary.json */,
 				0B99959819AFA17D002F95D6 /* locations.json */,
 				0B99959A19AFA2B3002F95D6 /* NSDictionary+Data.h */,
@@ -289,6 +293,25 @@
 				0B0AAE4A19A90D0000C8674D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0B0F205819AFF510005A9D02 /* Other View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0B9E31C019A9252A00C06D82 /* MeetingsTableViewController.h */,
+				0B9E31C119A9252A00C06D82 /* MeetingsTableViewController.m */,
+				0BE6049319AD76CA00BDEE58 /* AboutAddTableViewController.h */,
+				0BE6049419AD76CA00BDEE58 /* AboutAddTableViewController.m */,
+				0B99959D19AFB98B002F95D6 /* DefinitionDetailViewController.h */,
+				0B99959E19AFB98B002F95D6 /* DefinitionDetailViewController.m */,
+				0BE6049619AD76DA00BDEE58 /* QuotesTableViewController.h */,
+				0BE6049719AD76DA00BDEE58 /* QuotesTableViewController.m */,
+				0B0F205919B001EB005A9D02 /* QuoteDetailViewController.h */,
+				0B0F205A19B001EB005A9D02 /* QuoteDetailViewController.m */,
+				0BE6049C19AD771800BDEE58 /* ContactUsViewController.h */,
+				0BE6049D19AD771800BDEE58 /* ContactUsViewController.m */,
+			);
+			name = "Other View Controllers";
 			sourceTree = "<group>";
 		};
 		0B8EAD3519A9185200A1C8C0 /* AFNetworking */ = {
@@ -376,18 +399,6 @@
 				0BE6048919AD6BCE00BDEE58 /* HomeViewController.m */,
 				0B9E31C319A9257C00C06D82 /* SidebarTableViewController.h */,
 				0B9E31C419A9257C00C06D82 /* SidebarTableViewController.m */,
-				0B9E31C019A9252A00C06D82 /* MeetingsTableViewController.h */,
-				0B9E31C119A9252A00C06D82 /* MeetingsTableViewController.m */,
-				0BE6049319AD76CA00BDEE58 /* AboutAddTableViewController.h */,
-				0BE6049419AD76CA00BDEE58 /* AboutAddTableViewController.m */,
-				0B99959D19AFB98B002F95D6 /* DefinitionDetailViewController.h */,
-				0B99959E19AFB98B002F95D6 /* DefinitionDetailViewController.m */,
-				0BE6049619AD76DA00BDEE58 /* QuotesTableViewController.h */,
-				0BE6049719AD76DA00BDEE58 /* QuotesTableViewController.m */,
-				0BE6049919AD76F400BDEE58 /* YourGoalsTableViewController.h */,
-				0BE6049A19AD76F400BDEE58 /* YourGoalsTableViewController.m */,
-				0BE6049C19AD771800BDEE58 /* ContactUsViewController.h */,
-				0BE6049D19AD771800BDEE58 /* ContactUsViewController.m */,
 			);
 			name = "Home | Menu View Controllers";
 			sourceTree = "<group>";
@@ -475,6 +486,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B0F205719AFF485005A9D02 /* quotes.json in Resources */,
 				0B99959919AFA17D002F95D6 /* locations.json in Resources */,
 				0B99959719AFA169002F95D6 /* glossary.json in Resources */,
 				0B9E31CD19A92A0000C06D82 /* Avenir_35_Light.ttf in Resources */,
@@ -514,10 +526,10 @@
 				0B8EAD4C19A9185200A1C8C0 /* AFNetworkReachabilityManager.m in Sources */,
 				0B8EAD6319A91D9700A1C8C0 /* NewUserViewController.m in Sources */,
 				0B99959F19AFB98B002F95D6 /* DefinitionDetailViewController.m in Sources */,
+				0B0F205B19B001EB005A9D02 /* QuoteDetailViewController.m in Sources */,
 				0B8EAD5019A9185200A1C8C0 /* AFURLResponseSerialization.m in Sources */,
 				0B8EAD4E19A9185200A1C8C0 /* AFURLConnectionOperation.m in Sources */,
 				0B8EAD4D19A9185200A1C8C0 /* AFSecurityPolicy.m in Sources */,
-				0BE6049B19AD76F400BDEE58 /* YourGoalsTableViewController.m in Sources */,
 				0B8EAD5A19A9199F00A1C8C0 /* SWRevealViewController.m in Sources */,
 				0BE6049519AD76CA00BDEE58 /* AboutAddTableViewController.m in Sources */,
 				0BE6049E19AD771800BDEE58 /* ContactUsViewController.m in Sources */,

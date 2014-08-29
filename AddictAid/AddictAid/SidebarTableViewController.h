@@ -12,5 +12,6 @@
 @interface SidebarTableViewController : UITableViewController
 
 @property (nonatomic, strong) PFUser *currentUser;
+@property (nonatomic, strong) NSString *userNameString;
 
 @end

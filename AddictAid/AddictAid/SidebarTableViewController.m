@@ -12,7 +12,6 @@
 #import "MeetingsTableViewController.h"
 #import "AboutAddTableViewController.h"
 #import "QuotesTableViewController.h"
-#import "YourGoalsTableViewController.h"
 #import "ContactUsViewController.h"
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
@@ -23,7 +22,7 @@
 
 @implementation SidebarTableViewController
 
-@synthesize currentUser;
+@synthesize currentUser, userNameString;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -55,9 +54,28 @@
         [self.tableView setBackgroundView:imageView];
     }
     
-    self.navigationController.navigationBar.barTintColor = [UIColor clearColor];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                             forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    currentUser = [PFUser currentUser];
+    if (!currentUser){
+        userNameString = [NSString stringWithFormat:@"AddictAid Menu"];
+    } else {
+        userNameString = [NSString stringWithFormat:@"Welcome %@", [currentUser username]];
+    }
+    
+    UILabel *userNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+    [userNameLabel setText:userNameString];
+    [userNameLabel setTextColor:[UIColor colorWithRed:149.0f/255.0f green:213.0f/255.0f blue:230.0f/255.0f alpha:1.0f]];
+    [userNameLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:20]];
+    [userNameLabel setBackgroundColor:[UIColor clearColor]];
+    UIBarButtonItem * labelItem = [[UIBarButtonItem alloc] initWithCustomView:userNameLabel];
+    
+    NSArray *actionButtonItems = @[labelItem];
+    self.navigationItem.leftBarButtonItems = actionButtonItems;
 }
 
 - (void)didReceiveMemoryWarning
@@ -75,7 +93,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 6;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -99,31 +117,27 @@
 	
 	if (row == 0)
 	{
-		cell.textLabel.text = @"HOME";
+		cell.textLabel.text = @"YOUR GOALS";
 	}
 	else if (row == 1)
 	{
-		cell.textLabel.text = @"YOUR GOALS";
+		cell.textLabel.text = @"MEETING INFO";
 	}
 	else if (row == 2)
 	{
-		cell.textLabel.text = @"MEETING INFO";
+		cell.textLabel.text = @"ABOUT ADDICTIONS";
 	}
 	else if (row == 3)
 	{
-		cell.textLabel.text = @"ABOUT ADDICTIONS";
+		cell.textLabel.text = @"QUOTES";
 	}
     else if (row == 4)
 	{
-		cell.textLabel.text = @"QUOTES";
+		cell.textLabel.text = @"CONTACT US";
 	}
     else if (row == 5)
 	{
-		cell.textLabel.text = @"CONTACT US";
-	}
-    else if (row == 6)
-	{
-        currentUser = [PFUser currentUser];
+		currentUser = [PFUser currentUser];
         if (!currentUser){
             cell.textLabel.text = @"LOG IN";
         } else {
@@ -161,20 +175,6 @@
 	}
 	else if (row == 1)
 	{
-        if ( ![frontNavigationController.topViewController isKindOfClass:[YourGoalsTableViewController class]] )
-        {
-			YourGoalsTableViewController *yourGoalsViewController = [[YourGoalsTableViewController alloc] init];
-            yourGoalsViewController.title = @"Your Goals";
-			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:yourGoalsViewController];
-			[revealController setFrontViewController:navigationController animated:YES];
-		}
-		else
-		{
-			[revealController revealToggle:self];
-		}
-	}
-	else if (row == 2)
-	{
         if ( ![frontNavigationController.topViewController isKindOfClass:[MeetingsTableViewController class]] )
         {
 			MeetingsTableViewController *meetingsTableViewController = [[MeetingsTableViewController alloc] init];
@@ -187,7 +187,7 @@
 			[revealController revealToggle:self];
 		}
 	}
-    else if (row == 3)
+	else if (row == 2)
 	{
         if ( ![frontNavigationController.topViewController isKindOfClass:[AboutAddTableViewController class]] )
         {
@@ -201,12 +201,12 @@
 			[revealController revealToggle:self];
 		}
 	}
-    else if (row == 4)
+    else if (row == 3)
 	{
         if ( ![frontNavigationController.topViewController isKindOfClass:[QuotesTableViewController class]] )
         {
 			QuotesTableViewController *quotesTableViewController = [[QuotesTableViewController alloc] init];
-            quotesTableViewController.title = @"Meetings";
+            quotesTableViewController.title = @"Quotes";
 			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:quotesTableViewController];
 			[revealController setFrontViewController:navigationController animated:YES];
         }
@@ -215,12 +215,12 @@
 			[revealController revealToggle:self];
 		}
 	}
-    else if (row == 5)
+    else if (row == 4)
 	{
         if ( ![frontNavigationController.topViewController isKindOfClass:[ContactUsViewController class]] )
         {
 			ContactUsViewController *contactUsViewController = [[ContactUsViewController alloc] init];
-            contactUsViewController.title = @"Meetings";
+            contactUsViewController.title = @"Contact Us";
 			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:contactUsViewController];
 			[revealController setFrontViewController:navigationController animated:YES];
         }
@@ -229,7 +229,7 @@
 			[revealController revealToggle:self];
 		}
 	}
-    else if (row == 6)
+    else if (row == 5)
 	{
         [PFUser logOut];
         PFUser *currentUser = [PFUser currentUser];

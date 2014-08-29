@@ -55,4 +55,19 @@
     return [self objectForKey:@"City"];
 }
 
+-(NSArray *)quotesArray
+{
+    return [self objectForKey:@"quotes"];
+}
+
+-(NSString *)authorString
+{
+    return [self objectForKey:@"Author"];
+}
+
+-(NSString *)quoteString
+{
+    return [self objectForKey:@"Quote"];
+}
+
 @end
