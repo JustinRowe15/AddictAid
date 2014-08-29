@@ -15,6 +15,8 @@
 
 @implementation HomeViewController
 
+@synthesize soberLabel, dateTextView, goalsTextView, goalsTitleLabel;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -34,15 +36,13 @@
         [[UIImage imageNamed:@"background5.png"] drawInRect:self.view.bounds];
         UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-        UIImageView * imageView = [[UIImageView alloc] initWithImage:newImage];
-        [self.tableView setBackgroundView:imageView];
+        self.view.backgroundColor = [UIColor colorWithPatternImage:newImage];
     } else {
         UIGraphicsBeginImageContext(self.view.frame.size);
         [[UIImage imageNamed:@"background4.png"] drawInRect:self.view.bounds];
         UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-        UIImageView * imageView = [[UIImageView alloc] initWithImage:newImage];
-        [self.tableView setBackgroundView:imageView];
+        self.view.backgroundColor = [UIColor colorWithPatternImage:newImage];
     }
     
     SWRevealViewController *revealController = [self revealViewController];
@@ -52,6 +52,53 @@
                                                                          style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
     [revealButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
     self.navigationItem.leftBarButtonItem = revealButtonItem;
+    
+    UIBarButtonItem *timerButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(resetTimer:)];
+    [timerButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
+    self.navigationItem.rightBarButtonItem = timerButtonItem;
+    
+    UIView * soberLabelView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, 50.0f)];
+    [soberLabelView setBackgroundColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:0.7f]];
+    [self.view addSubview:soberLabelView];
+    
+    soberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 50.0f)];
+    [soberLabel setText:@"I HAVE BEEN SOBER FOR"];
+    [soberLabel setTextColor:[UIColor colorWithRed:225.0f/255.0f green:219.0f/255.0f blue:129.0f/255.0f alpha:1.0f]];
+    [soberLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
+    [soberLabel setBackgroundColor:[UIColor clearColor]];
+    [soberLabel setTextAlignment:NSTextAlignmentCenter];
+    [soberLabelView addSubview:soberLabel];
+    
+    dateTextView = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, 114.0f, 320.0f, 200.0f)];
+    [dateTextView setText:@"34 DAYS AS OF MARCH 24, 2014"];
+    [dateTextView setTextColor:[UIColor colorWithRed:225.0f/255.0f green:219.0f/255.0f blue:129.0f/255.0f alpha:1.0f]];
+    [dateTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:42]];
+    [dateTextView setBackgroundColor:[UIColor clearColor]];
+    [dateTextView setTextAlignment:NSTextAlignmentCenter];
+    [dateTextView setEditable:NO];
+    [self.view addSubview:dateTextView];
+    
+    UIView * goalsLabelView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 314.0f, 320.0f, 50.0f)];
+    [goalsLabelView setBackgroundColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:0.7f]];
+    [self.view addSubview:goalsLabelView];
+    
+    goalsTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 50.0f)];
+    [goalsTitleLabel setText:@"MY GOALS ARE TO"];
+    [goalsTitleLabel setTextColor:[UIColor colorWithRed:225.0f/255.0f green:219.0f/255.0f blue:129.0f/255.0f alpha:1.0f]];
+    [goalsTitleLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
+    [goalsTitleLabel setBackgroundColor:[UIColor clearColor]];
+    [goalsTitleLabel setTextAlignment:NSTextAlignmentCenter];
+    [goalsLabelView addSubview:goalsTitleLabel];
+    
+    goalsTextView = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, 364.0f, 320.0f, 200.0f)];
+    [goalsTextView setText:@"Workout 3 times per week Eat two fruits a day Spend time with my family Drink plenty of water Enjoy life!"];
+    [goalsTextView setTextColor:[UIColor colorWithRed:225.0f/255.0f green:219.0f/255.0f blue:129.0f/255.0f alpha:1.0f]];
+    [goalsTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:26]];
+    [goalsTextView setBackgroundColor:[UIColor clearColor]];
+    [goalsTextView setTextAlignment:NSTextAlignmentCenter];
+    [goalsTextView setEditable:NO];
+    [self.view addSubview:goalsTextView];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,57 +107,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (void)resetTimer:(id)sender
 {
-    return 0;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Good Luck!"
+                                                    message:@"Today's Your First Day!"
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 0;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 60.0f;
-}
-
-/*- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *cellIdentifier = @"Cell";
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"quotes" ofType:@"json"];
-    NSData *JSONData = [[NSData alloc] initWithContentsOfFile:filePath];
-    jsonObject = [NSJSONSerialization JSONObjectWithData:JSONData options:kNilOptions error:nil];
-    quotesList = [jsonObject quotesArray];
-    
-    NSString *quote = [[quotesList objectAtIndex:indexPath.row] quoteString];
-    NSString *author = [[quotesList objectAtIndex:indexPath.row] authorString];
-    
-    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
-	
-	if (nil == cell)
-	{
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-        [cell.textLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
-        [cell.detailTextLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:12]];
-        cell.textLabel.textColor = [UIColor colorWithRed:149.0f/255.0f green:213.0f/255.0f blue:230.0f/255.0f alpha:1.0f];
-        cell.detailTextLabel.textColor = [UIColor colorWithRed:149.0f/255.0f green:213.0f/255.0f blue:230.0f/255.0f alpha:1.0f];
-        cell.backgroundColor = [UIColor clearColor];
-	}
-    
-    [cell.textLabel setText:[NSString stringWithFormat:@"%@",quote]];
-    [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@",author]];
-    
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
-} */
 
 @end
