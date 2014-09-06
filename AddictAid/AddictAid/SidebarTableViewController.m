@@ -13,6 +13,7 @@
 #import "AboutAddTableViewController.h"
 #import "QuotesTableViewController.h"
 #import "ContactUsViewController.h"
+#import "MyProfileViewController.h"
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 
@@ -93,7 +94,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    if (currentUser){
+        return 7;
+    } else {
+        return 6;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -114,36 +119,62 @@
         cell.textLabel.textColor = [UIColor colorWithRed:149.0f/255.0f green:213.0f/255.0f blue:230.0f/255.0f alpha:1.0f];
         cell.backgroundColor = [UIColor clearColor];
 	}
-	
-	if (row == 0)
-	{
-		cell.textLabel.text = @"YOUR GOALS";
-	}
-	else if (row == 1)
-	{
-		cell.textLabel.text = @"MEETING INFO";
-	}
-	else if (row == 2)
-	{
-		cell.textLabel.text = @"ABOUT ADDICTIONS";
-	}
-	else if (row == 3)
-	{
-		cell.textLabel.text = @"QUOTES";
-	}
-    else if (row == 4)
-	{
-		cell.textLabel.text = @"CONTACT US";
-	}
-    else if (row == 5)
-	{
-		currentUser = [PFUser currentUser];
-        if (!currentUser){
-            cell.textLabel.text = @"LOG IN";
-        } else {
+    
+    if (currentUser) {
+        if (row == 0)
+        {
+            cell.textLabel.text = @"YOUR GOALS";
+        }
+        else if (row == 1)
+        {
+            cell.textLabel.text = @"MEETING INFO";
+        }
+        else if (row == 2)
+        {
+            cell.textLabel.text = @"ABOUT ADDICTIONS";
+        }
+        else if (row == 3)
+        {
+            cell.textLabel.text = @"QUOTES";
+        }
+        else if (row == 4)
+        {
+            cell.textLabel.text = @"CONTACT US";
+        }
+        else if (row == 5)
+        {
+            cell.textLabel.text = @"MY PROFILE";
+        }
+        else if (row == 6)
+        {
             cell.textLabel.text = @"LOG OUT";
         }
-	}
+    } else {
+        if (row == 0)
+        {
+            cell.textLabel.text = @"YOUR GOALS";
+        }
+        else if (row == 1)
+        {
+            cell.textLabel.text = @"MEETING INFO";
+        }
+        else if (row == 2)
+        {
+            cell.textLabel.text = @"ABOUT ADDICTIONS";
+        }
+        else if (row == 3)
+        {
+            cell.textLabel.text = @"QUOTES";
+        }
+        else if (row == 4)
+        {
+            cell.textLabel.text = @"CONTACT US";
+        }
+        else if (row == 5)
+        {
+            cell.textLabel.text = @"LOG IN";
+        }
+    }
 	
 	return cell;
 }
@@ -167,9 +198,7 @@
             homeViewController.title = @"Welcome to AddictAid";
 			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
 			[revealController setFrontViewController:navigationController animated:YES];
-        }
-		else
-		{
+        } else {
 			[revealController revealToggle:self];
 		}
 	}
@@ -181,9 +210,7 @@
             meetingsTableViewController.title = @"Meetings";
 			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:meetingsTableViewController];
 			[revealController setFrontViewController:navigationController animated:YES];
-        }
-		else
-		{
+        } else {
 			[revealController revealToggle:self];
 		}
 	}
@@ -195,9 +222,7 @@
             aboutAddViewController.title = @"About Addictions";
 			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:aboutAddViewController];
 			[revealController setFrontViewController:navigationController animated:YES];
-        }
-		else
-		{
+        } else {
 			[revealController revealToggle:self];
 		}
 	}
@@ -209,9 +234,7 @@
             quotesTableViewController.title = @"Quotes";
 			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:quotesTableViewController];
 			[revealController setFrontViewController:navigationController animated:YES];
-        }
-		else
-		{
+        } else {
 			[revealController revealToggle:self];
 		}
 	}
@@ -223,13 +246,30 @@
             contactUsViewController.title = @"Contact Us";
 			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:contactUsViewController];
 			[revealController setFrontViewController:navigationController animated:YES];
-        }
-		else
-		{
+        } else {
 			[revealController revealToggle:self];
 		}
 	}
     else if (row == 5)
+	{
+        if (currentUser) {
+            if ( ![frontNavigationController.topViewController isKindOfClass:[MyProfileViewController class]] )
+            {
+                MyProfileViewController *myProfileViewController = [[MyProfileViewController alloc] init];
+                myProfileViewController.title = @"My Profile";
+                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:myProfileViewController];
+                [revealController setFrontViewController:navigationController animated:YES];
+            } else {
+                [revealController revealToggle:self];
+            }
+        } else {
+            [PFUser logOut];
+            PFUser *currentUser = [PFUser currentUser];
+            [(AppDelegate*)[[UIApplication sharedApplication] delegate] presentLoginViewController];
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        }
+	}
+    else if (row == 6)
 	{
         [PFUser logOut];
         PFUser *currentUser = [PFUser currentUser];
