@@ -14,6 +14,7 @@
 #import "QuotesTableViewController.h"
 #import "ContactUsViewController.h"
 #import "MyProfileViewController.h"
+#import "UsersListViewController.h"
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 
@@ -95,9 +96,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (currentUser){
-        return 7;
+        return 8;
     } else {
-        return 6;
+        return 7;
     }
 }
 
@@ -139,13 +140,17 @@
         }
         else if (row == 4)
         {
-            cell.textLabel.text = @"CONTACT US";
+            cell.textLabel.text = @"SEARCH USERS";
         }
         else if (row == 5)
         {
-            cell.textLabel.text = @"MY PROFILE";
+            cell.textLabel.text = @"CONTACT US";
         }
         else if (row == 6)
+        {
+            cell.textLabel.text = @"MY PROFILE";
+        }
+        else if (row == 7)
         {
             cell.textLabel.text = @"LOG OUT";
         }
@@ -168,9 +173,13 @@
         }
         else if (row == 4)
         {
-            cell.textLabel.text = @"CONTACT US";
+            cell.textLabel.text = @"SEARCH USERS";
         }
         else if (row == 5)
+        {
+            cell.textLabel.text = @"CONTACT US";
+        }
+        else if (row == 6)
         {
             cell.textLabel.text = @"LOG IN";
         }
@@ -240,6 +249,18 @@
 	}
     else if (row == 4)
 	{
+        if ( ![frontNavigationController.topViewController isKindOfClass:[UsersListViewController class]] )
+        {
+			UsersListViewController *usersListViewController = [[UsersListViewController alloc] init];
+            usersListViewController.title = @"Search Users";
+			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:usersListViewController];
+			[revealController setFrontViewController:navigationController animated:YES];
+        } else {
+			[revealController revealToggle:self];
+		}
+	}
+    else if (row == 5)
+	{
         if ( ![frontNavigationController.topViewController isKindOfClass:[ContactUsViewController class]] )
         {
 			ContactUsViewController *contactUsViewController = [[ContactUsViewController alloc] init];
@@ -250,7 +271,7 @@
 			[revealController revealToggle:self];
 		}
 	}
-    else if (row == 5)
+    else if (row == 6)
 	{
         if (currentUser) {
             if ( ![frontNavigationController.topViewController isKindOfClass:[MyProfileViewController class]] )
@@ -269,7 +290,7 @@
             [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
         }
 	}
-    else if (row == 6)
+    else if (row == 7)
 	{
         [PFUser logOut];
         PFUser *currentUser = [PFUser currentUser];

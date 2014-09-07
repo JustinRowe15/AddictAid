@@ -63,7 +63,7 @@
     nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(20.0f, 110.0f, 280.0f, 30.0f)];
     [nameTextField setTextColor:[UIColor blackColor]];
     [nameTextField setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
-    [nameTextField setBackgroundColor:[UIColor whiteColor]];
+    [nameTextField setBackgroundColor:[UIColor colorWithRed:83.0f/255.0f green:83.0f/255.0f blue:83.0f/255.0f alpha:0.7f]];
     nameTextField.delegate = self;
     [self.view addSubview:nameTextField];
     
@@ -77,7 +77,7 @@
     emailAddressTextField = [[UITextField alloc] initWithFrame:CGRectMake(20.0f, 180.0f, 280.0f, 30.0f)];
     [emailAddressTextField setTextColor:[UIColor blackColor]];
     [emailAddressTextField setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
-    [emailAddressTextField setBackgroundColor:[UIColor whiteColor]];
+    [emailAddressTextField setBackgroundColor:[UIColor colorWithRed:83.0f/255.0f green:83.0f/255.0f blue:83.0f/255.0f alpha:0.7f]];
     emailAddressTextField.delegate = self;
     [self.view addSubview:emailAddressTextField];
     
@@ -91,7 +91,7 @@
     commentsTextField = [[UITextField alloc] initWithFrame:CGRectMake(20.0f, 250.0f, 280.0f, 160.0f)];
     [commentsTextField setTextColor:[UIColor blackColor]];
     [commentsTextField setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
-    [commentsTextField setBackgroundColor:[UIColor whiteColor]];
+    [commentsTextField setBackgroundColor:[UIColor colorWithRed:83.0f/255.0f green:83.0f/255.0f blue:83.0f/255.0f alpha:0.7f]];
     commentsTextField.delegate = self;
     [self.view addSubview:commentsTextField];
     

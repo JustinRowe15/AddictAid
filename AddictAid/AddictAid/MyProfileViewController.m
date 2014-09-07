@@ -14,18 +14,18 @@
 
 @property (nonatomic, strong) UIBarButtonItem *saveButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *editButtonItem;
-@property (nonatomic, strong) NSString *userPhoto;
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *emailAddress;
 @property (nonatomic, strong) NSString *location;
 @property (nonatomic, strong) NSString *interests;
+@property (nonatomic, strong) NSString *goals;
 @property (nonatomic, strong) PFUser *currentUser;
 
 @end
 
 @implementation MyProfileViewController
 
-@synthesize profileEmailAddressLabel, profileImageView, profileInterestsLabel, profileLocationLabel, profileUsernameLabel, usernameTextField, interestsTextView, locationTextField, emailAddressTextField, username, userPhoto, emailAddress, location, interests, currentUser, saveButtonItem, editButtonItem;
+@synthesize profileEmailAddressLabel, profileInterestsLabel, profileLocationLabel, profileUsernameLabel, usernameTextField, interestsTextView, locationTextField, emailAddressTextField, username, emailAddress, location, interests, currentUser, saveButtonItem, editButtonItem, profileGoalsLabel, goalsTextView, goals;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -83,8 +83,8 @@
         username = [NSString stringWithFormat:@"%@", [currentUser username]];
         emailAddress = [NSString stringWithFormat:@"%@", [object objectForKey:@"userEmailAddress"]];
         location = [NSString stringWithFormat:@"%@", [object objectForKey:@"userCurrentLocation"]];
-        userPhoto = [NSString stringWithFormat:@"%@", [object objectForKey:@"userImage"]];
         interests = [NSString stringWithFormat:@"%@", [object objectForKey:@"userInterests"]];
+        goals = [NSString stringWithFormat:@"%@", [object objectForKey:@"userGoals"]];
     }
     
     [self setProfileView];
@@ -92,16 +92,7 @@
 
 - (void)setProfileView
 {
-    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:userPhoto]]];
-    profileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 80.0f, 80.0f)];
-    [profileImageView setImage:image];
-    
-    UIView *newView = [[UIView alloc] initWithFrame:CGRectMake(20.0f, 80.0f, 80.0f, 80.0f)];
-    newView.clipsToBounds = YES;
-    newView.layer.cornerRadius = 40.0f;
-    [newView addSubview:profileImageView];
-    
-    UILabel *usernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(120.0f, 80.0f, 110.0f, 14.0f)];
+    UILabel *usernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 80.0f, 110.0f, 14.0f)];
     [usernameLabel setText:@"Username:"];
     [usernameLabel setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
     [usernameLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:12]];
@@ -109,20 +100,21 @@
     [usernameLabel setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:usernameLabel];
     
-    UIView * profileUsernameTextFieldView = [[UIView alloc] initWithFrame:CGRectMake(120.0f, 96.0f, 180.0f, 38.0f)];
+    UIView * profileUsernameTextFieldView = [[UIView alloc] initWithFrame:CGRectMake(20.0f, 96.0f, 280.0f, 38.0f)];
     [profileUsernameTextFieldView setBackgroundColor:[UIColor colorWithRed:83.0f/255.0f green:83.0f/255.0f blue:83.0f/255.0f alpha:0.7f]];
     [self.view addSubview:profileUsernameTextFieldView];
     
-    usernameTextField = [[UITextField alloc] initWithFrame:CGRectMake(8.0f, 0.0f, 172.0f, 38.0f)];
+    usernameTextField = [[UITextField alloc] initWithFrame:CGRectMake(8.0f, 0.0f, 272.0f, 38.0f)];
     [usernameTextField setBorderStyle:UITextBorderStyleNone];
     [usernameTextField setEnabled:NO];
+    [usernameTextField setDelegate:self];
     [usernameTextField setText:[NSString stringWithFormat:@"%@", username]];
     [usernameTextField setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
     [usernameTextField setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
     [usernameTextField setBackgroundColor:[UIColor clearColor]];
     [profileUsernameTextFieldView addSubview:usernameTextField];
     
-    UILabel *locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(120.0f, 136.0f, 110.0f, 14.0f)];
+    UILabel *locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 136.0f, 110.0f, 14.0f)];
     [locationLabel setText:@"Location:"];
     [locationLabel setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
     [locationLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:12]];
@@ -130,13 +122,14 @@
     [locationLabel setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:locationLabel];
     
-    UIView * profileLocationTextFieldView = [[UIView alloc] initWithFrame:CGRectMake(120.0f, 152.0f, 180.0f, 38.0f)];
+    UIView * profileLocationTextFieldView = [[UIView alloc] initWithFrame:CGRectMake(20.0f, 152.0f, 280.0f, 38.0f)];
     [profileLocationTextFieldView setBackgroundColor:[UIColor colorWithRed:83.0f/255.0f green:83.0f/255.0f blue:83.0f/255.0f alpha:0.7f]];
     [self.view addSubview:profileLocationTextFieldView];
     
-    locationTextField = [[UITextField alloc] initWithFrame:CGRectMake(8.0f, 0.0f, 172.0f, 38.0f)];
+    locationTextField = [[UITextField alloc] initWithFrame:CGRectMake(8.0f, 0.0f, 272.0f, 38.0f)];
     [locationTextField setBorderStyle:UITextBorderStyleNone];
     [locationTextField setEnabled:NO];
+    [locationTextField setDelegate:self];
     [locationTextField setText:[NSString stringWithFormat:@"%@", location]];
     [locationTextField setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
     [locationTextField setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
@@ -158,13 +151,14 @@
     emailAddressTextField = [[UITextField alloc] initWithFrame:CGRectMake(8.0f, 0.0f, 272.0f, 38.0f)];
     [emailAddressTextField setBorderStyle:UITextBorderStyleNone];
     [emailAddressTextField setEnabled:NO];
+    [emailAddressTextField setDelegate:self];
     [emailAddressTextField setText:[NSString stringWithFormat:@"%@", emailAddress]];
     [emailAddressTextField setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
     [emailAddressTextField setFont:[UIFont fontWithName:@"Avenir-Light" size:16]];
     [emailAddressTextField setBackgroundColor:[UIColor clearColor]];
     [profileEmailTextFieldView addSubview:emailAddressTextField];
     
-    UILabel *interestLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 262.0f, 110.0f, 14.0f)];
+    UILabel *interestLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 260.0f, 110.0f, 14.0f)];
     [interestLabel setText:@"Interests:"];
     [interestLabel setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
     [interestLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:12]];
@@ -172,17 +166,39 @@
     [interestLabel setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:interestLabel];
     
-    UIView * profileInterestsLabelView = [[UIView alloc] initWithFrame:CGRectMake(20.0f, 280.0f, 280.0f, 240.0f)];
+    UIView * profileInterestsLabelView = [[UIView alloc] initWithFrame:CGRectMake(20.0f, 278.0f, 280.0f, 126.0f)];
     [profileInterestsLabelView setBackgroundColor:[UIColor colorWithRed:83.0f/255.0f green:83.0f/255.0f blue:83.0f/255.0f alpha:0.7f]];
     [self.view addSubview:profileInterestsLabelView];
     
-    interestsTextView = [[UITextView alloc] initWithFrame:CGRectMake(8.0f, 0.0f, 272.0f, 240.0f)];
+    interestsTextView = [[UITextView alloc] initWithFrame:CGRectMake(8.0f, 0.0f, 272.0f, 126.0f)];
     [interestsTextView setEditable:NO];
+    [interestsTextView setDelegate:self];
     [interestsTextView setText:[NSString stringWithFormat:@"%@", interests]];
     [interestsTextView setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
     [interestsTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:16]];
     [interestsTextView setBackgroundColor:[UIColor clearColor]];
     [profileInterestsLabelView addSubview:interestsTextView];
+    
+    UILabel *goalsLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 410.0f, 110.0f, 14.0f)];
+    [goalsLabel setText:@"Goals:"];
+    [goalsLabel setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
+    [goalsLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:12]];
+    [goalsLabel setTextAlignment:NSTextAlignmentLeft];
+    [goalsLabel setBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview:goalsLabel];
+    
+    UIView * profileGoalsLabelView = [[UIView alloc] initWithFrame:CGRectMake(20.0f, 428.0f, 280.0f, 126.0f)];
+    [profileGoalsLabelView setBackgroundColor:[UIColor colorWithRed:83.0f/255.0f green:83.0f/255.0f blue:83.0f/255.0f alpha:0.7f]];
+    [self.view addSubview:profileGoalsLabelView];
+    
+    goalsTextView = [[UITextView alloc] initWithFrame:CGRectMake(8.0f, 0.0f, 272.0f, 126.0f)];
+    [goalsTextView setEditable:NO];
+    [goalsTextView setDelegate:self];
+    [goalsTextView setText:[NSString stringWithFormat:@"%@", goals]];
+    [goalsTextView setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
+    [goalsTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:16]];
+    [goalsTextView setBackgroundColor:[UIColor clearColor]];
+    [profileGoalsLabelView addSubview:goalsTextView];
 }
 
 - (void)editProfile
@@ -192,6 +208,7 @@
     [locationTextField setEnabled:YES];
     [emailAddressTextField setEnabled:YES];
     [interestsTextView setEditable:YES];
+    [goalsTextView setEditable:YES];
 }
 
 - (void)saveProfile
@@ -201,6 +218,7 @@
     [locationTextField setEnabled:NO];
     [emailAddressTextField setEnabled:NO];
     [interestsTextView setEditable:NO];
+    [goalsTextView setEditable:NO];
     
     if (emailAddressTextField.text.length == 0){
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Please enter an email address." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
@@ -212,8 +230,38 @@
         [currentUser setObject:emailAddressTextField.text forKey:@"userEmailAddress"];
         [currentUser setObject:locationTextField.text forKey:@"userCurrentLocation"];
         [currentUser setObject:interestsTextView.text forKey:@"userInterests"];
+        [currentUser setObject:goalsTextView.text forKey:@"userGoals"];
         [currentUser saveEventually];
+        
+        PFObject *userProfileSave = [PFObject objectWithClassName:@"profilesList"];
+        [userProfileSave setObject:currentUser.username forKey:@"profileUserName"];
+        [userProfileSave setObject:locationTextField.text forKey:@"profileCurrentLocation"];
+        [userProfileSave setObject:interestsTextView.text forKey:@"profileInterests"];
+        [userProfileSave setObject:goalsTextView.text forKey:@"profileGoals"];
+        [userProfileSave saveEventually];
     }
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    return YES;
+}
+
+- (BOOL)textViewShouldReturn:(UITextView *)textView
+{
+    [textView resignFirstResponder];
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -221,16 +269,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

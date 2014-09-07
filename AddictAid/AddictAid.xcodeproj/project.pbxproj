@@ -53,6 +53,8 @@
 		0B99959919AFA17D002F95D6 /* locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B99959819AFA17D002F95D6 /* locations.json */; };
 		0B99959C19AFA2B3002F95D6 /* NSDictionary+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B99959B19AFA2B3002F95D6 /* NSDictionary+Data.m */; };
 		0B99959F19AFB98B002F95D6 /* DefinitionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B99959E19AFB98B002F95D6 /* DefinitionDetailViewController.m */; };
+		0B9C66A219BBD92000CC3D6A /* UsersListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9C66A119BBD92000CC3D6A /* UsersListViewController.m */; };
+		0B9C66A519BBDA6200CC3D6A /* UserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9C66A419BBDA6200CC3D6A /* UserDetailViewController.m */; };
 		0B9E31BE19A9244700C06D82 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E31BD19A9244700C06D82 /* Constants.m */; };
 		0B9E31C219A9252A00C06D82 /* MeetingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E31C119A9252A00C06D82 /* MeetingsTableViewController.m */; };
 		0B9E31C519A9257C00C06D82 /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E31C419A9257C00C06D82 /* SidebarTableViewController.m */; };
@@ -146,6 +148,10 @@
 		0B99959B19AFA2B3002F95D6 /* NSDictionary+Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Data.m"; sourceTree = "<group>"; };
 		0B99959D19AFB98B002F95D6 /* DefinitionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefinitionDetailViewController.h; sourceTree = "<group>"; };
 		0B99959E19AFB98B002F95D6 /* DefinitionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefinitionDetailViewController.m; sourceTree = "<group>"; };
+		0B9C66A019BBD92000CC3D6A /* UsersListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersListViewController.h; sourceTree = "<group>"; };
+		0B9C66A119BBD92000CC3D6A /* UsersListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersListViewController.m; sourceTree = "<group>"; };
+		0B9C66A319BBDA6200CC3D6A /* UserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailViewController.h; sourceTree = "<group>"; };
+		0B9C66A419BBDA6200CC3D6A /* UserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailViewController.m; sourceTree = "<group>"; };
 		0B9E31BC19A9244700C06D82 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		0B9E31BD19A9244700C06D82 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		0B9E31C019A9252A00C06D82 /* MeetingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingsTableViewController.h; sourceTree = "<group>"; };
@@ -315,6 +321,10 @@
 				0BE6049D19AD771800BDEE58 /* ContactUsViewController.m */,
 				0B8501E019BB84B2008AD9A9 /* MyProfileViewController.h */,
 				0B8501E119BB84B2008AD9A9 /* MyProfileViewController.m */,
+				0B9C66A019BBD92000CC3D6A /* UsersListViewController.h */,
+				0B9C66A119BBD92000CC3D6A /* UsersListViewController.m */,
+				0B9C66A319BBDA6200CC3D6A /* UserDetailViewController.h */,
+				0B9C66A419BBDA6200CC3D6A /* UserDetailViewController.m */,
 			);
 			name = "Other View Controllers";
 			sourceTree = "<group>";
@@ -535,6 +545,7 @@
 				0B0F205B19B001EB005A9D02 /* QuoteDetailViewController.m in Sources */,
 				0B8EAD5019A9185200A1C8C0 /* AFURLResponseSerialization.m in Sources */,
 				0B8EAD4E19A9185200A1C8C0 /* AFURLConnectionOperation.m in Sources */,
+				0B9C66A219BBD92000CC3D6A /* UsersListViewController.m in Sources */,
 				0B8EAD4D19A9185200A1C8C0 /* AFSecurityPolicy.m in Sources */,
 				0B8EAD5A19A9199F00A1C8C0 /* SWRevealViewController.m in Sources */,
 				0BE6049519AD76CA00BDEE58 /* AboutAddTableViewController.m in Sources */,
@@ -542,6 +553,7 @@
 				0B8EAD4B19A9185200A1C8C0 /* AFHTTPSessionManager.m in Sources */,
 				0B8EAD4F19A9185200A1C8C0 /* AFURLRequestSerialization.m in Sources */,
 				0B8EAD5519A918E900A1C8C0 /* MBProgressHUD.m in Sources */,
+				0B9C66A519BBDA6200CC3D6A /* UserDetailViewController.m in Sources */,
 				0B8EAD5119A9185200A1C8C0 /* AFURLSessionManager.m in Sources */,
 				0B0AAE3319A90D0000C8674D /* AppDelegate.m in Sources */,
 				0B9E31C519A9257C00C06D82 /* SidebarTableViewController.m in Sources */,

@@ -8,14 +8,18 @@
 
 #import "HomeViewController.h"
 #import "SWRevealViewController.h"
+#import <Parse/Parse.h>
 
 @interface HomeViewController ()
+
+@property (nonatomic, strong) PFUser *currentUser;
+@property (nonatomic, strong) NSString *goals;
 
 @end
 
 @implementation HomeViewController
 
-@synthesize soberLabel, dateTextView, goalsTextView, goalsTitleLabel;
+@synthesize soberLabel, dateTextView, goalsTextView, goalsTitleLabel, currentUser, goals;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -57,6 +61,15 @@
     [timerButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
     self.navigationItem.rightBarButtonItem = timerButtonItem;
     
+    //Getting User Data From Parse
+    PFQuery * userQuery = [PFUser query];
+    currentUser = [PFUser currentUser];
+    NSArray *userArray = [userQuery findObjects];
+    for (PFObject *object in userArray) {
+        goals = [NSString stringWithFormat:@"%@", [object objectForKey:@"userGoals"]];
+    }
+
+    
     UIView * soberLabelView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, 50.0f)];
     [soberLabelView setBackgroundColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:0.7f]];
     [self.view addSubview:soberLabelView];
@@ -91,14 +104,13 @@
     [goalsLabelView addSubview:goalsTitleLabel];
     
     goalsTextView = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, 364.0f, 320.0f, 200.0f)];
-    [goalsTextView setText:@"Workout 3 times per week Eat two fruits a day Spend time with my family Drink plenty of water Enjoy life!"];
+    [goalsTextView setText:goals];
     [goalsTextView setTextColor:[UIColor colorWithRed:225.0f/255.0f green:219.0f/255.0f blue:129.0f/255.0f alpha:1.0f]];
     [goalsTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:26]];
     [goalsTextView setBackgroundColor:[UIColor clearColor]];
     [goalsTextView setTextAlignment:NSTextAlignmentCenter];
-    [goalsTextView setEditable:YES];
+    [goalsTextView setEditable:NO];
     [self.view addSubview:goalsTextView];
-
 }
 
 - (void)didReceiveMemoryWarning
