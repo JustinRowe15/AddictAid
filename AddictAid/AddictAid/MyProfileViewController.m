@@ -67,25 +67,21 @@
     
     //Setting Right Bar Button Label
     editButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(editProfile)];
-    [editButtonItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Avenir-Light" size:16.0f]} forState:UIControlStateNormal];
+    [editButtonItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Avenir-Light" size:18.0f]} forState:UIControlStateNormal];
     [editButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
     self.navigationItem.rightBarButtonItem = editButtonItem;
     
     saveButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleBordered target:self action:@selector(saveProfile)];
-    [saveButtonItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Avenir-Light" size:16.0f]} forState:UIControlStateNormal];
+    [saveButtonItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Avenir-Light" size:18.0f]} forState:UIControlStateNormal];
     [saveButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
     
-    //Getting User Data From Parse
-    PFQuery * userQuery = [PFUser query];
     currentUser = [PFUser currentUser];
-    NSArray *userArray = [userQuery findObjects];
-    for (PFObject *object in userArray) {
-        username = [NSString stringWithFormat:@"%@", [currentUser username]];
-        emailAddress = [NSString stringWithFormat:@"%@", [object objectForKey:@"userEmailAddress"]];
-        location = [NSString stringWithFormat:@"%@", [object objectForKey:@"userCurrentLocation"]];
-        interests = [NSString stringWithFormat:@"%@", [object objectForKey:@"userInterests"]];
-        goals = [NSString stringWithFormat:@"%@", [object objectForKey:@"userGoals"]];
-    }
+    
+    username = [currentUser username];
+    emailAddress = currentUser[@"userEmailAddress"];
+    location = currentUser[@"userCurrentLocation"];
+    interests = currentUser[@"userInterests"];
+    goals = currentUser[@"userGoals"];
     
     [self setProfileView];
 }
@@ -241,6 +237,10 @@
         [userProfileSave saveEventually];
     }
 }
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    return YES;
+}
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
@@ -253,14 +253,11 @@
     return YES;
 }
 
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
-{
-    return YES;
-}
-
-- (BOOL)textViewShouldReturn:(UITextView *)textView
-{
-    [textView resignFirstResponder];
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ( [text isEqualToString:@"\n"] ) {
+        [textView resignFirstResponder];
+    }
+    
     return YES;
 }
 

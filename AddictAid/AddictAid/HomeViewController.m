@@ -104,13 +104,18 @@
     [goalsLabelView addSubview:goalsTitleLabel];
     
     goalsTextView = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, 364.0f, 320.0f, 200.0f)];
-    [goalsTextView setText:goals];
     [goalsTextView setTextColor:[UIColor colorWithRed:225.0f/255.0f green:219.0f/255.0f blue:129.0f/255.0f alpha:1.0f]];
     [goalsTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:26]];
     [goalsTextView setBackgroundColor:[UIColor clearColor]];
     [goalsTextView setTextAlignment:NSTextAlignmentCenter];
     [goalsTextView setEditable:NO];
     [self.view addSubview:goalsTextView];
+    
+    if (currentUser){
+        [goalsTextView setText:goals];
+    } else {
+        [goalsTextView setText:@"Please Log In To Set Your Goals!"];
+    }
 }
 
 - (void)didReceiveMemoryWarning

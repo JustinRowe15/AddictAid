@@ -55,6 +55,9 @@
 		0B99959F19AFB98B002F95D6 /* DefinitionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B99959E19AFB98B002F95D6 /* DefinitionDetailViewController.m */; };
 		0B9C66A219BBD92000CC3D6A /* UsersListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9C66A119BBD92000CC3D6A /* UsersListViewController.m */; };
 		0B9C66A519BBDA6200CC3D6A /* UserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9C66A419BBDA6200CC3D6A /* UserDetailViewController.m */; };
+		0B9C66A819BBE63D00CC3D6A /* ContactUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9C66A719BBE63D00CC3D6A /* ContactUserViewController.m */; };
+		0B9C66AB19BBF03B00CC3D6A /* MyMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9C66AA19BBF03B00CC3D6A /* MyMessagesViewController.m */; };
+		0B9C66AE19BBF58500CC3D6A /* DetailedMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9C66AD19BBF58500CC3D6A /* DetailedMessageViewController.m */; };
 		0B9E31BE19A9244700C06D82 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E31BD19A9244700C06D82 /* Constants.m */; };
 		0B9E31C219A9252A00C06D82 /* MeetingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E31C119A9252A00C06D82 /* MeetingsTableViewController.m */; };
 		0B9E31C519A9257C00C06D82 /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E31C419A9257C00C06D82 /* SidebarTableViewController.m */; };
@@ -152,6 +155,12 @@
 		0B9C66A119BBD92000CC3D6A /* UsersListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersListViewController.m; sourceTree = "<group>"; };
 		0B9C66A319BBDA6200CC3D6A /* UserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailViewController.h; sourceTree = "<group>"; };
 		0B9C66A419BBDA6200CC3D6A /* UserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailViewController.m; sourceTree = "<group>"; };
+		0B9C66A619BBE63D00CC3D6A /* ContactUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUserViewController.h; sourceTree = "<group>"; };
+		0B9C66A719BBE63D00CC3D6A /* ContactUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUserViewController.m; sourceTree = "<group>"; };
+		0B9C66A919BBF03B00CC3D6A /* MyMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMessagesViewController.h; sourceTree = "<group>"; };
+		0B9C66AA19BBF03B00CC3D6A /* MyMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMessagesViewController.m; sourceTree = "<group>"; };
+		0B9C66AC19BBF58500CC3D6A /* DetailedMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailedMessageViewController.h; sourceTree = "<group>"; };
+		0B9C66AD19BBF58500CC3D6A /* DetailedMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailedMessageViewController.m; sourceTree = "<group>"; };
 		0B9E31BC19A9244700C06D82 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		0B9E31BD19A9244700C06D82 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		0B9E31C019A9252A00C06D82 /* MeetingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingsTableViewController.h; sourceTree = "<group>"; };
@@ -321,10 +330,16 @@
 				0BE6049D19AD771800BDEE58 /* ContactUsViewController.m */,
 				0B8501E019BB84B2008AD9A9 /* MyProfileViewController.h */,
 				0B8501E119BB84B2008AD9A9 /* MyProfileViewController.m */,
+				0B9C66A919BBF03B00CC3D6A /* MyMessagesViewController.h */,
+				0B9C66AA19BBF03B00CC3D6A /* MyMessagesViewController.m */,
+				0B9C66AC19BBF58500CC3D6A /* DetailedMessageViewController.h */,
+				0B9C66AD19BBF58500CC3D6A /* DetailedMessageViewController.m */,
 				0B9C66A019BBD92000CC3D6A /* UsersListViewController.h */,
 				0B9C66A119BBD92000CC3D6A /* UsersListViewController.m */,
 				0B9C66A319BBDA6200CC3D6A /* UserDetailViewController.h */,
 				0B9C66A419BBDA6200CC3D6A /* UserDetailViewController.m */,
+				0B9C66A619BBE63D00CC3D6A /* ContactUserViewController.h */,
+				0B9C66A719BBE63D00CC3D6A /* ContactUserViewController.m */,
 			);
 			name = "Other View Controllers";
 			sourceTree = "<group>";
@@ -541,11 +556,13 @@
 				0B9E31BE19A9244700C06D82 /* Constants.m in Sources */,
 				0B8EAD4C19A9185200A1C8C0 /* AFNetworkReachabilityManager.m in Sources */,
 				0B8EAD6319A91D9700A1C8C0 /* NewUserViewController.m in Sources */,
+				0B9C66AE19BBF58500CC3D6A /* DetailedMessageViewController.m in Sources */,
 				0B99959F19AFB98B002F95D6 /* DefinitionDetailViewController.m in Sources */,
 				0B0F205B19B001EB005A9D02 /* QuoteDetailViewController.m in Sources */,
 				0B8EAD5019A9185200A1C8C0 /* AFURLResponseSerialization.m in Sources */,
 				0B8EAD4E19A9185200A1C8C0 /* AFURLConnectionOperation.m in Sources */,
 				0B9C66A219BBD92000CC3D6A /* UsersListViewController.m in Sources */,
+				0B9C66A819BBE63D00CC3D6A /* ContactUserViewController.m in Sources */,
 				0B8EAD4D19A9185200A1C8C0 /* AFSecurityPolicy.m in Sources */,
 				0B8EAD5A19A9199F00A1C8C0 /* SWRevealViewController.m in Sources */,
 				0BE6049519AD76CA00BDEE58 /* AboutAddTableViewController.m in Sources */,
@@ -554,6 +571,7 @@
 				0B8EAD4F19A9185200A1C8C0 /* AFURLRequestSerialization.m in Sources */,
 				0B8EAD5519A918E900A1C8C0 /* MBProgressHUD.m in Sources */,
 				0B9C66A519BBDA6200CC3D6A /* UserDetailViewController.m in Sources */,
+				0B9C66AB19BBF03B00CC3D6A /* MyMessagesViewController.m in Sources */,
 				0B8EAD5119A9185200A1C8C0 /* AFURLSessionManager.m in Sources */,
 				0B0AAE3319A90D0000C8674D /* AppDelegate.m in Sources */,
 				0B9E31C519A9257C00C06D82 /* SidebarTableViewController.m in Sources */,

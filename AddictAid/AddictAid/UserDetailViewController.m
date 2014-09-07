@@ -7,14 +7,19 @@
 //
 
 #import "UserDetailViewController.h"
+#import "ContactUserViewController.h"
+#import <Parse/Parse.h>
 
 @interface UserDetailViewController ()
+
+@property (nonatomic, strong) UIBarButtonItem *messageButtonItem;
+@property (nonatomic, strong) PFUser *currentUser;
 
 @end
 
 @implementation UserDetailViewController
 
-@synthesize profileInterestsLabel, profileLocationLabel, profileUsernameLabel, usernameTextField, interestsTextView, locationTextField, profileGoalsLabel, goalsTextView;
+@synthesize profileInterestsLabel, profileLocationLabel, profileUsernameLabel, usernameTextField, interestsTextView, locationTextField, profileGoalsLabel, goalsTextView, messageButtonItem, userNameString, currentUser;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,6 +49,16 @@
         UIGraphicsEndImageContext();
         self.view.backgroundColor = [UIColor colorWithPatternImage:newImage];
     }
+    
+    currentUser = [PFUser currentUser];
+    
+    if (currentUser){
+        //Setting Right Bar Button Label
+        messageButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(contactUser)];
+        self.navigationItem.rightBarButtonItem = messageButtonItem;
+    }
+    
+    userNameString = [self.recievedUser objectForKey:@"profileUserName"];
     
     [self setUserView];
 }
@@ -142,6 +157,15 @@
         [goalsTextView setText:objectUserGoals];
         [goalsTextView setEditable:NO];
     }
+}
+
+- (void)contactUser
+{
+    ContactUserViewController *contactUserViewController = [[ContactUserViewController alloc] init];
+    contactUserViewController.title = @"Send a Message";
+    contactUserViewController.username = userNameString;
+    [self.navigationController pushViewController:contactUserViewController animated:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning

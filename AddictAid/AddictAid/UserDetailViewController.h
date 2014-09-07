@@ -23,4 +23,6 @@
 @property (nonatomic, strong) UITextView *interestsTextView;
 @property (nonatomic, strong) UITextView *goalsTextView;
 
+@property (nonatomic, strong) NSString *userNameString;
+
 @end

@@ -168,6 +168,10 @@
     PFUser *user = [PFUser user];
 	user.username = username;
 	user.password = password;
+    user[@"userEmailAddress"] = @"user@email.com";
+    user[@"userCurrentLocation"] = @"Ex. New York City";
+    user[@"userInterests"] = @"What are your interests?";
+    user[@"userGoals"] = @"Time to set your goals!";
     
 	[user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error) {

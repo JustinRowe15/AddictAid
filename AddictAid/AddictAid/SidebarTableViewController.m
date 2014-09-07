@@ -15,6 +15,7 @@
 #import "ContactUsViewController.h"
 #import "MyProfileViewController.h"
 #import "UsersListViewController.h"
+#import "MyMessagesViewController.h"
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 
@@ -96,7 +97,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (currentUser){
-        return 8;
+        return 9;
     } else {
         return 7;
     }
@@ -151,6 +152,10 @@
             cell.textLabel.text = @"MY PROFILE";
         }
         else if (row == 7)
+        {
+            cell.textLabel.text = @"MY MESSAGES";
+        }
+        else if (row == 8)
         {
             cell.textLabel.text = @"LOG OUT";
         }
@@ -291,6 +296,18 @@
         }
 	}
     else if (row == 7)
+	{
+        if ( ![frontNavigationController.topViewController isKindOfClass:[MyMessagesViewController class]] )
+        {
+			MyMessagesViewController *myMessagesViewController = [[MyMessagesViewController alloc] init];
+            myMessagesViewController.title = @"My Messages";
+			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:myMessagesViewController];
+			[revealController setFrontViewController:navigationController animated:YES];
+        } else {
+			[revealController revealToggle:self];
+		}
+	}
+    else if (row == 8)
 	{
         [PFUser logOut];
         PFUser *currentUser = [PFUser currentUser];
