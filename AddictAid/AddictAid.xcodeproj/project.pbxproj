@@ -24,6 +24,7 @@
 		0B0F205719AFF485005A9D02 /* quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B0F205619AFF485005A9D02 /* quotes.json */; };
 		0B0F205B19B001EB005A9D02 /* QuoteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F205A19B001EB005A9D02 /* QuoteDetailViewController.m */; };
 		0B7A589619C4C36700263489 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A589519C4C36700263489 /* SWRevealViewController.m */; };
+		0B7A589919C4EAF800263489 /* ContactFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A589819C4EAF800263489 /* ContactFriendViewController.m */; };
 		0B8501E219BB84B2008AD9A9 /* MyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8501E119BB84B2008AD9A9 /* MyProfileViewController.m */; };
 		0B8EAD2219A9137200A1C8C0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8EAD2119A9137200A1C8C0 /* Parse.framework */; };
 		0B8EAD2419A913AC00A1C8C0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8EAD2319A913AC00A1C8C0 /* AudioToolbox.framework */; };
@@ -107,6 +108,8 @@
 		0B0F205A19B001EB005A9D02 /* QuoteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuoteDetailViewController.m; sourceTree = "<group>"; };
 		0B7A589419C4C36700263489 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = AddictAid/SWRevealViewController.h; sourceTree = SOURCE_ROOT; };
 		0B7A589519C4C36700263489 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = AddictAid/SWRevealViewController.m; sourceTree = SOURCE_ROOT; };
+		0B7A589719C4EAF800263489 /* ContactFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactFriendViewController.h; sourceTree = "<group>"; };
+		0B7A589819C4EAF800263489 /* ContactFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactFriendViewController.m; sourceTree = "<group>"; };
 		0B8501E019BB84B2008AD9A9 /* MyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProfileViewController.h; sourceTree = "<group>"; };
 		0B8501E119BB84B2008AD9A9 /* MyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProfileViewController.m; sourceTree = "<group>"; };
 		0B8EAD2119A9137200A1C8C0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -326,6 +329,8 @@
 				0BE6049719AD76DA00BDEE58 /* QuotesTableViewController.m */,
 				0B0F205919B001EB005A9D02 /* QuoteDetailViewController.h */,
 				0B0F205A19B001EB005A9D02 /* QuoteDetailViewController.m */,
+				0B7A589719C4EAF800263489 /* ContactFriendViewController.h */,
+				0B7A589819C4EAF800263489 /* ContactFriendViewController.m */,
 				0BE6049C19AD771800BDEE58 /* ContactUsViewController.h */,
 				0BE6049D19AD771800BDEE58 /* ContactUsViewController.m */,
 				0B8501E019BB84B2008AD9A9 /* MyProfileViewController.h */,
@@ -573,6 +578,7 @@
 				0B7A589619C4C36700263489 /* SWRevealViewController.m in Sources */,
 				0B9C66AB19BBF03B00CC3D6A /* MyMessagesViewController.m in Sources */,
 				0B8EAD5119A9185200A1C8C0 /* AFURLSessionManager.m in Sources */,
+				0B7A589919C4EAF800263489 /* ContactFriendViewController.m in Sources */,
 				0B0AAE3319A90D0000C8674D /* AppDelegate.m in Sources */,
 				0B9E31C519A9257C00C06D82 /* SidebarTableViewController.m in Sources */,
 				0BE6048A19AD6BCE00BDEE58 /* HomeViewController.m in Sources */,

@@ -174,10 +174,14 @@
     user[@"userGoals"] = @"Time to set your goals!";
     
     PFObject *userProfileSave = [PFObject objectWithClassName:@"profilesList"];
+    userProfileSave[@"friendsName"] = @"Ex. Jane Doe";
+    userProfileSave[@"friendsNumber"] = @"Ex. 719-555-5678";
     userProfileSave[@"profileUserName"] = user.username;
     userProfileSave[@"profileCurrentLocation"] = @"";
     userProfileSave[@"profileInterests"] = @"";
     userProfileSave[@"profileGoals"] = @"";
+    userProfileSave[@"sponsorName"] = @"Ex. John Doe";
+    userProfileSave[@"sponsorNumber"] = @"Ex. 719-555-1234";
     userProfileSave[@"startSobrietyDate"] = @"";
     [userProfileSave saveEventually];
     

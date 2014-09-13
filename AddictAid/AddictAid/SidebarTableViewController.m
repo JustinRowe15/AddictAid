@@ -16,6 +16,7 @@
 #import "MyProfileViewController.h"
 #import "UsersListViewController.h"
 #import "MyMessagesViewController.h"
+#import "ContactFriendViewController.h"
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 
@@ -97,7 +98,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (currentUser){
-        return 9;
+        return 10;
     } else {
         return 6;
     }
@@ -145,7 +146,7 @@
         }
         else if (row == 5)
         {
-            cell.textLabel.text = @"CONTACT US";
+            cell.textLabel.text = @"CONTACT A FRIEND";
         }
         else if (row == 6)
         {
@@ -274,11 +275,11 @@
     else if (row == 5)
 	{
         if (currentUser) {
-            if ( ![frontNavigationController.topViewController isKindOfClass:[ContactUsViewController class]] )
+            if ( ![frontNavigationController.topViewController isKindOfClass:[ContactFriendViewController class]] )
             {
-                ContactUsViewController *contactUsViewController = [[ContactUsViewController alloc] init];
-                contactUsViewController.title = @"Contact Us";
-                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:contactUsViewController];
+                ContactFriendViewController *contactFriendViewController = [[ContactFriendViewController alloc] init];
+                contactFriendViewController.title = @"Contact A Friend";
+                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:contactFriendViewController];
                 [revealController setFrontViewController:navigationController animated:YES];
             } else {
                 [revealController revealToggle:self];

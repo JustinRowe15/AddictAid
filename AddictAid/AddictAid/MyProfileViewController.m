@@ -170,7 +170,7 @@ CGRect rect;
     [emailAddressTextField setDelegate:self];
     [emailAddressTextField setText:[NSString stringWithFormat:@"%@", emailAddress]];
     [emailAddressTextField setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
-    [emailAddressTextField setFont:[UIFont fontWithName:@"Avenir-Light" size:16]];
+    [emailAddressTextField setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
     [emailAddressTextField setBackgroundColor:[UIColor clearColor]];
     [profileEmailTextFieldView addSubview:emailAddressTextField];
     
@@ -191,7 +191,7 @@ CGRect rect;
     [interestsTextView setDelegate:self];
     [interestsTextView setText:[NSString stringWithFormat:@"%@", interests]];
     [interestsTextView setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
-    [interestsTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:16]];
+    [interestsTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
     [interestsTextView setBackgroundColor:[UIColor clearColor]];
     [profileInterestsLabelView addSubview:interestsTextView];
     
@@ -212,7 +212,7 @@ CGRect rect;
     [goalsTextView setDelegate:self];
     [goalsTextView setText:[NSString stringWithFormat:@"%@", goals]];
     [goalsTextView setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
-    [goalsTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:16]];
+    [goalsTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
     [goalsTextView setBackgroundColor:[UIColor clearColor]];
     [profileGoalsLabelView addSubview:goalsTextView];
 }
