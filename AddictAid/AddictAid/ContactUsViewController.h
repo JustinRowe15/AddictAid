@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ContactUsViewController : UIViewController <UITextFieldDelegate>
+@interface ContactUsViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
 
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *emailAddressLabel;
@@ -16,7 +16,7 @@
 
 @property (nonatomic, strong) UITextField *nameTextField;
 @property (nonatomic, strong) UITextField *emailAddressTextField;
-@property (nonatomic, strong) UITextField *commentsTextField;
+@property (nonatomic, strong) UITextView *commentsTextField;
 
 @property (nonatomic, strong) IBOutlet UIButton *sendButton;
 

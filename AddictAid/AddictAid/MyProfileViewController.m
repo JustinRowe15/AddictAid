@@ -152,7 +152,7 @@ CGRect rect;
     [locationTextField setBackgroundColor:[UIColor clearColor]];
     [profileLocationTextFieldView addSubview:locationTextField];
     
-    UILabel *emailAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 196.0f, 110.0f, 14.0f)];
+    UILabel *emailAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 192.0f, 110.0f, 14.0f)];
     [emailAddressLabel setText:@"Email Address:"];
     [emailAddressLabel setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
     [emailAddressLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:12]];
@@ -160,7 +160,7 @@ CGRect rect;
     [emailAddressLabel setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:emailAddressLabel];
     
-    UIView * profileEmailTextFieldView = [[UIView alloc] initWithFrame:CGRectMake(20.0f, 214.0f, 280.0f, 38.0f)];
+    UIView * profileEmailTextFieldView = [[UIView alloc] initWithFrame:CGRectMake(20.0f, 208.0f, 280.0f, 38.0f)];
     [profileEmailTextFieldView setBackgroundColor:[UIColor colorWithRed:83.0f/255.0f green:83.0f/255.0f blue:83.0f/255.0f alpha:0.7f]];
     [self.view addSubview:profileEmailTextFieldView];
     
@@ -174,7 +174,7 @@ CGRect rect;
     [emailAddressTextField setBackgroundColor:[UIColor clearColor]];
     [profileEmailTextFieldView addSubview:emailAddressTextField];
     
-    UILabel *interestLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 260.0f, 110.0f, 14.0f)];
+    UILabel *interestLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 248.0f, 110.0f, 14.0f)];
     [interestLabel setText:@"Interests:"];
     [interestLabel setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
     [interestLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:12]];
@@ -182,7 +182,7 @@ CGRect rect;
     [interestLabel setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:interestLabel];
     
-    UIView * profileInterestsLabelView = [[UIView alloc] initWithFrame:CGRectMake(20.0f, 278.0f, 280.0f, 126.0f)];
+    UIView * profileInterestsLabelView = [[UIView alloc] initWithFrame:CGRectMake(20.0f, 264.0f, 280.0f, 126.0f)];
     [profileInterestsLabelView setBackgroundColor:[UIColor colorWithRed:83.0f/255.0f green:83.0f/255.0f blue:83.0f/255.0f alpha:0.7f]];
     [self.view addSubview:profileInterestsLabelView];
     
@@ -195,7 +195,7 @@ CGRect rect;
     [interestsTextView setBackgroundColor:[UIColor clearColor]];
     [profileInterestsLabelView addSubview:interestsTextView];
     
-    UILabel *goalsLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 410.0f, 110.0f, 14.0f)];
+    UILabel *goalsLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 392.0f, 110.0f, 14.0f)];
     [goalsLabel setText:@"Goals:"];
     [goalsLabel setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
     [goalsLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:12]];
@@ -203,7 +203,7 @@ CGRect rect;
     [goalsLabel setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:goalsLabel];
     
-    UIView * profileGoalsLabelView = [[UIView alloc] initWithFrame:CGRectMake(20.0f, 428.0f, 280.0f, 126.0f)];
+    UIView * profileGoalsLabelView = [[UIView alloc] initWithFrame:CGRectMake(20.0f, 408.0f, 280.0f, 142.0f)];
     [profileGoalsLabelView setBackgroundColor:[UIColor colorWithRed:83.0f/255.0f green:83.0f/255.0f blue:83.0f/255.0f alpha:0.7f]];
     [self.view addSubview:profileGoalsLabelView];
     

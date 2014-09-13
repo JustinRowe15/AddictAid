@@ -103,14 +103,14 @@ NSTimer *timer;
     [self.view addSubview:soberLabelView];
     
     soberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 50.0f)];
-    [soberLabel setText:@"NUMBER OF DAYS SOBER"];
+    [soberLabel setText:@"MY NUMBER OF DAYS SOBER"];
     [soberLabel setTextColor:[UIColor colorWithRed:225.0f/255.0f green:219.0f/255.0f blue:129.0f/255.0f alpha:1.0f]];
     [soberLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
     [soberLabel setBackgroundColor:[UIColor clearColor]];
     [soberLabel setTextAlignment:NSTextAlignmentCenter];
     [soberLabelView addSubview:soberLabel];
     
-    dateTextView = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, 114.0f, 320.0f, 200.0f)];
+    dateTextView = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, 114.0f, 320.0f, 160.0f)];
     [dateTextView setTextColor:[UIColor colorWithRed:225.0f/255.0f green:219.0f/255.0f blue:129.0f/255.0f alpha:1.0f]];
     [dateTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:48]];
     [dateTextView setBackgroundColor:[UIColor clearColor]];
@@ -118,7 +118,7 @@ NSTimer *timer;
     [dateTextView setEditable:NO];
     [self.view addSubview:dateTextView];
     
-    UIView * goalsLabelView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 314.0f, 320.0f, 50.0f)];
+    UIView * goalsLabelView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 274.0f, 320.0f, 50.0f)];
     [goalsLabelView setBackgroundColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:0.7f]];
     [self.view addSubview:goalsLabelView];
     
@@ -130,7 +130,7 @@ NSTimer *timer;
     [goalsTitleLabel setTextAlignment:NSTextAlignmentCenter];
     [goalsLabelView addSubview:goalsTitleLabel];
     
-    goalsTextView = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, 364.0f, 320.0f, 200.0f)];
+    goalsTextView = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, 324.0f, 320.0f, 240.0f)];
     [goalsTextView setTextColor:[UIColor colorWithRed:225.0f/255.0f green:219.0f/255.0f blue:129.0f/255.0f alpha:1.0f]];
     [goalsTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:26]];
     [goalsTextView setBackgroundColor:[UIColor clearColor]];
@@ -190,6 +190,10 @@ NSTimer *timer;
 - (void)resetTimer
 {
     days = 0;
+    
+    NSString *timeString = [[NSString alloc] initWithFormat:@"0 Days as of %@", dateString];
+    dateTextView.text = timeString;
+    
     [timer invalidate];
     timer = [NSTimer scheduledTimerWithTimeInterval:86400 target:self selector:@selector(dayCounter) userInfo:nil repeats:YES];
 }
