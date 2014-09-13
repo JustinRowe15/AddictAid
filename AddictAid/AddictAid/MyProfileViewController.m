@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 Justin Rowe. All rights reserved.
 //
 
+#define kOFFSET_FOR_KEYBOARD_INTERESTS 60.0
+#define kOFFSET_FOR_KEYBOARD_GOALS 210.0
+
 #import "MyProfileViewController.h"
 #import "SWRevealViewController.h"
 #import <Parse/Parse.h>
@@ -26,6 +29,9 @@
 @implementation MyProfileViewController
 
 @synthesize profileEmailAddressLabel, profileInterestsLabel, profileLocationLabel, profileUsernameLabel, usernameTextField, interestsTextView, locationTextField, emailAddressTextField, username, emailAddress, location, interests, currentUser, saveButtonItem, editButtonItem, profileGoalsLabel, goalsTextView, goals;
+
+BOOL interestsBool;
+CGRect rect;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -237,9 +243,63 @@
         [userProfileSave saveEventually];
     }
 }
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+
+-(void)textViewDidBeginEditing:(UITextView *)sender
 {
-    return YES;
+    if ([sender isEqual:interestsTextView])
+    {
+        if  (self.view.frame.origin.y >= 0)
+        {
+            [saveButtonItem setEnabled:NO];
+            interestsBool = YES;
+            [self setViewMovedUp:YES];
+        }
+    } else if ([sender isEqual:goalsTextView])
+    {
+        if  (self.view.frame.origin.y >= 0)
+        {
+            [saveButtonItem setEnabled:NO];
+            [interestsTextView setEditable:NO];
+            interestsBool = NO;
+            [self setViewMovedUp:YES];
+        }
+    }
+}
+
+-(void)setViewMovedUp:(BOOL)movedUp
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    
+    rect = self.view.frame;
+    
+    if (interestsBool == YES){
+        if (movedUp)
+        {
+            rect.origin.y -= kOFFSET_FOR_KEYBOARD_INTERESTS;
+            rect.size.height += kOFFSET_FOR_KEYBOARD_INTERESTS;
+        }
+        else
+        {
+            rect.origin.y += kOFFSET_FOR_KEYBOARD_INTERESTS;
+            rect.size.height -= kOFFSET_FOR_KEYBOARD_INTERESTS;
+        }
+    } else if (interestsBool == NO){
+        if (movedUp)
+        {
+            rect.origin.y -= kOFFSET_FOR_KEYBOARD_GOALS;
+            rect.size.height += kOFFSET_FOR_KEYBOARD_GOALS;
+        }
+        else
+        {
+            rect.origin.y += kOFFSET_FOR_KEYBOARD_GOALS;
+            rect.size.height -= kOFFSET_FOR_KEYBOARD_GOALS;
+        }
+    }
+    
+    self.view.frame = rect;
+    
+    [UIView commitAnimations];
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -253,9 +313,27 @@
     return YES;
 }
 
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+- (BOOL)textView:(UITextView *)sender shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     if ( [text isEqualToString:@"\n"] ) {
-        [textView resignFirstResponder];
+        [sender resignFirstResponder];
+        [saveButtonItem setEnabled:YES];
+        
+        if ([sender isEqual:interestsTextView])
+        {
+            if  (self.view.frame.origin.y < 0)
+            {
+                interestsBool = YES;
+                [self setViewMovedUp:NO];
+            }
+        } else if ([sender isEqual:goalsTextView])
+        {
+            if  (self.view.frame.origin.y < 0)
+            {
+                [interestsTextView setEditable:YES];
+                interestsBool = NO;
+                [self setViewMovedUp:NO];
+            }
+        }
     }
     
     return YES;

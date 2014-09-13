@@ -99,7 +99,7 @@
     if (currentUser){
         return 9;
     } else {
-        return 7;
+        return 6;
     }
 }
 
@@ -178,18 +178,13 @@
         }
         else if (row == 4)
         {
-            cell.textLabel.text = @"SEARCH USERS";
-        }
-        else if (row == 5)
-        {
             cell.textLabel.text = @"CONTACT US";
         }
-        else if (row == 6)
+        else if (row == 5)
         {
             cell.textLabel.text = @"LOG IN";
         }
     }
-	
 	return cell;
 }
 
@@ -254,45 +249,55 @@
 	}
     else if (row == 4)
 	{
-        if ( ![frontNavigationController.topViewController isKindOfClass:[UsersListViewController class]] )
-        {
-			UsersListViewController *usersListViewController = [[UsersListViewController alloc] init];
-            usersListViewController.title = @"Search Users";
-			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:usersListViewController];
-			[revealController setFrontViewController:navigationController animated:YES];
-        } else {
-			[revealController revealToggle:self];
-		}
-	}
-    else if (row == 5)
-	{
-        if ( ![frontNavigationController.topViewController isKindOfClass:[ContactUsViewController class]] )
-        {
-			ContactUsViewController *contactUsViewController = [[ContactUsViewController alloc] init];
-            contactUsViewController.title = @"Contact Us";
-			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:contactUsViewController];
-			[revealController setFrontViewController:navigationController animated:YES];
-        } else {
-			[revealController revealToggle:self];
-		}
-	}
-    else if (row == 6)
-	{
-        if (currentUser) {
-            if ( ![frontNavigationController.topViewController isKindOfClass:[MyProfileViewController class]] )
+        if (currentUser){
+            if ( ![frontNavigationController.topViewController isKindOfClass:[UsersListViewController class]] )
             {
-                MyProfileViewController *myProfileViewController = [[MyProfileViewController alloc] init];
-                myProfileViewController.title = @"My Profile";
-                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:myProfileViewController];
+                UsersListViewController *usersListViewController = [[UsersListViewController alloc] init];
+                usersListViewController.title = @"Search Users";
+                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:usersListViewController];
                 [revealController setFrontViewController:navigationController animated:YES];
             } else {
                 [revealController revealToggle:self];
             }
         } else {
-            [PFUser logOut];
-            PFUser *currentUser = [PFUser currentUser];
+            if ( ![frontNavigationController.topViewController isKindOfClass:[ContactUsViewController class]] )
+            {
+                ContactUsViewController *contactUsViewController = [[ContactUsViewController alloc] init];
+                contactUsViewController.title = @"Contact Us";
+                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:contactUsViewController];
+                [revealController setFrontViewController:navigationController animated:YES];
+            } else {
+                [revealController revealToggle:self];
+            }
+        }
+	}
+    else if (row == 5)
+	{
+        if (currentUser) {
+            if ( ![frontNavigationController.topViewController isKindOfClass:[ContactUsViewController class]] )
+            {
+                ContactUsViewController *contactUsViewController = [[ContactUsViewController alloc] init];
+                contactUsViewController.title = @"Contact Us";
+                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:contactUsViewController];
+                [revealController setFrontViewController:navigationController animated:YES];
+            } else {
+                [revealController revealToggle:self];
+            }
+        } else {
             [(AppDelegate*)[[UIApplication sharedApplication] delegate] presentLoginViewController];
             [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        }
+	}
+    else if (row == 6)
+	{
+        if ( ![frontNavigationController.topViewController isKindOfClass:[MyProfileViewController class]] )
+        {
+            MyProfileViewController *myProfileViewController = [[MyProfileViewController alloc] init];
+            myProfileViewController.title = @"My Profile";
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:myProfileViewController];
+            [revealController setFrontViewController:navigationController animated:YES];
+        } else {
+            [revealController revealToggle:self];
         }
 	}
     else if (row == 7)
