@@ -169,9 +169,17 @@
 	user.username = username;
 	user.password = password;
     user[@"userEmailAddress"] = @"user@email.com";
-    user[@"userCurrentLocation"] = @"Ex. New York City";
+    user[@"userCurrentLocation"] = @"Where are located?";
     user[@"userInterests"] = @"What are your interests?";
     user[@"userGoals"] = @"Time to set your goals!";
+    
+    PFObject *userProfileSave = [PFObject objectWithClassName:@"profilesList"];
+    userProfileSave[@"profileUserName"] = user.username;
+    userProfileSave[@"profileCurrentLocation"] = @"";
+    userProfileSave[@"profileInterests"] = @"";
+    userProfileSave[@"profileGoals"] = @"";
+    userProfileSave[@"startSobrietyDate"] = @"";
+    [userProfileSave saveEventually];
     
 	[user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error) {

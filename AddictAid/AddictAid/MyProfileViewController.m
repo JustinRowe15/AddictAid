@@ -22,13 +22,14 @@
 @property (nonatomic, strong) NSString *location;
 @property (nonatomic, strong) NSString *interests;
 @property (nonatomic, strong) NSString *goals;
+@property (nonatomic, strong) NSString *profileId;
 @property (nonatomic, strong) PFUser *currentUser;
 
 @end
 
 @implementation MyProfileViewController
 
-@synthesize profileEmailAddressLabel, profileInterestsLabel, profileLocationLabel, profileUsernameLabel, usernameTextField, interestsTextView, locationTextField, emailAddressTextField, username, emailAddress, location, interests, currentUser, saveButtonItem, editButtonItem, profileGoalsLabel, goalsTextView, goals;
+@synthesize profileEmailAddressLabel, profileInterestsLabel, profileLocationLabel, profileUsernameLabel, usernameTextField, interestsTextView, locationTextField, emailAddressTextField, username, emailAddress, location, interests, currentUser, saveButtonItem, editButtonItem, profileGoalsLabel, goalsTextView, goals, profileId;
 
 BOOL interestsBool;
 CGRect rect;
@@ -82,12 +83,25 @@ CGRect rect;
     [saveButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
     
     currentUser = [PFUser currentUser];
-    
     username = [currentUser username];
     emailAddress = currentUser[@"userEmailAddress"];
     location = currentUser[@"userCurrentLocation"];
     interests = currentUser[@"userInterests"];
     goals = currentUser[@"userGoals"];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"profilesList"];
+    [query whereKey:@"profileUserName" equalTo:username];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            NSLog(@"Successfully retrieved %d profile.", objects.count);
+            for (PFObject *object in objects) {
+                profileId = object.objectId;
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
     
     [self setProfileView];
 }
@@ -235,13 +249,21 @@ CGRect rect;
         [currentUser setObject:goalsTextView.text forKey:@"userGoals"];
         [currentUser saveEventually];
         
-        PFObject *userProfileSave = [PFObject objectWithClassName:@"profilesList"];
-        [userProfileSave setObject:currentUser.username forKey:@"profileUserName"];
-        [userProfileSave setObject:locationTextField.text forKey:@"profileCurrentLocation"];
-        [userProfileSave setObject:interestsTextView.text forKey:@"profileInterests"];
-        [userProfileSave setObject:goalsTextView.text forKey:@"profileGoals"];
-        [userProfileSave saveEventually];
+        PFQuery *query = [PFQuery queryWithClassName:@"profilesList"];
+        [query getObjectInBackgroundWithId:profileId block:^(PFObject *userProfileSave, NSError *error) {
+            userProfileSave[@"profileCurrentLocation"] = locationTextField.text;
+            userProfileSave[@"profileInterests"] = interestsTextView.text;
+            userProfileSave[@"profileGoals"] = goalsTextView.text;
+            [userProfileSave saveEventually];
+        }];
     }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Profile Updated"
+                                                    message:@"Profile Successfully Saved!"
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 -(void)textViewDidBeginEditing:(UITextView *)sender

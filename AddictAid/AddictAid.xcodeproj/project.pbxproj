@@ -23,6 +23,7 @@
 		0B0AAE5819A90F0B00C8674D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B0AAE5719A90F0B00C8674D /* MapKit.framework */; };
 		0B0F205719AFF485005A9D02 /* quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B0F205619AFF485005A9D02 /* quotes.json */; };
 		0B0F205B19B001EB005A9D02 /* QuoteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F205A19B001EB005A9D02 /* QuoteDetailViewController.m */; };
+		0B7A589619C4C36700263489 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A589519C4C36700263489 /* SWRevealViewController.m */; };
 		0B8501E219BB84B2008AD9A9 /* MyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8501E119BB84B2008AD9A9 /* MyProfileViewController.m */; };
 		0B8EAD2219A9137200A1C8C0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8EAD2119A9137200A1C8C0 /* Parse.framework */; };
 		0B8EAD2419A913AC00A1C8C0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8EAD2319A913AC00A1C8C0 /* AudioToolbox.framework */; };
@@ -44,7 +45,6 @@
 		0B8EAD5019A9185200A1C8C0 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8EAD4619A9185200A1C8C0 /* AFURLResponseSerialization.m */; };
 		0B8EAD5119A9185200A1C8C0 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8EAD4819A9185200A1C8C0 /* AFURLSessionManager.m */; };
 		0B8EAD5519A918E900A1C8C0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8EAD5419A918E900A1C8C0 /* MBProgressHUD.m */; };
-		0B8EAD5A19A9199F00A1C8C0 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8EAD5919A9199F00A1C8C0 /* SWRevealViewController.m */; };
 		0B8EAD6319A91D9700A1C8C0 /* NewUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8EAD6219A91D9700A1C8C0 /* NewUserViewController.m */; };
 		0B8EAD6619A9214D00A1C8C0 /* welcome4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B8EAD6419A9214D00A1C8C0 /* welcome4.png */; };
 		0B8EAD6719A9214D00A1C8C0 /* welcome5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B8EAD6519A9214D00A1C8C0 /* welcome5.png */; };
@@ -105,6 +105,8 @@
 		0B0F205619AFF485005A9D02 /* quotes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = quotes.json; path = ../quotes.json; sourceTree = "<group>"; };
 		0B0F205919B001EB005A9D02 /* QuoteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuoteDetailViewController.h; sourceTree = "<group>"; };
 		0B0F205A19B001EB005A9D02 /* QuoteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuoteDetailViewController.m; sourceTree = "<group>"; };
+		0B7A589419C4C36700263489 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = AddictAid/SWRevealViewController.h; sourceTree = SOURCE_ROOT; };
+		0B7A589519C4C36700263489 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = AddictAid/SWRevealViewController.m; sourceTree = SOURCE_ROOT; };
 		0B8501E019BB84B2008AD9A9 /* MyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProfileViewController.h; sourceTree = "<group>"; };
 		0B8501E119BB84B2008AD9A9 /* MyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProfileViewController.m; sourceTree = "<group>"; };
 		0B8EAD2119A9137200A1C8C0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -138,8 +140,6 @@
 		0B8EAD4819A9185200A1C8C0 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		0B8EAD5319A918E900A1C8C0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		0B8EAD5419A918E900A1C8C0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		0B8EAD5819A9199F00A1C8C0 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		0B8EAD5919A9199F00A1C8C0 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		0B8EAD6119A91D9700A1C8C0 /* NewUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUserViewController.h; sourceTree = "<group>"; };
 		0B8EAD6219A91D9700A1C8C0 /* NewUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUserViewController.m; sourceTree = "<group>"; };
 		0B8EAD6419A9214D00A1C8C0 /* welcome4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome4.png; sourceTree = "<group>"; };
@@ -394,8 +394,8 @@
 		0B8EAD5719A9199F00A1C8C0 /* SWRevealViewController */ = {
 			isa = PBXGroup;
 			children = (
-				0B8EAD5819A9199F00A1C8C0 /* SWRevealViewController.h */,
-				0B8EAD5919A9199F00A1C8C0 /* SWRevealViewController.m */,
+				0B7A589419C4C36700263489 /* SWRevealViewController.h */,
+				0B7A589519C4C36700263489 /* SWRevealViewController.m */,
 			);
 			path = SWRevealViewController;
 			sourceTree = "<group>";
@@ -564,13 +564,13 @@
 				0B9C66A219BBD92000CC3D6A /* UsersListViewController.m in Sources */,
 				0B9C66A819BBE63D00CC3D6A /* ContactUserViewController.m in Sources */,
 				0B8EAD4D19A9185200A1C8C0 /* AFSecurityPolicy.m in Sources */,
-				0B8EAD5A19A9199F00A1C8C0 /* SWRevealViewController.m in Sources */,
 				0BE6049519AD76CA00BDEE58 /* AboutAddTableViewController.m in Sources */,
 				0BE6049E19AD771800BDEE58 /* ContactUsViewController.m in Sources */,
 				0B8EAD4B19A9185200A1C8C0 /* AFHTTPSessionManager.m in Sources */,
 				0B8EAD4F19A9185200A1C8C0 /* AFURLRequestSerialization.m in Sources */,
 				0B8EAD5519A918E900A1C8C0 /* MBProgressHUD.m in Sources */,
 				0B9C66A519BBDA6200CC3D6A /* UserDetailViewController.m in Sources */,
+				0B7A589619C4C36700263489 /* SWRevealViewController.m in Sources */,
 				0B9C66AB19BBF03B00CC3D6A /* MyMessagesViewController.m in Sources */,
 				0B8EAD5119A9185200A1C8C0 /* AFURLSessionManager.m in Sources */,
 				0B0AAE3319A90D0000C8674D /* AppDelegate.m in Sources */,

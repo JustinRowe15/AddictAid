@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeViewController : UIViewController
+@interface HomeViewController : UIViewController <UIAlertViewDelegate>
 
 @property (nonatomic, strong) UILabel *soberLabel;
 @property (nonatomic, strong) UITextView *dateTextView;

@@ -14,12 +14,18 @@
 
 @property (nonatomic, strong) PFUser *currentUser;
 @property (nonatomic, strong) NSString *goals;
+@property (nonatomic, strong) NSString *dateString;
+@property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSString *profileId;
 
 @end
 
 @implementation HomeViewController
 
-@synthesize soberLabel, dateTextView, goalsTextView, goalsTitleLabel, currentUser, goals;
+@synthesize soberLabel, dateTextView, goalsTextView, goalsTitleLabel, currentUser, goals, dateString, username, profileId;
+
+int days = 0;
+NSTimer *timer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +39,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIBackgroundTaskIdentifier bgTask;
+    UIApplication  *app = [UIApplication sharedApplication];
+    bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
+        [app endBackgroundTask:bgTask];
+    }];
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
     {
@@ -57,17 +69,33 @@
     [revealButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
     self.navigationItem.leftBarButtonItem = revealButtonItem;
     
-    UIBarButtonItem *timerButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(resetTimer:)];
-    [timerButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
-    self.navigationItem.rightBarButtonItem = timerButtonItem;
+    UIBarButtonItem *startButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(startTimer)];
+    [startButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
+    self.navigationItem.rightBarButtonItem = startButtonItem;
     
     //Getting User Data From Parse
     PFQuery * userQuery = [PFUser query];
     currentUser = [PFUser currentUser];
+    username = [currentUser username];
     NSArray *userArray = [userQuery findObjects];
     for (PFObject *object in userArray) {
         goals = [NSString stringWithFormat:@"%@", [object objectForKey:@"userGoals"]];
     }
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"profilesList"];
+    [query whereKey:@"profileUserName" equalTo:username];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            NSLog(@"Successfully retrieved %d profile.", objects.count);
+            for (PFObject *object in objects) {
+                profileId = object.objectId;
+                dateString = object[@"startSobrietyDate"];
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 
     
     UIView * soberLabelView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, 50.0f)];
@@ -75,7 +103,7 @@
     [self.view addSubview:soberLabelView];
     
     soberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 50.0f)];
-    [soberLabel setText:@"I HAVE BEEN SOBER FOR"];
+    [soberLabel setText:@"NUMBER OF DAYS SOBER"];
     [soberLabel setTextColor:[UIColor colorWithRed:225.0f/255.0f green:219.0f/255.0f blue:129.0f/255.0f alpha:1.0f]];
     [soberLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
     [soberLabel setBackgroundColor:[UIColor clearColor]];
@@ -83,9 +111,8 @@
     [soberLabelView addSubview:soberLabel];
     
     dateTextView = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, 114.0f, 320.0f, 200.0f)];
-    [dateTextView setText:@"34 DAYS AS OF MARCH 24, 2014"];
     [dateTextView setTextColor:[UIColor colorWithRed:225.0f/255.0f green:219.0f/255.0f blue:129.0f/255.0f alpha:1.0f]];
-    [dateTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:42]];
+    [dateTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:48]];
     [dateTextView setBackgroundColor:[UIColor clearColor]];
     [dateTextView setTextAlignment:NSTextAlignmentCenter];
     [dateTextView setEditable:NO];
@@ -124,14 +151,59 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)resetTimer:(id)sender
+- (void)startTimer
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Good Luck!"
-                                                    message:@"Today's Your First Day!"
-                                                   delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
+    if (days == 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Start Sobriety Watch"
+                                                        message:@"Congrats! Today's Your First Day!"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"Go", nil];
+        [alert show];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reset Sobriety Watch"
+                                                        message:@"Congrats! Today's Your First Day!"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"Reset", nil];
+        [alert show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1){
+        [self resetTimer];
+        
+        NSDate *today = [NSDate date];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"MMM dd yyyy"];
+        dateString = [dateFormat stringFromDate:today];
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"profilesList"];
+        [query getObjectInBackgroundWithId:profileId block:^(PFObject *userProfileSave, NSError *error) {
+            userProfileSave[@"startSobrietyDate"] = dateString;
+            [userProfileSave saveEventually];
+        }];
+    }
+}
+
+- (void)resetTimer
+{
+    days = 0;
+    [timer invalidate];
+    timer = [NSTimer scheduledTimerWithTimeInterval:86400 target:self selector:@selector(dayCounter) userInfo:nil repeats:YES];
+}
+
+- (void)dayCounter
+{
+    days++;
+    if (days == 1){
+        NSString *timeString = [[NSString alloc] initWithFormat:@"%d Day as of %@", days, dateString];
+        dateTextView.text = timeString;
+    } else {
+        NSString *timeString = [[NSString alloc] initWithFormat:@"%d Days as of %@", days, dateString];
+        dateTextView.text = timeString;
+    }
 }
 
 @end
