@@ -49,6 +49,11 @@
     [revealButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
     self.navigationItem.leftBarButtonItem = revealButtonItem;
     
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"quotes" ofType:@"json"];
+    NSData *JSONData = [[NSData alloc] initWithContentsOfFile:filePath];
+    jsonObject = [NSJSONSerialization JSONObjectWithData:JSONData options:kNilOptions error:nil];
+    quotesList = [jsonObject quotesArray];
+    
     [self.tableView reloadData];
 }
 
@@ -67,7 +72,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 75;
+    NSLog(@"%d", quotesList.count);
+    return quotesList.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -79,11 +85,6 @@
 {
     static NSString *cellIdentifier = @"Cell";
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"quotes" ofType:@"json"];
-    NSData *JSONData = [[NSData alloc] initWithContentsOfFile:filePath];
-    jsonObject = [NSJSONSerialization JSONObjectWithData:JSONData options:kNilOptions error:nil];
-    quotesList = [jsonObject quotesArray];
     
     NSString *quote = [[quotesList objectAtIndex:indexPath.row] quoteString];
     NSString *author = [[quotesList objectAtIndex:indexPath.row] authorString];

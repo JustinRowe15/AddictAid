@@ -74,13 +74,9 @@ NSTimer *timer;
     self.navigationItem.rightBarButtonItem = startButtonItem;
     
     //Getting User Data From Parse
-    PFQuery * userQuery = [PFUser query];
     currentUser = [PFUser currentUser];
     username = [currentUser username];
-    NSArray *userArray = [userQuery findObjects];
-    for (PFObject *object in userArray) {
-        goals = [NSString stringWithFormat:@"%@", [object objectForKey:@"userGoals"]];
-    }
+    goals = currentUser[@"userGoals"];
     
     PFQuery *query = [PFQuery queryWithClassName:@"profilesList"];
     [query whereKey:@"profileUserName" equalTo:username];
