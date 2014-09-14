@@ -78,21 +78,23 @@ NSTimer *timer;
     username = [currentUser username];
     goals = currentUser[@"userGoals"];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"profilesList"];
-    [query whereKey:@"profileUserName" equalTo:username];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            NSLog(@"Successfully retrieved %d profile.", objects.count);
-            for (PFObject *object in objects) {
-                profileId = object.objectId;
-                dateString = object[@"startSobrietyDate"];
+    if (currentUser){
+        PFQuery *query = [PFQuery queryWithClassName:@"profilesList"];
+        [query whereKey:@"profileUserName" equalTo:username];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                NSLog(@"Successfully retrieved %d profile.", objects.count);
+                for (PFObject *object in objects) {
+                    profileId = object.objectId;
+                    dateString = object[@"startSobrietyDate"];
+                }
+            } else {
+                // Log details of the failure
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
             }
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+        }];
 
+    }
     
     UIView * soberLabelView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, 50.0f)];
     [soberLabelView setBackgroundColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:0.7f]];
@@ -106,13 +108,24 @@ NSTimer *timer;
     [soberLabel setTextAlignment:NSTextAlignmentCenter];
     [soberLabelView addSubview:soberLabel];
     
-    dateTextView = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, 114.0f, 320.0f, 160.0f)];
-    [dateTextView setTextColor:[UIColor colorWithRed:225.0f/255.0f green:219.0f/255.0f blue:129.0f/255.0f alpha:1.0f]];
-    [dateTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:48]];
-    [dateTextView setBackgroundColor:[UIColor clearColor]];
-    [dateTextView setTextAlignment:NSTextAlignmentCenter];
-    [dateTextView setEditable:NO];
-    [self.view addSubview:dateTextView];
+    if (!currentUser){
+        dateTextView = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, 114.0f, 320.0f, 160.0f)];
+        [dateTextView setTextColor:[UIColor colorWithRed:225.0f/255.0f green:219.0f/255.0f blue:129.0f/255.0f alpha:1.0f]];
+        [dateTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:26]];
+        [dateTextView setBackgroundColor:[UIColor clearColor]];
+        [dateTextView setTextAlignment:NSTextAlignmentCenter];
+        [dateTextView setText:@"Please Log In To Set Your Sobriety Clock"];
+        [dateTextView setEditable:NO];
+        [self.view addSubview:dateTextView];
+    } else {
+        dateTextView = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, 114.0f, 320.0f, 160.0f)];
+        [dateTextView setTextColor:[UIColor colorWithRed:225.0f/255.0f green:219.0f/255.0f blue:129.0f/255.0f alpha:1.0f]];
+        [dateTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:48]];
+        [dateTextView setBackgroundColor:[UIColor clearColor]];
+        [dateTextView setTextAlignment:NSTextAlignmentCenter];
+        [dateTextView setEditable:NO];
+        [self.view addSubview:dateTextView];
+    }
     
     UIView * goalsLabelView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 274.0f, 320.0f, 50.0f)];
     [goalsLabelView setBackgroundColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:0.7f]];
