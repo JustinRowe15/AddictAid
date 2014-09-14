@@ -89,6 +89,8 @@
         query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
     
+    [query whereKey:@"profilePublic" equalTo:@"YES"];
+    
     return query;
 }
 

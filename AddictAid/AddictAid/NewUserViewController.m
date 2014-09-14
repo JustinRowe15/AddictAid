@@ -169,7 +169,7 @@
 	user.username = username;
 	user.password = password;
     user[@"userEmailAddress"] = @"user@email.com";
-    user[@"userCurrentLocation"] = @"Where are located?";
+    user[@"userCurrentLocation"] = @"Where are you located?";
     user[@"userInterests"] = @"What are your interests?";
     user[@"userGoals"] = @"Time to set your goals!";
     

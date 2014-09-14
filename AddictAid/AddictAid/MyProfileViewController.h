@@ -22,4 +22,6 @@
 @property (nonatomic, strong) UITextView *interestsTextView;
 @property (nonatomic, strong) UITextView *goalsTextView;
 
+@property (nonatomic, strong) UISwitch *profileSwitch;
+
 @end

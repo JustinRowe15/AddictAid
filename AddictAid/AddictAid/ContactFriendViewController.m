@@ -148,6 +148,11 @@ CGRect rect;
     [sponsorNumberTextField setBackgroundColor:[UIColor clearColor]];
     [sponsorNumberTextFieldView addSubview:sponsorNumberTextField];
     
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(callSponsor:)];
+    tapGestureRecognizer.numberOfTapsRequired = 1;
+    [sponsorNumberTextFieldView addGestureRecognizer:tapGestureRecognizer];
+    [sponsorNumberTextFieldView setUserInteractionEnabled:YES];
+    
     UILabel *friendsNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 192.0f, 220.0f, 14.0f)];
     [friendsNameLabel setText:@"Friend's Name:"];
     [friendsNameLabel setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
@@ -188,6 +193,11 @@ CGRect rect;
     [friendsPhoneNumberTextField setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
     [friendsPhoneNumberTextField setBackgroundColor:[UIColor clearColor]];
     [friendsPhoneNumberLabelView addSubview:friendsPhoneNumberTextField];
+    
+    UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(callFriend:)];
+    tapGestureRecognizer1.numberOfTapsRequired = 1;
+    [friendsPhoneNumberLabelView addGestureRecognizer:tapGestureRecognizer1];
+    [friendsPhoneNumberLabelView setUserInteractionEnabled:YES];
 }
 
 - (void)editFriends
@@ -235,15 +245,16 @@ CGRect rect;
                 userProfileSave[@"friendsNumber"] = friendsPhoneNumberTextField.text ;
                 [userProfileSave saveEventually];
             }];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Friends Updated"
+                                                            message:@"Friends Successfully Saved!"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+
         }
     }
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Friends Updated"
-                                                    message:@"Friends Successfully Saved!"
-                                                   delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -255,6 +266,60 @@ CGRect rect;
 {
     [textField resignFirstResponder];
     return YES;
+}
+
+- (void)callSponsor:(id)sender
+{
+    NSString *sponsorNumber = sponsorNumberTextField.text;
+    NSString *phoneRegex = @"^[1-9]{3}-[0-9]{3}-[0-9]{4}$";
+    NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
+    matches = [test evaluateWithObject:sponsorNumber];
+    
+    if (matches == YES) {
+        NSString *newString = [[sponsorNumber componentsSeparatedByCharactersInSet:
+                                [[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]]
+                               componentsJoinedByString:@""];
+        NSString *phoneNumber = [NSString stringWithFormat:@"tel://%@", newString];
+        NSLog(@"Phone Number: %@", phoneNumber);
+        NSURL *phoneURL = [NSURL URLWithString:phoneNumber];
+        if ([[UIApplication sharedApplication] canOpenURL:phoneURL]) {
+            [[UIApplication sharedApplication] openURL:phoneURL];
+        }
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Phone Call Error"
+                                                        message:@"Error In Making Phone Call"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (void)callFriend:(id)sender
+{
+    NSString *sponsorNumber = friendsPhoneNumberTextField.text;
+    NSString *phoneRegex = @"^[1-9]{3}-[0-9]{3}-[0-9]{4}$";
+    NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
+    matches = [test evaluateWithObject:sponsorNumber];
+    
+    if (matches == YES) {
+        NSString *newString = [[sponsorNumber componentsSeparatedByCharactersInSet:
+                                [[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]]
+                               componentsJoinedByString:@""];
+        NSString *phoneNumber = [NSString stringWithFormat:@"tel://%@", newString];
+        NSLog(@"Phone Number: %@", phoneNumber);
+        NSURL *phoneURL = [NSURL URLWithString:phoneNumber];
+        if ([[UIApplication sharedApplication] canOpenURL:phoneURL]) {
+            [[UIApplication sharedApplication] openURL:phoneURL];
+        }
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Phone Call Error"
+                                                        message:@"Error In Making Phone Call"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 - (void)didReceiveMemoryWarning

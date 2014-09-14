@@ -23,13 +23,14 @@
 @property (nonatomic, strong) NSString *interests;
 @property (nonatomic, strong) NSString *goals;
 @property (nonatomic, strong) NSString *profileId;
+@property (nonatomic, strong) NSString *switchOn;
 @property (nonatomic, strong) PFUser *currentUser;
 
 @end
 
 @implementation MyProfileViewController
 
-@synthesize profileEmailAddressLabel, profileInterestsLabel, profileLocationLabel, profileUsernameLabel, usernameTextField, interestsTextView, locationTextField, emailAddressTextField, username, emailAddress, location, interests, currentUser, saveButtonItem, editButtonItem, profileGoalsLabel, goalsTextView, goals, profileId;
+@synthesize profileEmailAddressLabel, profileInterestsLabel, profileLocationLabel, profileUsernameLabel, usernameTextField, interestsTextView, locationTextField, emailAddressTextField, username, emailAddress, location, interests, currentUser, saveButtonItem, editButtonItem, profileGoalsLabel, goalsTextView, goals, profileId, profileSwitch, switchOn;
 
 BOOL interestsBool;
 CGRect rect;
@@ -89,6 +90,8 @@ CGRect rect;
     interests = currentUser[@"userInterests"];
     goals = currentUser[@"userGoals"];
     
+    [self setProfileView];
+    
     PFQuery *query = [PFQuery queryWithClassName:@"profilesList"];
     [query whereKey:@"profileUserName" equalTo:username];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -96,14 +99,14 @@ CGRect rect;
             NSLog(@"Successfully retrieved %d profile.", objects.count);
             for (PFObject *object in objects) {
                 profileId = object.objectId;
+                switchOn = object[@"profilePublic"];
+                NSLog(@"Switch On Is: %@", switchOn);
             }
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
-    
-    [self setProfileView];
 }
 
 - (void)setProfileView
@@ -182,11 +185,11 @@ CGRect rect;
     [interestLabel setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:interestLabel];
     
-    UIView * profileInterestsLabelView = [[UIView alloc] initWithFrame:CGRectMake(20.0f, 264.0f, 280.0f, 126.0f)];
+    UIView * profileInterestsLabelView = [[UIView alloc] initWithFrame:CGRectMake(20.0f, 264.0f, 280.0f, 66.0f)];
     [profileInterestsLabelView setBackgroundColor:[UIColor colorWithRed:83.0f/255.0f green:83.0f/255.0f blue:83.0f/255.0f alpha:0.7f]];
     [self.view addSubview:profileInterestsLabelView];
     
-    interestsTextView = [[UITextView alloc] initWithFrame:CGRectMake(8.0f, 0.0f, 272.0f, 126.0f)];
+    interestsTextView = [[UITextView alloc] initWithFrame:CGRectMake(4.0f, 0.0f, 272.0f, 66.0f)];
     [interestsTextView setEditable:NO];
     [interestsTextView setDelegate:self];
     [interestsTextView setText:[NSString stringWithFormat:@"%@", interests]];
@@ -195,7 +198,7 @@ CGRect rect;
     [interestsTextView setBackgroundColor:[UIColor clearColor]];
     [profileInterestsLabelView addSubview:interestsTextView];
     
-    UILabel *goalsLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 392.0f, 110.0f, 14.0f)];
+    UILabel *goalsLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 332.0f, 110.0f, 14.0f)];
     [goalsLabel setText:@"Goals:"];
     [goalsLabel setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
     [goalsLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:12]];
@@ -203,11 +206,11 @@ CGRect rect;
     [goalsLabel setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:goalsLabel];
     
-    UIView * profileGoalsLabelView = [[UIView alloc] initWithFrame:CGRectMake(20.0f, 408.0f, 280.0f, 142.0f)];
+    UIView * profileGoalsLabelView = [[UIView alloc] initWithFrame:CGRectMake(20.0f, 348.0f, 280.0f, 158.0f)];
     [profileGoalsLabelView setBackgroundColor:[UIColor colorWithRed:83.0f/255.0f green:83.0f/255.0f blue:83.0f/255.0f alpha:0.7f]];
     [self.view addSubview:profileGoalsLabelView];
     
-    goalsTextView = [[UITextView alloc] initWithFrame:CGRectMake(8.0f, 0.0f, 272.0f, 126.0f)];
+    goalsTextView = [[UITextView alloc] initWithFrame:CGRectMake(4.0f, 0.0f, 276.0f, 158.0f)];
     [goalsTextView setEditable:NO];
     [goalsTextView setDelegate:self];
     [goalsTextView setText:[NSString stringWithFormat:@"%@", goals]];
@@ -215,6 +218,34 @@ CGRect rect;
     [goalsTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
     [goalsTextView setBackgroundColor:[UIColor clearColor]];
     [profileGoalsLabelView addSubview:goalsTextView];
+    
+    UILabel *publicLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 528.0f, 200.0f, 20.0f)];
+    [publicLabel setText:@"Make Profile Public"];
+    [publicLabel setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
+    [publicLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
+    [publicLabel setTextAlignment:NSTextAlignmentLeft];
+    [publicLabel setBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview:publicLabel];
+    
+    profileSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(248, 522, 0, 0)];
+    if ([switchOn isEqual:@"YES"]){
+        [profileSwitch setOn:YES animated:YES];
+    } else {
+        [profileSwitch setOn:NO animated:YES];
+    }
+    [profileSwitch addTarget:self action:@selector(changeSwitch:) forControlEvents:UIControlEventValueChanged];
+    [profileSwitch setEnabled:NO];
+    [self.view addSubview:profileSwitch];
+}
+
+- (void)changeSwitch:(id)sender{
+    if([sender isOn]){
+        NSLog(@"Switch is ON");
+        switchOn = @"YES";
+    } else{
+        NSLog(@"Switch is OFF");
+        switchOn = @"NO";
+    }
 }
 
 - (void)editProfile
@@ -225,6 +256,7 @@ CGRect rect;
     [emailAddressTextField setEnabled:YES];
     [interestsTextView setEditable:YES];
     [goalsTextView setEditable:YES];
+    [profileSwitch setEnabled:YES];
 }
 
 - (void)saveProfile
@@ -235,6 +267,7 @@ CGRect rect;
     [emailAddressTextField setEnabled:NO];
     [interestsTextView setEditable:NO];
     [goalsTextView setEditable:NO];
+    [profileSwitch setEnabled:NO];
     
     if (emailAddressTextField.text.length == 0){
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Please enter an email address." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
@@ -254,6 +287,8 @@ CGRect rect;
             userProfileSave[@"profileCurrentLocation"] = locationTextField.text;
             userProfileSave[@"profileInterests"] = interestsTextView.text;
             userProfileSave[@"profileGoals"] = goalsTextView.text;
+            userProfileSave[@"profilePublic"] = switchOn;
+            NSLog(@"Switch On = %@", switchOn);
             [userProfileSave saveEventually];
         }];
     }
