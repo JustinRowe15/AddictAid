@@ -41,22 +41,7 @@
 {
     [super viewDidLoad];
     
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
-    {
-        UIGraphicsBeginImageContext(self.view.frame.size);
-        [[UIImage imageNamed:@"background5.png"] drawInRect:self.view.bounds];
-        UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        UIImageView * imageView = [[UIImageView alloc] initWithImage:newImage];
-        [self.tableView setBackgroundView:imageView];
-    } else {
-        UIGraphicsBeginImageContext(self.view.frame.size);
-        [[UIImage imageNamed:@"background4.png"] drawInRect:self.view.bounds];
-        UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        UIImageView * imageView = [[UIImageView alloc] initWithImage:newImage];
-        [self.tableView setBackgroundView:imageView];
-    }
+    [self.tableView setBackgroundColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
                              forBarMetrics:UIBarMetricsDefault];
@@ -66,15 +51,15 @@
     
     currentUser = [PFUser currentUser];
     if (!currentUser){
-        userNameString = [NSString stringWithFormat:@"AddictAid Menu"];
+        userNameString = [NSString stringWithFormat:@"ADDICT AID MENU"];
     } else {
-        userNameString = [NSString stringWithFormat:@"Welcome %@", [currentUser username]];
+        userNameString = [NSString stringWithFormat:@"WELCOME %@", [[currentUser username] uppercaseString]];
     }
     
     UILabel *userNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
     [userNameLabel setText:userNameString];
-    [userNameLabel setTextColor:[UIColor colorWithRed:149.0f/255.0f green:213.0f/255.0f blue:230.0f/255.0f alpha:1.0f]];
-    [userNameLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:20]];
+    [userNameLabel setTextColor:[UIColor colorWithRed:225.0f/255.0f green:219.0f/255.0f blue:129.0f/255.0f alpha:1.0f]];
+    [userNameLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
     [userNameLabel setBackgroundColor:[UIColor clearColor]];
     UIBarButtonItem * labelItem = [[UIBarButtonItem alloc] initWithCustomView:userNameLabel];
     

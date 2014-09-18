@@ -11,8 +11,10 @@
 @interface HomeViewController : UIViewController <UIAlertViewDelegate>
 
 @property (nonatomic, strong) UILabel *soberLabel;
-@property (nonatomic, strong) UITextView *dateTextView;
 @property (nonatomic, strong) UILabel *goalsTitleLabel;
 @property (nonatomic, strong) UITextView *goalsTextView;
+
++ (void)resetTimer;
++ (void)dayCounter;
 
 @end

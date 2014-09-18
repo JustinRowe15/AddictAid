@@ -122,6 +122,11 @@ CGRect rect;
     [sponsorTextField setBorderStyle:UITextBorderStyleNone];
     [sponsorTextField setEnabled:NO];
     [sponsorTextField setDelegate:self];
+    
+    if ([sponsorTextField.text isEqual:@""]){
+        [sponsorTextField setPlaceholder:@"Ex. John Doe"];
+    }
+    
     [sponsorTextField setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
     [sponsorTextField setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
     [sponsorTextField setBackgroundColor:[UIColor clearColor]];
@@ -143,6 +148,11 @@ CGRect rect;
     [sponsorNumberTextField setBorderStyle:UITextBorderStyleNone];
     [sponsorNumberTextField setEnabled:NO];
     [sponsorNumberTextField setDelegate:self];
+    
+    if ([sponsorNumberTextField.text isEqual:@""]){
+        [sponsorNumberTextField setPlaceholder:@"Ex. 555-123-6789"];
+    }
+    
     [sponsorNumberTextField setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
     [sponsorNumberTextField setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
     [sponsorNumberTextField setBackgroundColor:[UIColor clearColor]];
@@ -169,6 +179,11 @@ CGRect rect;
     [friendsNameTextField setBorderStyle:UITextBorderStyleNone];
     [friendsNameTextField setEnabled:NO];
     [friendsNameTextField setDelegate:self];
+    
+    if ([friendsNameTextField.text isEqual:@""]){
+        [friendsNameTextField setPlaceholder:@"Ex. John Doe"];
+    }
+    
     [friendsNameTextField setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
     [friendsNameTextField setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
     [friendsNameTextField setBackgroundColor:[UIColor clearColor]];
@@ -189,6 +204,11 @@ CGRect rect;
     friendsPhoneNumberTextField = [[UITextField alloc] initWithFrame:CGRectMake(8.0f, 0.0f, 272.0f, 38.0f)];
     [friendsPhoneNumberTextField setEnabled:NO];
     [friendsPhoneNumberTextField setDelegate:self];
+    
+    if ([friendsPhoneNumberTextField.text isEqual:@""]){
+        [friendsPhoneNumberTextField setPlaceholder:@"Ex. 555-123-6789"];
+    }
+    
     [friendsPhoneNumberTextField setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
     [friendsPhoneNumberTextField setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
     [friendsPhoneNumberTextField setBackgroundColor:[UIColor clearColor]];

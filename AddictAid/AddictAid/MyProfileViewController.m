@@ -149,7 +149,13 @@ CGRect rect;
     [locationTextField setBorderStyle:UITextBorderStyleNone];
     [locationTextField setEnabled:NO];
     [locationTextField setDelegate:self];
-    [locationTextField setText:[NSString stringWithFormat:@"%@", location]];
+    
+    if (locationTextField.text == nil){
+        [locationTextField setPlaceholder:@"Ex. Denver, Colorado"];
+    } else {
+        [locationTextField setText:[NSString stringWithFormat:@"%@", location]];
+    }
+    
     [locationTextField setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
     [locationTextField setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
     [locationTextField setBackgroundColor:[UIColor clearColor]];
@@ -171,7 +177,13 @@ CGRect rect;
     [emailAddressTextField setBorderStyle:UITextBorderStyleNone];
     [emailAddressTextField setEnabled:NO];
     [emailAddressTextField setDelegate:self];
-    [emailAddressTextField setText:[NSString stringWithFormat:@"%@", emailAddress]];
+    
+    if (emailAddressTextField.text == nil){
+        [emailAddressTextField setPlaceholder:@"Ex. john.doe@email.com"];
+    } else {
+        [emailAddressTextField setText:[NSString stringWithFormat:@"%@", emailAddress]];
+    }
+
     [emailAddressTextField setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
     [emailAddressTextField setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
     [emailAddressTextField setBackgroundColor:[UIColor clearColor]];

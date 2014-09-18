@@ -14,7 +14,6 @@
 
 @property (nonatomic, strong) PFUser *currentUser;
 @property (nonatomic, strong) NSString *goals;
-@property (nonatomic, strong) NSString *dateString;
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *profileId;
 
@@ -22,7 +21,11 @@
 
 @implementation HomeViewController
 
-@synthesize soberLabel, dateTextView, goalsTextView, goalsTitleLabel, currentUser, goals, dateString, username, profileId;
+@synthesize soberLabel, goalsTextView, goalsTitleLabel, currentUser, goals, username, profileId;
+
+static NSString *dateString;
+static UITextView *dateTextView;
+static NSString *timeString;
 
 int days = 0;
 NSTimer *timer;
@@ -181,7 +184,7 @@ NSTimer *timer;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1){
-        [self resetTimer];
+        [HomeViewController resetTimer];
         
         NSDate *today = [NSDate date];
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -196,25 +199,25 @@ NSTimer *timer;
     }
 }
 
-- (void)resetTimer
++ (void)resetTimer
 {
     days = 0;
     
-    NSString *timeString = [[NSString alloc] initWithFormat:@"0 Days as of %@", dateString];
+    timeString = [[NSString alloc] initWithFormat:@"0 Days as of %@", dateString];
     dateTextView.text = timeString;
     
     [timer invalidate];
     timer = [NSTimer scheduledTimerWithTimeInterval:86400 target:self selector:@selector(dayCounter) userInfo:nil repeats:YES];
 }
 
-- (void)dayCounter
++ (void)dayCounter
 {
     days++;
     if (days == 1){
-        NSString *timeString = [[NSString alloc] initWithFormat:@"%d Day as of %@", days, dateString];
+        timeString = [[NSString alloc] initWithFormat:@"%d Day as of %@", days, dateString];
         dateTextView.text = timeString;
     } else {
-        NSString *timeString = [[NSString alloc] initWithFormat:@"%d Days as of %@", days, dateString];
+        timeString = [[NSString alloc] initWithFormat:@"%d Days as of %@", days, dateString];
         dateTextView.text = timeString;
     }
 }

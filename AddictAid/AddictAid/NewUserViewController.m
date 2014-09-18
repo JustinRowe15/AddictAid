@@ -168,20 +168,20 @@
     PFUser *user = [PFUser user];
 	user.username = username;
 	user.password = password;
-    user[@"userEmailAddress"] = @"user@email.com";
-    user[@"userCurrentLocation"] = @"Where are you located?";
-    user[@"userInterests"] = @"What are your interests?";
-    user[@"userGoals"] = @"Time to set your goals!";
+    user[@"userEmailAddress"] = @"";
+    user[@"userCurrentLocation"] = @"";
+    user[@"userInterests"] = @"";
+    user[@"userGoals"] = @"";
     
     PFObject *userProfileSave = [PFObject objectWithClassName:@"profilesList"];
-    userProfileSave[@"friendsName"] = @"Ex. Jane Doe";
-    userProfileSave[@"friendsNumber"] = @"Ex. 719-555-5678";
+    userProfileSave[@"friendsName"] = @"";
+    userProfileSave[@"friendsNumber"] = @"";
     userProfileSave[@"profileUserName"] = user.username;
     userProfileSave[@"profileCurrentLocation"] = @"";
     userProfileSave[@"profileInterests"] = @"";
     userProfileSave[@"profileGoals"] = @"";
-    userProfileSave[@"sponsorName"] = @"Ex. John Doe";
-    userProfileSave[@"sponsorNumber"] = @"Ex. 719-555-1234";
+    userProfileSave[@"sponsorName"] = @"";
+    userProfileSave[@"sponsorNumber"] = @"";
     userProfileSave[@"startSobrietyDate"] = @"";
     [userProfileSave saveEventually];
     
