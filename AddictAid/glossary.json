@@ -612,5 +612,917 @@
     "Term":"Withdrawal",
     "Definition":"The abrupt decrease in or removal of one's regular dosage of a psychoactive substance"
   }
-]
+],
+    "alcohol":[
+                {
+                "Term":"Abstinence",
+                "Definition":"Refraining from further drug use"
+                },
+                {
+                "Term":"Addict",
+                "Definition":"A stigmatizing slang term for an individual with an addictive disorder"
+                },
+                {
+                "Term":"Addiction",
+                "Definition":"A repeated activity that continuously causes harm to oneself or others (e.g. a substance's continuous presence in the bloodstream)."
+                },
+                {
+                "Term":"Addiction Assessment",
+                "Definition":"A way to determine the prevalence of chemical dependency in a client or the extent of one's addiction (considers sociological, psychological, physical, and family factors, etc.)"
+                },
+                {
+                "Term":"Addiction Treatment",
+                "Definition":"Aims to reduce addiction"
+                },
+                {
+                "Term":"Addictive Personality",
+                "Definition":"A trait/traits that develops in response to drug use"
+                },
+                {
+                "Term":"Adverse Reaction",
+                "Definition":"A detrimental reaction to a drug (not the desired reaction)"
+                },
+                {
+                "Term":"Affinity",
+                "Definition":"The strength a drug has that allows it to bind to its receptor"
+                },
+                {
+                "Term":"Age at Onset",
+                "Definition":"The age at which one's addictive behavior began; an important factor in addiction assessment"
+                },
+                {
+                "Term":"Agonist",
+                "Definition":"A drug that activates a receptor in the brain"
+                },
+                {
+                "Term":"Alcoholics Anonymous",
+                "Definition":"A voluntary program concerned with helping alcoholics with recovery and continued sobriety"
+                },
+                {
+                "Term":"Antagonist",
+                "Definition":"A substance that can nullify another's effects (a drug that does not elicit a response)"
+                },
+                {
+                "Term":"Biofeedback",
+                "Definition":"Signal use to control physiological processes that are normally involuntary"
+                },
+                {
+                "Term":"Blood Alcohol Level/Concentration",
+                "Definition":"The concentration level of alcohol in the bloodstream (expressed as a percentage by weight)"
+                },
+                {
+                "Term":"Causal Factors",
+                "Definition":"Various antecedent conditions that lead to individual chemical dependency problems (e.g. conditioning, environment, genetics, etc.)"
+                },
+                {
+                "Term":"Ceiling Effect",
+                "Definition":"Occurs when the dosage of buprenorphine is increased beyond maximum levels and no differences result"
+                },
+                {
+                "Term":"Central Nervous System",
+                "Definition":"The brain and spinal cord"
+                },
+                {
+                "Term":"Certified Chemical Dependency Counselor",
+                "Definition":"Manages clients in chemical dependency programs to help with addiction recovery"
+                },
+                {
+                "Term":"Cirrhosis",
+                "Definition":"Chronic liver disease"
+                },
+                {
+                "Term":"Codependence",
+                "Definition":"A family member's or friend's suffering that is the result of the side effects of one's addiction; it occurs when one takes responsibility for another's actions and helps that person avoid facing his or her problems directly to maintain the relationship"
+                },
+                {
+                "Term":"Cold Turkey",
+                "Definition":"Abruptly quitting a drug by choice in order to try to quit long-term"
+                },
+                {
+                "Term":"Compulsion",
+                "Definition":"A physical behavior one repeats involuntarily that can be harmful (e.g., addiction)"
+                },
+                {
+                "Term":"Conditioning",
+                "Definition":"A behavioral change that results from an association between events"
+                },
+                {
+                "Term":"Craving",
+                "Definition":"A powerful and strong desire/urge for a substance; a symptom of the abnormal brain adaptions that result from addiction"
+                },
+                {
+                "Term":"Crisis Intervention",
+                "Definition":"The action taken when one's usual coping resources pose a threat to individual or family functioning"
+                },
+                {
+                "Term":"Cross-Dependence",
+                "Definition":"The ability of one drug to prevent the withdrawal symptoms of one's physical dependence on another"
+                },
+                {
+                "Term":"Cross-Tolerance",
+                "Definition":"Occurs when one's tolerance for one drug results in their lessened response to another"
+                },
+                {
+                "Term":"Denial",
+                "Definition":"One's failure to either admit or realize his or her addiction or to recognize and accept the harm it can cause"
+                },
+                {
+                "Term":"Depression",
+                "Definition":"One of the most frequent types of distress resulting from addiction; an ongoing state of sadness involving the inability to concentrate, inactivity, etc."
+                },
+                {
+                "Term":"Detoxification (Detox)",
+                "Definition":"The process of removing a toxic substance (e.g. a drug) from the body"
+                },
+                {
+                "Term":"Disease",
+                "Definition":"A condition featuring medically significant symptoms that often have a known cause"
+                },
+                {
+                "Term":"Disease Model",
+                "Definition":"A theory of alcoholism that considers the addiction a disease rather than a social or psychological issue."
+                },
+                {
+                "Term":"Dopamine",
+                "Definition":"A chemical produced naturally by the body; functions in the brain as a neurotransmitter to provide feelings of well-being"
+                },
+                {
+                "Term":"DSM-IV",
+                "Definition":"The handbook most often used for diagnosing mental disorders"
+                },
+                {
+                "Term":"DUI",
+                "Definition":"Stands for (driving under influence) (of alcohol or another illicit substance that impairs one's ability to drive)"
+                },
+                {
+                "Term":"DWI",
+                "Definition":"Stands for (driving while intoxicated)"
+                },
+                {
+                "Term":"Dysphoria",
+                "Definition":"The opposite of euphoria"
+                },
+                {
+                "Term":"Dysynergy",
+                "Definition":"An addiction's tendency to cause another (e.g. gateway drugs); an addicted person's tendency to combine substances"
+                },
+                {
+                "Term":"Enabling",
+                "Definition":"Helping an addicted person do things they can or should be doing for themselves; causes disease progression"
+                },
+                {
+                "Term":"Ethanol",
+                "Definition":"The beverage type (ethyl) of alcohol"
+                },
+                {
+                "Term":"Euphoria",
+                "Definition":"A pleasurable state of altered consciousness; one reason for the preference of one addictive behavior or substance over another"
+                },
+                {
+                "Term":"Evidence-based Treatment",
+                "Definition":"Scientifically validated treatment approaches"
+                },
+                {
+                "Term":"Excipient",
+                "Definition":"An inactive substance added to a drug to help bind the active ingredient"
+                },
+                {
+                "Term":"Fetal Alcohol Syndrome (FAS)",
+                "Definition":"Birth defects/abnormalities in babies of alcoholic and alcohol abusing mothers"
+                },
+                {
+                "Term":"Habit",
+                "Definition":"An outdated term for addiction/physical dependence"
+                },
+                {
+                "Term":"Harm Reduction",
+                "Definition":"Often the first stage of addiction treatment; reducing therapy instead of stopping the target behavior"
+                },
+                {
+                "Term":"Inflation",
+                "Definition":"An addiction behavior's tendency to slowly but surely increase in frequency"
+                },
+                {
+                "Term":"Intoxication",
+                "Definition":"A state of being drugged or poisoned; results from abuse of alcohol, barbiturates, toxic drugs, etc."
+                },
+                {
+                "Term":"Intrinsic Activity",
+                "Definition":"The extent to which a drug activates a receptor"
+                },
+                {
+                "Term":"Medical Model",
+                "Definition":"An addiction theory that considers addiction a medical rather than social issue"
+                },
+                {
+                "Term":"National Board of Addiction Examiners (NBAE)",
+                "Definition":"Provides certification for individuals in the addiction field"
+                },
+                {
+                "Term":"Negative Reinforcement",
+                "Definition":"Repetitive behavior to avoid something unpleasant"
+                },
+                {
+                "Term":"Neurotransmitter",
+                "Definition":"The natural chemical a neuron releases to communicate with or influence another"
+                },
+                {
+                "Term":"Obsession",
+                "Definition":"A mental behavior one repeats involuntarily that can be harmful (e.g., (needing) an alcoholic drink)"
+                },
+                {
+                "Term":"Partial Agonists",
+                "Definition":"Bind to and activate receptors to a lesser degree than full agonists"
+                },
+                {
+                "Term":"Physical Dependence",
+                "Definition":"The body's physiologic adaptation to a substance"
+                },
+                {
+                "Term":"Placebo",
+                "Definition":"A substance with no pharmacological elements that may elicit a reaction because of a patient's mindset"
+                },
+                {
+                "Term":"Polysubstance Abuse",
+                "Definition":"Concurrent abuse of more than one substance"
+                },
+                {
+                "Term":"Post-Acute Withdrawal Syndrome (PAWS)",
+                "Definition":"Withdrawal symptoms after initial acute withdrawal"
+                },
+                {
+                "Term":"Precipitated Withdrawal Syndrome",
+                "Definition":"Can occur when a patient on full-agonist opioids takes an antagonist"
+                },
+                {
+                "Term":"Recidivism",
+                "Definition":"One's return to a negative behavior (relapse) (e.g. drug use)"
+                },
+                {
+                "Term":"Recovery",
+                "Definition":"Reducing or ceasing substance abuse; often followed by one's personal life being turned around by way of a supportive environment"
+                },
+                {
+                "Term":"Recovery Rates",
+                "Definition":"The percentage of addicted persons undergoing treatment who partake in abstinence in their first year"
+                },
+                {
+                "Term":"Relapse",
+                "Definition":"Symptom recurrence after a period of sobriety or drug use cessation"
+                },
+                {
+                "Term":"Relapse Prevention",
+                "Definition":"A therapeutic process that interrupts believes and behaviors that result in lifestyle dysfunction"
+                },
+                {
+                "Term":"Remission",
+                "Definition":"A symptom-free period"
+                },
+                {
+                "Term":"Reversed Tolerance",
+                "Definition":"When a lower dose of a drug produces the same desired or observed effect that previously resulted only with higher dosages"
+                },
+                {
+                "Term":"Screening",
+                "Definition":"Measurement tool for the extent of one's addiction (e.g., self-completion questionnaire/life-history assessment)"
+                },
+                {
+                "Term":"Self-Help Group",
+                "Definition":"Group of individuals dealing with similar issues that meets to support each other and share helpful information (e.g. AA)"
+                },
+                {
+                "Term":"Side Effects",
+                "Definition":"Secondary effects of a drug; these are usually undesirable"
+                },
+                {
+                "Term":"Societal Denial",
+                "Definition":"Society's denial of the historical value of drug-induced pleasure and euphoria"
+                },
+                {
+                "Term":"Substance Abuse (Chemical Dependence)",
+                "Definition":"A maladaptive pattern of recurrent substance use that leads to impairment or distress that is clinically significant"
+                },
+                {
+                "Term":"Synergism",
+                "Definition":"The greater effect that results when one takes more than one drug simultaneously"
+                },
+                {
+                "Term":"Synthetic",
+                "Definition":"Not natural occurring"
+                },
+                {
+                "Term":"Therapeutic Community",
+                "Definition":"A setting where people with similar issues can meet to support each other's recovery"
+                },
+                {
+                "Term":"Toxicity",
+                "Definition":"A degree of poisonousness"
+                },
+                {
+                "Term":"Trigger",
+                "Definition":"Anything that results in psychological and then physical relapse"
+                },
+                {
+                "Term":"Urge-Peak",
+                "Definition":"A sudden, unpredictable increase in addiction cravings; they usually involve temporary mental unawareness (e.g. not realizing the amount of drinks one has had)"
+                },
+                {
+                "Term":"Urge-Peak Cycle",
+                "Definition":"Ongoing urge-peaks, usually followed by relapse"
+                },
+                {
+                "Term":"Urges",
+                "Definition":"Less powerful desires than cravings; can be suppressed by willpower"
+                },
+                {
+                "Term":"User",
+                "Definition":"Outdated term used to describe one who misuses alcohol or drugs"
+                },
+                {
+                "Term":"Withdrawal Symptoms",
+                "Definition":"Severe and excruciating physical and emotional symptoms that generally occur between 4 to 72 hours after opiate withdrawal (e.g., watery eyes, yawning, loss of appetite, panic, insomnia, vomiting, shaking, irritability, jitters, etc.)"
+                },
+                {
+                "Term":"Withdrawal",
+                "Definition":"The abrupt decrease in or removal of one's regular dosage of a psychoactive substance"
+                }
+                ],
+    "drugs":[
+                {
+                "Term":"Abstinence",
+                "Definition":"Refraining from further drug use"
+                },
+                {
+                "Term":"Acetaminophens",
+                "Definition":"Pain relievers (e.g. Tylenol) used to treat headaches, muscle aches, headaches, etc."
+                },
+                {
+                "Term":"Addict",
+                "Definition":"A stigmatizing slang term for an individual with an addictive disorder"
+                },
+                {
+                "Term":"Addiction",
+                "Definition":"A repeated activity that continuously causes harm to oneself or others (e.g. a substance's continuous presence in the bloodstream)."
+                },
+                {
+                "Term":"Addiction Assessment",
+                "Definition":"A way to determine the prevalence of chemical dependency in a client or the extent of one's addiction (considers sociological, psychological, physical, and family factors, etc.)"
+                },
+                {
+                "Term":"Addiction Treatment",
+                "Definition":"Aims to reduce addiction"
+                },
+                {
+                "Term":"Addictive Personality",
+                "Definition":"A trait/traits that develops in response to drug use"
+                },
+                {
+                "Term":"Adverse Reaction",
+                "Definition":"A detrimental reaction to a drug (not the desired reaction)"
+                },
+                {
+                "Term":"Affinity",
+                "Definition":"The strength a drug has that allows it to bind to its receptor"
+                },
+                {
+                "Term":"Age at Onset",
+                "Definition":"The age at which one's addictive behavior began; an important factor in addiction assessment"
+                },
+                {
+                "Term":"Agonist",
+                "Definition":"A drug that activates a receptor in the brain"
+                },
+                {
+                "Term":"Alkaloids",
+                "Definition":"Plant-produced organic compounds that are the active ingredients in many drugs"
+                },
+                {
+                "Term":"Amphetamine",
+                "Definition":"A behavioral stimulant; also known as pep pills"
+                },
+                {
+                "Term":"Analgesic",
+                "Definition":"Medication designed to treat pain"
+                },
+                {
+                "Term":"Antagonist",
+                "Definition":"A substance that can nullify another's effects (a drug that does not elicit a response)"
+                },
+                {
+                "Term":"Aspirin",
+                "Definition":"An anti-inflammatory agent used for pain relief"
+                },
+                {
+                "Term":"Barbituate",
+                "Definition":"A class of sedative-hypnotic compounds that are chemically related through a six-membered ring structure"
+                },
+                {
+                "Term":"Benzodiazepine",
+                "Definition":"A group of depressants used to induce sleep, prevent seizures, produce sedation, relieve anxiety and muscle spasms, etc."
+                },
+                {
+                "Term":"Bioavailability",
+                "Definition":"A drug's ability to enter the body"
+                },
+                {
+                "Term":"Biofeedback",
+                "Definition":"Signal use to control physiological processes that are normally involuntary"
+                },
+                {
+                "Term":"Buprenorphine",
+                "Definition":"A semi-synthetic partial agonist opioid derived from the baine; used for pain relief (e.g. Buprenex)"
+                },
+                {
+                "Term":"Caffeine",
+                "Definition":"An alkaloid that acts as a diuretic and a stimulant (found in coffee, tea, etc.)"
+                },
+                {
+                "Term":"Carcinogen",
+                "Definition":"A cancer-causing chemical agent"
+                },
+                {
+                "Term":"Causal Factors",
+                "Definition":"Various antecedent conditions that lead to individual chemical dependency problems (e.g. conditioning, environment, genetics, etc.)"
+                },
+                {
+                "Term":"Ceiling Effect",
+                "Definition":"Occurs when the dosage of buprenorphine is increased beyond maximum levels and no differences result"
+                },
+                {
+                "Term":"Central Nervous System",
+                "Definition":"The brain and spinal cord"
+                },
+                {
+                "Term":"Clinical Opiate Withdrawal Scale",
+                "Definition":"Used to determine the severity of opioid withdrawal"
+                },
+                {
+                "Term":"Codeine",
+                "Definition":"The pain-relieving sedative agent contained in opium"
+                },
+                {
+                "Term":"Codependence",
+                "Definition":"A family member's or friend's suffering that is the result of the side effects of one's addiction; it occurs when one takes responsibility for another's actions and helps that person avoid facing his or her problems directly to maintain the relationship"
+                },
+                {
+                "Term":"Cold Turkey",
+                "Definition":"Abruptly quitting a drug by choice in order to try to quit long-term"
+                },
+                {
+                "Term":"Compulsion",
+                "Definition":"A physical behavior one repeats involuntarily that can be harmful (e.g., addiction)"
+                },
+                {
+                "Term":"Conditioning",
+                "Definition":"A behavioral change that results from an association between events"
+                },
+                {
+                "Term":"Craving",
+                "Definition":"A powerful and strong desire/urge for a substance; a symptom of the abnormal brain adaptions that result from addiction"
+                },
+                {
+                "Term":"Crisis Intervention",
+                "Definition":"The action taken when one's usual coping resources pose a threat to individual or family functioning"
+                },
+                {
+                "Term":"Cross-Dependence",
+                "Definition":"The ability of one drug to prevent the withdrawal symptoms of one's physical dependence on another"
+                },
+                {
+                "Term":"Cross-Tolerance",
+                "Definition":"Occurs when one's tolerance for one drug results in their lessened response to another"
+                },
+                {
+                "Term":"D.O.C.",
+                "Definition":"This stands for drug of choice."
+                },
+                {
+                "Term":"Denial",
+                "Definition":"One's failure to either admit or realize his or her addiction or to recognize and accept the harm it can cause"
+                },
+                {
+                "Term":"Depressants",
+                "Definition":"Sedatives that act on the CNS (e.g. to treat anxiety, high blood pressure, tension, etc.)"
+                },
+                {
+                "Term":"Depression",
+                "Definition":"One of the most frequent types of distress resulting from addiction; an ongoing state of sadness involving the inability to concentrate, inactivity, etc."
+                },
+                {
+                "Term":"Detoxification (Detox)",
+                "Definition":"The process of removing a toxic substance (e.g. a drug) from the body"
+                },
+                {
+                "Term":"Disease",
+                "Definition":"A condition featuring medically significant symptoms that often have a known cause"
+                },
+                {
+                "Term":"Disease Model",
+                "Definition":"A theory of alcoholism that considers the addiction a disease rather than a social or psychological issue."
+                },
+                {
+                "Term":"Doctor Shopping",
+                "Definition":"Occurs when a patient requests care simultaneously from multiple physicians without their knowledge in order to receive higher amounts of medications"
+                },
+                {
+                "Term":"Dopamine",
+                "Definition":"A chemical produced naturally by the body; functions in the brain as a neurotransmitter to provide feelings of well-being"
+                },
+                {
+                "Term":"Downers",
+                "Definition":"Another name for depressants; these drugs can cause low moods (e.g. alcohol, barbiturates, tranquilizers, etc.)"
+                },
+                {
+                "Term":"Drug Misuse",
+                "Definition":"One's use of a drug not specifically recommended or prescribed when there are more practical alternatives; when drug use puts a user or others in danger"
+                },
+                {
+                "Term":"Drug Tolerance",
+                "Definition":"A progressive state of decreased responsiveness to a drug"
+                },
+                {
+                "Term":"DSM-IV",
+                "Definition":"The handbook most often used for diagnosing mental disorders"
+                },
+                {
+                "Term":"Dual-Diagnosis",
+                "Definition":"Mental patients ' condition when they are also addicted to any mind-altering drug"
+                },
+                {
+                "Term":"DUI",
+                "Definition":"Stands for (driving under influence) (of alcohol or another illicit substance that impairs one's ability to drive)"
+                },
+                {
+                "Term":"Dysphoria",
+                "Definition":"The opposite of euphoria"
+                },
+                {
+                "Term":"Dysynergy",
+                "Definition":"An addiction's tendency to cause another (e.g. gateway drugs); an addicted person's tendency to combine substances"
+                },
+                {
+                "Term":"Enabling",
+                "Definition":"Helping an addicted person do things they can or should be doing for themselves; causes disease progression"
+                },
+                {
+                "Term":"Endogenous Opioid",
+                "Definition":"The opioids that the body naturally produces in order to help us tolerate pain"
+                },
+                {
+                "Term":"Endorphins",
+                "Definition":"Opium-like substances produced by the brain; natural painkillers"
+                },
+                {
+                "Term":"Euphoria",
+                "Definition":"A pleasurable state of altered consciousness; one reason for the preference of one addictive behavior or substance over another"
+                },
+                {
+                "Term":"Evidence-based Treatment",
+                "Definition":"Scientifically validated treatment approaches"
+                },
+                {
+                "Term":"Excipient",
+                "Definition":"An inactive substance added to a drug to help bind the active ingredient"
+                },
+                {
+                "Term":"Fetal Drug Syndrome (FDS)",
+                "Definition":"Birth defects/abnormalities in babies of drug abusing mothers"
+                },
+                {
+                "Term":"Food and Drug Administration (FDA)",
+                "Definition":"Administers federal laws regarding, for example, the safety and effectiveness of drugs"
+                },
+                {
+                "Term":"Habit",
+                "Definition":"An outdated term for addiction/physical dependence"
+                },
+                {
+                "Term":"Hallucinogen",
+                "Definition":"Chemical substance that distorts perceptions, sometimes resulting in delusions or hallucinations"
+                },
+                {
+                "Term":"Harm Reduction",
+                "Definition":"Often the first stage of addiction treatment; reducing therapy instead of stopping the target behavior"
+                },
+                {
+                "Term":"Heroin",
+                "Definition":"A full opioid agonist"
+                },
+                {
+                "Term":"Hydrocodone",
+                "Definition":"An effective narcotic analgesic first developed as a cough medication"
+                },
+                {
+                "Term":"Illegal/Illicit Drugs",
+                "Definition":"Drugs that are illegal to produce, use, and sell"
+                },
+                {
+                "Term":"Induction",
+                "Definition":"Beginning phase of buprenorphine treatment"
+                },
+                {
+                "Term":"Inflation",
+                "Definition":"An addiction behavior's tendency to slowly but surely increase in frequency"
+                },
+                {
+                "Term":"Intoxication",
+                "Definition":"A state of being drugged or poisoned; results from abuse of alcohol, barbiturates, toxic drugs, etc."
+                },
+                {
+                "Term":"Intrinsic Activity",
+                "Definition":"The extent to which a drug activates a receptor"
+                },
+                {
+                "Term":"Legal Drugs",
+                "Definition":"Everyday drugs not for medical use (e.g. alcohol, caffeine, carbohydrates, nicotine, etc.)"
+                },
+                {
+                "Term":"Maintenance",
+                "Definition":"Stabilization of a patient who is indefinitely on a drug's lowest effective dose"
+                },
+                {
+                "Term":"Medical Model",
+                "Definition":"An addiction theory that considers addiction a medical rather than social issue"
+                },
+                {
+                "Term":"Metabolism (of drugs)",
+                "Definition":"The chemical and physical reactions carried out by the body to prepare for a drug's execution"
+                },
+                {
+                "Term":"Methadone",
+                "Definition":"A long-acting opiate (synthetically produced)"
+                },
+                {
+                "Term":"Monotherapy",
+                "Definition":"Therapy using one drug"
+                },
+                {
+                "Term":"Morphine",
+                "Definition":"A major sedative/pain reliever found in opium"
+                },
+                {
+                "Term":"Mu Agonist",
+                "Definition":"A drug that stimulates physiologic activity on mu opioid cell receptors"
+                },
+                {
+                "Term":"Mu Opioid Receptor",
+                "Definition":"Nerve cell receptor that mediates opioid addiction and tolerance through drug-induced activity"
+                },
+                {
+                "Term":"Naloxone",
+                "Definition":"An opioid antagonist that blocks the effects of opioid agonists"
+                },
+                {
+                "Term":"Naltrexone",
+                "Definition":"A narcotic antagonist that blocks the effects of opioids"
+                },
+                {
+                "Term":"Narcotic",
+                "Definition":"A drug that produces sleep/drowsiness and that also relieves pain while being potentially dependence producing"
+                },
+                {
+                "Term":"National Board of Addiction Examiners (NBAE)",
+                "Definition":"Provides certification for individuals in the addiction field"
+                },
+                {
+                "Term":"Negative Reinforcement",
+                "Definition":"Repetitive behavior to avoid something unpleasant"
+                },
+                {
+                "Term":"Neurotransmitter",
+                "Definition":"The natural chemical a neuron releases to communicate with or influence another"
+                },
+                {
+                "Term":"Nicotine",
+                "Definition":"Tobacco's extremely toxic main active ingredient (causes negative CNS stimulation)"
+                },
+                {
+                "Term":"Nonopioid",
+                "Definition":"A drug that doesn 't activate opioid receptors"
+                },
+                {
+                "Term":"Off-Label Use",
+                "Definition":"Physician-approved use of a drug for uses other than those stated on its label"
+                },
+                {
+                "Term":"Opiate",
+                "Definition":"The poppy's natural ingredients and their derivatives (opium, morphine, codeine, and heroin)"
+                },
+                {
+                "Term":"Opioids",
+                "Definition":"Opium's synthetic form"
+                },
+                {
+                "Term":"Opium",
+                "Definition":"One of the most popular drugs; contained in muscle-relaxers, sleeping pills, and tranquilizers"
+                },
+                {
+                "Term":"Over-the-Counter Drugs",
+                "Definition":"Legal non-prescription drugs"
+                },
+                {
+                "Term":"Oxycodone",
+                "Definition":"A medicine used for relief of moderate to high pain"
+                },
+                {
+                "Term":"Painkillers",
+                "Definition":"Analgesic substances (opioids and nonopioids)"
+                },
+                {
+                "Term":"Partial Agonists",
+                "Definition":"Bind to and activate receptors to a lesser degree than full agonists"
+                },
+                {
+                "Term":"Pharmacology",
+                "Definition":"Scientific branch dealing with the study of drugs and their actions"
+                },
+                {
+                "Term":"Physical Dependence",
+                "Definition":"The body's physiologic adaptation to a substance"
+                },
+                {
+                "Term":"Placebo",
+                "Definition":"A substance with no pharmacological elements that may elicit a reaction because of a patient's mindset"
+                },
+                {
+                "Term":"Polysubstance Abuse",
+                "Definition":"Concurrent abuse of more than one substance"
+                },
+                {
+                "Term":"Post-Acute Withdrawal Syndrome (PAWS)",
+                "Definition":"Withdrawal symptoms after initial acute withdrawal"
+                },
+                {
+                "Term":"Precipitated Withdrawal Syndrome",
+                "Definition":"Can occur when a patient on full-agonist opioids takes an antagonist"
+                },
+                {
+                "Term":"Prescription Drugs",
+                "Definition":"Only available by a physician's order"
+                },
+                {
+                "Term":"Psychedelic Drugs",
+                "Definition":"Produce an intensely pleasurable mental state"
+                },
+                {
+                "Term":"Psychoactive Drug",
+                "Definition":"A mind- and behavior-altering substance"
+                },
+                {
+                "Term":"Psychological Dependence",
+                "Definition":"One's compulsion to use a psychologically based drug for pleasure; may lead to drug misuse"
+                },
+                {
+                "Term":"Psychopharmacology",
+                "Definition":"The study of how drugs affect consciousness, mood, sensation, etc."
+                },
+                {
+                "Term":"Psychotropic Drug",
+                "Definition":"Any drug that acts on one's psychic experience or mood behavior"
+                },
+                {
+                "Term":"Rapid Detox",
+                "Definition":"Anesthesia-assisted detoxification (injection of high doses of an opiate antagonist, followed by an infusion of naloxone)"
+                },
+                {
+                "Term":"Receptor",
+                "Definition":"Protein on a target cell's membrane or cytoplasm with which a drug interacts"
+                },
+                {
+                "Term":"Recidivism",
+                "Definition":"One's return to a negative behavior (relapse) (e.g. drug use)"
+                },
+                {
+                "Term":"Recovery",
+                "Definition":"Reducing or ceasing substance abuse; often followed by one's personal life being turned around by way of a supportive environment"
+                },
+                {
+                "Term":"Recovery Rates",
+                "Definition":"The percentage of addicted persons undergoing treatment who partake in abstinence in their first year"
+                },
+                {
+                "Term":"Relapse",
+                "Definition":"Symptom recurrence after a period of sobriety or drug use cessation"
+                },
+                {
+                "Term":"Relapse Prevention",
+                "Definition":"A therapeutic process that interrupts believes and behaviors that result in lifestyle dysfunction"
+                },
+                {
+                "Term":"Remission",
+                "Definition":"A symptom-free period"
+                },
+                {
+                "Term":"Reversed Tolerance",
+                "Definition":"When a lower dose of a drug produces the same desired or observed effect that previously resulted only with higher dosages"
+                },
+                {
+                "Term":"Screening",
+                "Definition":"Measurement tool for the extent of one's addiction (e.g., self-completion questionnaire/life-history assessment)"
+                },
+                {
+                "Term":"Self-Help Group",
+                "Definition":"Group of individuals dealing with similar issues that meets to support each other and share helpful information (e.g. AA)"
+                },
+                {
+                "Term":"Side Effects",
+                "Definition":"Secondary effects of a drug; these are usually undesirable"
+                },
+                {
+                "Term":"Societal Denial",
+                "Definition":"Society's denial of the historical value of drug-induced pleasure and euphoria"
+                },
+                {
+                "Term":"Steroids",
+                "Definition":"A group of cyclic, solid unsaturated alcohols (e.g. cholesterol)"
+                },
+                {
+                "Term":"Stimulant",
+                "Definition":"Drugs that act on the CNS, resulting in alertness, excitation, and wakefulness"
+                },
+                {
+                "Term":"Straight-Edge",
+                "Definition":"A term for people who don 't use drugs"
+                },
+                {
+                "Term":"Sublingual",
+                "Definition":"Drugs that enter the blood through the membranes under the tongue"
+                },
+                {
+                "Term":"Substance Abuse (Chemical Dependence)",
+                "Definition":"A maladaptive pattern of recurrent substance use that leads to impairment or distress that is clinically significant"
+                },
+                {
+                "Term":"Synergism",
+                "Definition":"The greater effect that results when one takes more than one drug simultaneously"
+                },
+                {
+                "Term":"Synthetic",
+                "Definition":"Not natural occurring"
+                },
+                {
+                "Term":"Talc",
+                "Definition":"Dangerous substance used in manufacturing pharmaceuticals"
+                },
+                {
+                "Term":"Therapeutic Community",
+                "Definition":"A setting where people with similar issues can meet to support each other's recovery"
+                },
+                {
+                "Term":"Therapeutic Dependence",
+                "Definition":"Patients ' tendency to demonstrate drug-seeking behaviors because they fear withdrawal symptoms"
+                },
+                {
+                "Term":"Titration",
+                "Definition":"The gradual adjustment of the amount of a drug"
+                },
+                {
+                "Term":"Tolerance",
+                "Definition":"Condition in which one must increase their use of a drug for it to have the same effect"
+                },
+                {
+                "Term":"Toxicity",
+                "Definition":"A degree of poisonousness"
+                },
+                {
+                "Term":"Tranquilizers",
+                "Definition":"A type of drug that can help relieve the symptoms of severe psychosis"
+                },
+                {
+                "Term":"Trigger",
+                "Definition":"Anything that results in psychological and then physical relapse"
+                },
+                {
+                "Term":"Ups or Uppers",
+                "Definition":"Drugs that produce a euphoric effect (e.g. stimulants, amphetamines)"
+                },
+                {
+                "Term":"Urge-Peak",
+                "Definition":"A sudden, unpredictable increase in addiction cravings; they usually involve temporary mental unawareness (e.g. not realizing the amount of drinks one has had)"
+                },
+                {
+                "Term":"Urge-Peak Cycle",
+                "Definition":"Ongoing urge-peaks, usually followed by relapse"
+                },
+                {
+                "Term":"Urges",
+                "Definition":"Less powerful desires than cravings; can be suppressed by willpower"
+                },
+                {
+                "Term":"User",
+                "Definition":"Outdated term used to describe one who misuses alcohol or drugs"
+                },
+                {
+                "Term":"Withdrawal Symptoms",
+                "Definition":"Severe and excruciating physical and emotional symptoms that generally occur between 4 to 72 hours after opiate withdrawal (e.g., watery eyes, yawning, loss of appetite, panic, insomnia, vomiting, shaking, irritability, jitters, etc.)"
+                },
+                {
+                "Term":"Withdrawal Syndrome",
+                "Definition":"Combined reactions or behaviors that result from the abrupt cessation of a drug one is dependent on"
+                },
+                {
+                "Term":"Withdrawal",
+                "Definition":"The abrupt decrease in or removal of one's regular dosage of a psychoactive substance"
+                }
+                ]
 }

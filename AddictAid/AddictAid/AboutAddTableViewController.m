@@ -16,12 +16,15 @@
 
 @property (nonatomic, strong) NSArray * glossaryList;
 @property (nonatomic, strong) NSDictionary * glossaryDict;
+@property (nonatomic, strong) NSDictionary * jsonObject;
 
 @end
 
 @implementation AboutAddTableViewController
 
-@synthesize backgroundImageView ,sections, glossaryList, glossaryDict;
+@synthesize backgroundImageView ,sections, glossaryList, glossaryDict, jsonObject;
+
+int definitions = 0;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -50,16 +53,45 @@
     [revealButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
     self.navigationItem.leftBarButtonItem = revealButtonItem;
     
+    UIView *buttonView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 52.0f, 50.0f)];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.backgroundColor = [UIColor clearColor];
+    button.frame = buttonView.frame;
+    [button setTitle:@"Define" forState:UIControlStateNormal];
+    [button setTintColor:[UIColor colorWithRed:0.0/255.0 green:173.0/255.0 blue:239.0/255.0 alpha:1]];
+    button.autoresizesSubviews = YES;
+    button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
+    [button addTarget:self action:@selector(showActionSheet:) forControlEvents:UIControlEventTouchUpInside];
+    [buttonView addSubview:button];
+    
+    UIBarButtonItem *actionBarButton = [[UIBarButtonItem alloc] initWithCustomView:buttonView];
+    self.navigationItem.rightBarButtonItem = actionBarButton;
+    
     self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
     self.tableView.sectionIndexColor = [UIColor whiteColor];
     
+    [self getDefinitions];
+}
+
+- (void)getDefinitions
+{
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"glossary" ofType:@"json"];
     
     NSData *JSONData = [[NSData alloc] initWithContentsOfFile:filePath];
-    NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:JSONData options:kNilOptions error:nil];
+    jsonObject = [NSJSONSerialization JSONObjectWithData:JSONData options:kNilOptions error:nil];
     
-    glossaryList = [jsonObject glossaryArray];
+    if (definitions == 0){
+         glossaryList = [jsonObject glossaryArray];
+    } else if (definitions == 1) {
+        glossaryList = [jsonObject alcoholArray];
+    } else if (definitions == 2) {
+        glossaryList = [jsonObject drugsArray];
+    }
     
+    [self sortLetters];
+}
+
+- (void)sortLetters {
     sections = [[NSMutableDictionary alloc] init];
     BOOL found;
     for (NSDictionary *temp in glossaryList){
@@ -83,6 +115,43 @@
     }
     
     [self.tableView reloadData];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+    if ([buttonTitle isEqualToString:@"Alcohol"]) {
+        definitions = 1;
+        [self getDefinitions];
+    }
+    if ([buttonTitle isEqualToString:@"Drugs"]) {
+        definitions = 2;
+        [self getDefinitions];
+    }
+    if ([buttonTitle isEqualToString:@"Both"]) {
+        definitions = 0;
+        [self getDefinitions];
+    }
+    if ([buttonTitle isEqualToString:@"Cancel Button"]) {
+        NSLog(@"Cancel pressed --> Cancel ActionSheet");
+    }
+    
+}
+
+- (void)showActionSheet:(id)sender
+{
+    NSString * actionSheetTitle = @"Display Definitions";
+    NSString * button1 = @"Alcohol";
+    NSString * button2 = @"Drugs";
+    NSString * button3 = @"Both";
+    NSString * cancelTitle = @"Cancel";
+    UIActionSheet * actionSheet = [[UIActionSheet alloc]
+                                   initWithTitle:actionSheetTitle
+                                   delegate:self
+                                   cancelButtonTitle:cancelTitle
+                                   destructiveButtonTitle:nil
+                                   otherButtonTitles:button1, button2, button3, nil];
+    [actionSheet showInView:self.view];
 }
 
 - (void)didReceiveMemoryWarning

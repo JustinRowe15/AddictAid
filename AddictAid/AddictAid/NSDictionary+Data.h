@@ -12,6 +12,8 @@
 
 //From definitions JSON array
 -(NSArray *)glossaryArray;
+-(NSArray *)alcoholArray;
+-(NSArray *)drugsArray;
 -(NSString *)termsString;
 -(NSString *)definitionsString;
 

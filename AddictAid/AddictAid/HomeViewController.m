@@ -23,6 +23,7 @@
 
 @synthesize soberLabel, goalsTextView, goalsTitleLabel, currentUser, goals, username, profileId;
 
+UIBackgroundTaskIdentifier counterTask;
 static NSString *dateString;
 static UITextView *dateTextView;
 static NSString *timeString;
@@ -173,18 +174,17 @@ NSTimer *timer;
                                               otherButtonTitles:@"Go", nil];
         [alert show];
     } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reset Sobriety Watch"
-                                                        message:@"Congrats! Today's Your First Day!"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sobriety Watch"
+                                                        message:@"Reset or Stop Sobriety Watch?"
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
-                                              otherButtonTitles:@"Reset", nil];
+                                              otherButtonTitles:@"Reset", @"Stop", nil];
         [alert show];
     }
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1){
-        [HomeViewController resetTimer];
         
         NSDate *today = [NSDate date];
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -196,30 +196,57 @@ NSTimer *timer;
             userProfileSave[@"startSobrietyDate"] = dateString;
             [userProfileSave saveEventually];
         }];
+        [[UIApplication sharedApplication] endBackgroundTask:counterTask];
+        
+        [self resetTimer];
+    } else if (buttonIndex == 2){
+        NSLog(@"Time ended.");
+        [[UIApplication sharedApplication] endBackgroundTask:counterTask];
+        [timer invalidate];
+        dateTextView.text = @"";
+        days = 0;
     }
 }
 
-+ (void)resetTimer
+- (void)resetTimer
 {
+    [self startCounter];
+}
+
+- (void)startCounter {
+    [timer invalidate];
+    
+    counterTask = [[UIApplication sharedApplication]
+                   beginBackgroundTaskWithExpirationHandler:^{
+                       
+                   }];
+    
     days = 0;
     
-    timeString = [[NSString alloc] initWithFormat:@"0 Days as of %@", dateString];
+    if (days == 0){
+        timeString = [[NSString alloc] initWithFormat:@"0 Days as of %@", dateString];
+    }
+    
     dateTextView.text = timeString;
     
-    [timer invalidate];
-    timer = [NSTimer scheduledTimerWithTimeInterval:86400 target:self selector:@selector(dayCounter) userInfo:nil repeats:YES];
+    timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(dayCounter) userInfo:nil repeats:YES];
 }
 
-+ (void)dayCounter
+- (void)dayCounter
 {
+    NSLog(@"Day Counter Active");
+    
     days++;
-    if (days == 1){
+    
+    if (days == 0){
+        timeString = [[NSString alloc] initWithFormat:@"0 Days as of %@", dateString];
+    } else if (days == 1) {
         timeString = [[NSString alloc] initWithFormat:@"%d Day as of %@", days, dateString];
-        dateTextView.text = timeString;
-    } else {
+    } else if (days > 1) {
         timeString = [[NSString alloc] initWithFormat:@"%d Days as of %@", days, dateString];
-        dateTextView.text = timeString;
     }
+    
+    dateTextView.text = timeString;
 }
 
 @end

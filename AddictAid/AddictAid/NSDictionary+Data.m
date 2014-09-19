@@ -15,6 +15,16 @@
     return [self objectForKey:@"glossary"];
 }
 
+-(NSArray *)alcoholArray
+{
+    return [self objectForKey:@"alcohol"];
+}
+
+-(NSArray *)drugsArray
+{
+    return [self objectForKey:@"drugs"];
+}
+
 -(NSString *)termsString
 {
     return [self objectForKey:@"Term"];
