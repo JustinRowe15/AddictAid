@@ -150,7 +150,7 @@ CGRect rect;
     [locationTextField setEnabled:NO];
     [locationTextField setDelegate:self];
     
-    if (locationTextField.text == nil){
+    if ([locationTextField.text isEqual:@""]){
         [locationTextField setPlaceholder:@"Ex. Denver, Colorado"];
     } else {
         [locationTextField setText:[NSString stringWithFormat:@"%@", location]];
@@ -178,7 +178,7 @@ CGRect rect;
     [emailAddressTextField setEnabled:NO];
     [emailAddressTextField setDelegate:self];
     
-    if (emailAddressTextField.text == nil){
+    if ([emailAddressTextField.text isEqual:@""]){
         [emailAddressTextField setPlaceholder:@"Ex. john.doe@email.com"];
     } else {
         [emailAddressTextField setText:[NSString stringWithFormat:@"%@", emailAddress]];
