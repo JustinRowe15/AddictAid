@@ -44,11 +44,7 @@ NSTimer *timer;
 {
     [super viewDidLoad];
     
-    UIBackgroundTaskIdentifier bgTask;
-    UIApplication  *app = [UIApplication sharedApplication];
-    bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
-        [app endBackgroundTask:bgTask];
-    }];
+    currentUser = [PFUser currentUser];
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
     {
@@ -73,12 +69,13 @@ NSTimer *timer;
     [revealButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
     self.navigationItem.leftBarButtonItem = revealButtonItem;
     
-    UIBarButtonItem *startButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(startTimer)];
-    [startButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
-    self.navigationItem.rightBarButtonItem = startButtonItem;
+    if (currentUser){
+        UIBarButtonItem *startButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(startTimer)];
+        [startButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
+        self.navigationItem.rightBarButtonItem = startButtonItem;
+    }
     
     //Getting User Data From Parse
-    currentUser = [PFUser currentUser];
     username = [currentUser username];
     goals = currentUser[@"userGoals"];
     
@@ -229,7 +226,7 @@ NSTimer *timer;
     
     dateTextView.text = timeString;
     
-    timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(dayCounter) userInfo:nil repeats:YES];
+    timer = [NSTimer scheduledTimerWithTimeInterval:86400 target:self selector:@selector(dayCounter) userInfo:nil repeats:YES];
 }
 
 - (void)dayCounter

@@ -9,7 +9,7 @@
 #import "SidebarTableViewController.h"
 #import "SWRevealViewController.h"
 #import "HomeViewController.h"
-#import "MeetingsTableViewController.h"
+#import "DaysTableViewController.h"
 #import "AboutAddTableViewController.h"
 #import "QuotesTableViewController.h"
 #import "ContactUsViewController.h"
@@ -199,9 +199,9 @@
 	}
 	else if (row == 1)
 	{
-        if ( ![frontNavigationController.topViewController isKindOfClass:[MeetingsTableViewController class]] )
+        if ( ![frontNavigationController.topViewController isKindOfClass:[DaysTableViewController class]] )
         {
-			MeetingsTableViewController *meetingsTableViewController = [[MeetingsTableViewController alloc] init];
+			DaysTableViewController *meetingsTableViewController = [[DaysTableViewController alloc] init];
             meetingsTableViewController.title = @"Meetings";
 			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:meetingsTableViewController];
 			[revealController setFrontViewController:navigationController animated:YES];

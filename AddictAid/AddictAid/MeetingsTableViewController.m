@@ -7,7 +7,6 @@
 //
 
 #import "MeetingsTableViewController.h"
-#import "SWRevealViewController.h"
 #import "NSDictionary+Data.h"
 #import "MBProgressHUD.h"
 
@@ -20,7 +19,7 @@
 
 @implementation MeetingsTableViewController
 
-@synthesize backgroundImageView, sections, locationDict, locationList;
+@synthesize backgroundImageView, sections, locationDict, locationList, daySelected;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -37,15 +36,6 @@
     
     backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background5.png"]];
     [self.tableView setBackgroundView:backgroundImageView];
-    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    
-    SWRevealViewController *revealController = [self revealViewController];
-    [revealController panGestureRecognizer];
-    [revealController tapGestureRecognizer];
-    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reveal-icon.png"]
-                                                                         style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
-    [revealButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
-    self.navigationItem.leftBarButtonItem = revealButtonItem;
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"locations" ofType:@"json"];
     
@@ -84,17 +74,37 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [[sections allKeys] count];
+    return 1;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [[sections allKeys] objectAtIndex:section];
+    return daySelected;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString *sectionTitle = [self tableView:tableView titleForHeaderInSection:section];
+    if (sectionTitle == nil) {
+        return nil;
+    }
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.frame = CGRectMake(0, 0, 320, 20);
+    label.backgroundColor = [UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:0.7f];
+    label.textColor = [UIColor colorWithRed:225.0f/255.0f green:219.0f/255.0f blue:129.0f/255.0f alpha:1.0f];
+    label.font = [UIFont fontWithName:@"Avenir-Light" size:15];
+    label.text = [NSString stringWithFormat:@"    %@", sectionTitle]; 
+    
+    UIView *view = [[UIView alloc] init];
+    [view addSubview:label];
+    
+    return view;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[sections valueForKey:[[sections allKeys] objectAtIndex:section]] count];
+    return locationList.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

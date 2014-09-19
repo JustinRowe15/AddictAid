@@ -64,6 +64,7 @@
 		0B9E31C519A9257C00C06D82 /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E31C419A9257C00C06D82 /* SidebarTableViewController.m */; };
 		0B9E31C819A926F700C06D82 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9E31C719A926F700C06D82 /* Bolts.framework */; };
 		0B9E31CD19A92A0000C06D82 /* Avenir_35_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B9E31CC19A92A0000C06D82 /* Avenir_35_Light.ttf */; };
+		0BE0B12D19CBC4C7001D7DED /* DaysTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0B12C19CBC4C7001D7DED /* DaysTableViewController.m */; };
 		0BE6048A19AD6BCE00BDEE58 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6048919AD6BCE00BDEE58 /* HomeViewController.m */; };
 		0BE6048D19AD715800BDEE58 /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BE6048B19AD715800BDEE58 /* reveal-icon.png */; };
 		0BE6049119AD74AB00BDEE58 /* background4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BE6048F19AD74AB00BDEE58 /* background4.png */; };
@@ -172,6 +173,8 @@
 		0B9E31C419A9257C00C06D82 /* SidebarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTableViewController.m; sourceTree = "<group>"; };
 		0B9E31C719A926F700C06D82 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		0B9E31CC19A92A0000C06D82 /* Avenir_35_Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Avenir_35_Light.ttf; sourceTree = "<group>"; };
+		0BE0B12B19CBC4C7001D7DED /* DaysTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaysTableViewController.h; sourceTree = "<group>"; };
+		0BE0B12C19CBC4C7001D7DED /* DaysTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaysTableViewController.m; sourceTree = "<group>"; };
 		0BE6048819AD6BCE00BDEE58 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		0BE6048919AD6BCE00BDEE58 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		0BE6048B19AD715800BDEE58 /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
@@ -319,6 +322,8 @@
 		0B0F205819AFF510005A9D02 /* Other View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0BE0B12B19CBC4C7001D7DED /* DaysTableViewController.h */,
+				0BE0B12C19CBC4C7001D7DED /* DaysTableViewController.m */,
 				0B9E31C019A9252A00C06D82 /* MeetingsTableViewController.h */,
 				0B9E31C119A9252A00C06D82 /* MeetingsTableViewController.m */,
 				0BE6049319AD76CA00BDEE58 /* AboutAddTableViewController.h */,
@@ -570,6 +575,7 @@
 				0B9C66A819BBE63D00CC3D6A /* ContactUserViewController.m in Sources */,
 				0B8EAD4D19A9185200A1C8C0 /* AFSecurityPolicy.m in Sources */,
 				0BE6049519AD76CA00BDEE58 /* AboutAddTableViewController.m in Sources */,
+				0BE0B12D19CBC4C7001D7DED /* DaysTableViewController.m in Sources */,
 				0BE6049E19AD771800BDEE58 /* ContactUsViewController.m in Sources */,
 				0B8EAD4B19A9185200A1C8C0 /* AFHTTPSessionManager.m in Sources */,
 				0B8EAD4F19A9185200A1C8C0 /* AFURLRequestSerialization.m in Sources */,
