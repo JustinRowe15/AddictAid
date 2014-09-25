@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MeetingsTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+@interface MeetingsTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 
 @property (strong, nonatomic) NSMutableDictionary *sections;
 @property (strong, nonatomic) UIImageView *backgroundImageView;
-
 @property (strong, nonatomic) NSString *daySelected;
+@property (strong, nonatomic) UISearchBar *searchBar;
+@property (strong, nonatomic) UISearchDisplayController *searchDisplayController;
 
 @end

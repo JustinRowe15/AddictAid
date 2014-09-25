@@ -90,23 +90,11 @@ CGRect rect;
     interests = currentUser[@"userInterests"];
     goals = currentUser[@"userGoals"];
     
-    [self setProfileView];
+    NSLog(@"CURRENT USER: %@", username);
+    NSLog(@"EMAIL ADDRESS: %@", emailAddress);
+    NSLog(@"LOCATION: %@", location);
     
-    PFQuery *query = [PFQuery queryWithClassName:@"profilesList"];
-    [query whereKey:@"profileUserName" equalTo:username];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            NSLog(@"Successfully retrieved %d profile.", objects.count);
-            for (PFObject *object in objects) {
-                profileId = object.objectId;
-                switchOn = object[@"profilePublic"];
-                NSLog(@"Switch On Is: %@", switchOn);
-            }
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+    [self setProfileView];
 }
 
 - (void)setProfileView
@@ -150,7 +138,7 @@ CGRect rect;
     [locationTextField setEnabled:NO];
     [locationTextField setDelegate:self];
     
-    if ([locationTextField.text isEqual:@""]){
+    if ([location isEqual:@""]){
         [locationTextField setPlaceholder:@"Ex. Denver, Colorado"];
     } else {
         [locationTextField setText:[NSString stringWithFormat:@"%@", location]];
@@ -178,7 +166,7 @@ CGRect rect;
     [emailAddressTextField setEnabled:NO];
     [emailAddressTextField setDelegate:self];
     
-    if ([emailAddressTextField.text isEqual:@""]){
+    if ([emailAddress isEqual:@""]){
         [emailAddressTextField setPlaceholder:@"Ex. john.doe@email.com"];
     } else {
         [emailAddressTextField setText:[NSString stringWithFormat:@"%@", emailAddress]];
@@ -240,11 +228,29 @@ CGRect rect;
     [self.view addSubview:publicLabel];
     
     profileSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(248, 522, 0, 0)];
-    if ([switchOn isEqual:@"YES"]){
-        [profileSwitch setOn:YES animated:YES];
-    } else {
-        [profileSwitch setOn:NO animated:YES];
-    }
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"profilesList"];
+    [query whereKey:@"profileUserName" equalTo:username];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            NSLog(@"Successfully retrieved %d profile.", objects.count);
+            for (PFObject *object in objects) {
+                profileId = object.objectId;
+                switchOn = object[@"profilePublic"];
+                NSLog(@"Switch On Is: %@", switchOn);
+                
+                if ([switchOn isEqual:@"YES"]){
+                    [[self profileSwitch] setOn:YES animated:YES];
+                } else {
+                    [[self profileSwitch] setOn:NO animated:YES];
+                }
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
     [profileSwitch addTarget:self action:@selector(changeSwitch:) forControlEvents:UIControlEventValueChanged];
     [profileSwitch setEnabled:NO];
     [self.view addSubview:profileSwitch];
@@ -273,14 +279,6 @@ CGRect rect;
 
 - (void)saveProfile
 {
-    self.navigationItem.rightBarButtonItem = editButtonItem;
-    
-    [locationTextField setEnabled:NO];
-    [emailAddressTextField setEnabled:NO];
-    [interestsTextView setEditable:NO];
-    [goalsTextView setEditable:NO];
-    [profileSwitch setEnabled:NO];
-    
     if (emailAddressTextField.text.length == 0){
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Please enter an email address." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
         [alertView show];
@@ -303,14 +301,22 @@ CGRect rect;
             NSLog(@"Switch On = %@", switchOn);
             [userProfileSave saveEventually];
         }];
+        
+        self.navigationItem.rightBarButtonItem = editButtonItem;
+        
+        [locationTextField setEnabled:NO];
+        [emailAddressTextField setEnabled:NO];
+        [interestsTextView setEditable:NO];
+        [goalsTextView setEditable:NO];
+        [profileSwitch setEnabled:NO];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Profile Updated"
+                                                        message:@"Profile Successfully Saved!"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
     }
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Profile Updated"
-                                                    message:@"Profile Successfully Saved!"
-                                                   delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
 }
 
 -(void)textViewDidBeginEditing:(UITextView *)sender

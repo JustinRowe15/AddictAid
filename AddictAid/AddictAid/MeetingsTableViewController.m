@@ -12,14 +12,19 @@
 
 @interface MeetingsTableViewController ()
 
-@property (nonatomic, strong) NSArray * locationList;
-@property (nonatomic, strong) NSDictionary * locationDict;
+@property (nonatomic, strong) NSArray *locationList;
+@property (nonatomic, strong) NSArray *searchData;
+@property (nonatomic, strong) NSMutableDictionary *locationDict;
+@property (nonatomic, strong) NSString *groupName;
+@property (nonatomic, strong) NSString *time;
+@property (nonatomic, strong) NSString *address;
+@property (nonatomic, strong) NSString *city;
 
 @end
 
 @implementation MeetingsTableViewController
 
-@synthesize backgroundImageView, sections, locationDict, locationList, daySelected;
+@synthesize backgroundImageView, sections, locationDict, locationList, daySelected, groupName, time, address, city, searchBar, searchDisplayController, searchData;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -37,32 +42,38 @@
     backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background5.png"]];
     [self.tableView setBackgroundView:backgroundImageView];
     
+    searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    searchBar.delegate = self;
+    searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+    
+    self.searchDisplayController.delegate = self;
+    self.searchDisplayController.searchResultsDataSource = self;
+    self.searchDisplayController.searchResultsDelegate = self;
+    self.tableView.tableHeaderView = searchBar;
+    
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"locations" ofType:@"json"];
     
     NSData *JSONData = [[NSData alloc] initWithContentsOfFile:filePath];
     NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:JSONData options:kNilOptions error:nil];
-    locationList = [jsonObject locationsArray];
-    
-    sections = [[NSMutableDictionary alloc] init];
-    BOOL found;
-    for (NSDictionary *temp in locationList){
-        NSString *c = [temp objectForKey:@"Day"];
-        found = NO;
-        for (NSString *str in [sections allKeys]) {
-            if ([str isEqualToString:c]) {
-                found = YES;
-            }
-        }
-        if (!found) {
-            [sections setValue:[[NSMutableArray alloc] init] forKey:c];
-        }
-    }
-    for (NSDictionary *temp in locationList){
-        [[sections objectForKey:[temp objectForKey:@"Day"]] addObject:temp];
-    }
-    
+    locationList = [jsonObject objectForKey:[NSString stringWithFormat:@"%@", daySelected]];
     [self.tableView reloadData];
 }
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"City contains[c] %@", searchText];
+    searchData = [locationList filteredArrayUsingPredicate:resultPredicate];
+    NSLog(@"Search data: %@", searchData);
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    
+    return YES;}
 
 - (void)didReceiveMemoryWarning
 {
@@ -77,34 +88,14 @@
     return 1;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return daySelected;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    NSString *sectionTitle = [self tableView:tableView titleForHeaderInSection:section];
-    if (sectionTitle == nil) {
-        return nil;
-    }
-    
-    UILabel *label = [[UILabel alloc] init];
-    label.frame = CGRectMake(0, 0, 320, 20);
-    label.backgroundColor = [UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:0.7f];
-    label.textColor = [UIColor colorWithRed:225.0f/255.0f green:219.0f/255.0f blue:129.0f/255.0f alpha:1.0f];
-    label.font = [UIFont fontWithName:@"Avenir-Light" size:15];
-    label.text = [NSString stringWithFormat:@"    %@", sectionTitle]; 
-    
-    UIView *view = [[UIView alloc] init];
-    [view addSubview:label];
-    
-    return view;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return locationList.count;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [searchData count];
+        
+    } else {
+        return [locationList count];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -117,7 +108,18 @@
     static NSString *cellIdentifier = @"Cell";
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    locationDict = [[self.sections valueForKey:[[self.sections allKeys] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+    NSMutableDictionary *dict;
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        dict = [searchData objectAtIndex:indexPath.row];
+    } else {
+        dict = [locationList objectAtIndex:indexPath.row];
+    }
+    
+    groupName = [dict groupNameString];
+    time = [dict timeString];
+    address = [dict addressString];
+    city = [dict cityString];
     
     [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
 	
@@ -131,8 +133,8 @@
         cell.backgroundColor = [UIColor clearColor];
 	}
     
-    [cell.textLabel setText:[NSString stringWithFormat:@"%@ at %@",[locationDict groupNameString], [locationDict timeString]]];
-    [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@, %@",[locationDict addressString],[locationDict cityString]]];
+    [cell.textLabel setText:[NSString stringWithFormat:@"%@ at %@", groupName, time]];
+    [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@, %@", address, city]];
     
     return cell;
 }

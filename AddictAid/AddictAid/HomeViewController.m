@@ -24,7 +24,7 @@
 @synthesize soberLabel, goalsTextView, goalsTitleLabel, currentUser, goals, username, profileId;
 
 UIBackgroundTaskIdentifier counterTask;
-static NSString *dateString;
+static NSString* dateString;
 static UITextView *dateTextView;
 static NSString *timeString;
 

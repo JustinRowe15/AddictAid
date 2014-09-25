@@ -1,5 +1,5 @@
 {
-"locations":[
+"sunday":[
   {
     "Day":"Sunday",
     "Time":"6:30 AM",
@@ -1091,7 +1091,8 @@
     "Group Name":"10 PM Last Call",
     "Address":"1311 York St., 322-3674",
     "City":"Denver"
-  },
+  }],
+"monday":[
   {
     "Day":"Monday",
     "Time":"5:30 AM",
@@ -2232,7 +2233,8 @@
     "Group Name":"10 PM Last Call",
     "Address":"1311 York St., 322-3674",
     "City":"Denver"
-  },
+  }],
+"tuesday":[
   {
     "Day":"Tuesday",
     "Time":"5:30 AM",
@@ -3387,7 +3389,8 @@
     "Group Name":"10 PM Last Call",
     "Address":"1311 York St., 322-3674",
     "City":"Denver"
-  },
+  }],
+"wednesday":[
   {
     "Day":"Wednesday",
     "Time":"5:30 AM",
@@ -4640,7 +4643,8 @@
     "Group Name":"10 PM Last Call",
     "Address":"1311 York St., 322-3674",
     "City":"Denver"
-  },
+  }],
+"thursday":[
   {
     "Day":"Thursday",
     "Time":"5:30 AM",
@@ -5823,7 +5827,8 @@
     "Group Name":"10 PM Last Call",
     "Address":"1311 York St., 322-3674",
     "City":"Denver"
-  },
+  }],
+"friday":[
   {
     "Day":"Friday",
     "Time":"5:30 AM",
@@ -7013,7 +7018,8 @@
     "Group Name":"Ten Or So",
     "Address":"3489 W. 72nd Ave. #104",
     "City":"Westminster"
-  },
+  }],
+"saturday":[
   {
     "Day":"Saturday",
     "Time":"6:30 AM",

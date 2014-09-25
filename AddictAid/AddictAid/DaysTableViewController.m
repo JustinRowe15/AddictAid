@@ -105,37 +105,37 @@
     
     if (row == 0){
         MeetingsTableViewController *meetingsTableViewController = [[MeetingsTableViewController alloc]init];
-        meetingsTableViewController.daySelected = @"Sunday";
+        meetingsTableViewController.daySelected = @"sunday";
         meetingsTableViewController.title = @"Sunday";
         [self.navigationController pushViewController:meetingsTableViewController animated:YES];
     } else if (row == 1){
         MeetingsTableViewController *meetingsTableViewController = [[MeetingsTableViewController alloc]init];
-        meetingsTableViewController.daySelected = @"Monday";
+        meetingsTableViewController.daySelected = @"monday";
         meetingsTableViewController.title = @"Monday";
         [self.navigationController pushViewController:meetingsTableViewController animated:YES];
     } else if (row == 2){
         MeetingsTableViewController *meetingsTableViewController = [[MeetingsTableViewController alloc]init];
-        meetingsTableViewController.daySelected = @"Tuesday";
+        meetingsTableViewController.daySelected = @"tuesday";
         meetingsTableViewController.title = @"Tuesday";
         [self.navigationController pushViewController:meetingsTableViewController animated:YES];
     } else if (row == 3){
         MeetingsTableViewController *meetingsTableViewController = [[MeetingsTableViewController alloc]init];
-        meetingsTableViewController.daySelected = @"Wednesday";
+        meetingsTableViewController.daySelected = @"wednesday";
         meetingsTableViewController.title = @"Wednesday";
         [self.navigationController pushViewController:meetingsTableViewController animated:YES];
     } else if (row == 4){
         MeetingsTableViewController *meetingsTableViewController = [[MeetingsTableViewController alloc]init];
-        meetingsTableViewController.daySelected = @"Thursday";
+        meetingsTableViewController.daySelected = @"thursday";
         meetingsTableViewController.title = @"Thursday";
         [self.navigationController pushViewController:meetingsTableViewController animated:YES];
     } else if (row == 5){
         MeetingsTableViewController *meetingsTableViewController = [[MeetingsTableViewController alloc]init];
-        meetingsTableViewController.daySelected = @"Friday";
+        meetingsTableViewController.daySelected = @"friday";
         meetingsTableViewController.title = @"Friday";
         [self.navigationController pushViewController:meetingsTableViewController animated:YES];
     } else if (row == 6){
         MeetingsTableViewController *meetingsTableViewController = [[MeetingsTableViewController alloc]init];
-        meetingsTableViewController.daySelected = @"Saturday";
+        meetingsTableViewController.daySelected = @"saturday";
         meetingsTableViewController.title = @"Saturday";
         [self.navigationController pushViewController:meetingsTableViewController animated:YES];
     }
