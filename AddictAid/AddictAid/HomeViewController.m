@@ -172,7 +172,7 @@ NSTimer *timer;
 
 - (void)startTimer
 {
-    if (days == 0 && timeString == nil){
+    if (days <= 0  && timeString == nil){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Start Sobriety Watch"
                                                         message:@"Congrats! Today's Your First Day!"
                                                        delegate:self
