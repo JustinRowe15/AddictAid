@@ -7,7 +7,7 @@
 //
 
 #define kOFFSET_FOR_KEYBOARD_INTERESTS 60.0
-#define kOFFSET_FOR_KEYBOARD_GOALS 210.0
+#define kOFFSET_FOR_KEYBOARD_GOALS 150.0
 
 #import "MyProfileViewController.h"
 #import "SWRevealViewController.h"
@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSString *interests;
 @property (nonatomic, strong) NSString *goals;
 @property (nonatomic, strong) NSString *profileId;
+@property (nonatomic, strong) NSString *startDate;
 @property (nonatomic, strong) NSString *switchOn;
 @property (nonatomic, strong) PFUser *currentUser;
 
@@ -30,7 +31,7 @@
 
 @implementation MyProfileViewController
 
-@synthesize profileEmailAddressLabel, profileInterestsLabel, profileLocationLabel, profileUsernameLabel, usernameTextField, interestsTextView, locationTextField, emailAddressTextField, username, emailAddress, location, interests, currentUser, saveButtonItem, editButtonItem, profileGoalsLabel, goalsTextView, goals, profileId, profileSwitch, switchOn;
+@synthesize profileEmailAddressLabel, profileInterestsLabel, profileLocationLabel, profileUsernameLabel, usernameTextField, interestsTextView, locationTextField, emailAddressTextField, username, emailAddress, location, interests, currentUser, saveButtonItem, editButtonItem, profileGoalsLabel, goalsTextView, goals, profileId, profileSwitch, switchOn, startDateTextField, datePicker, startDate;
 
 BOOL interestsBool;
 CGRect rect;
@@ -89,10 +90,12 @@ CGRect rect;
     location = currentUser[@"userCurrentLocation"];
     interests = currentUser[@"userInterests"];
     goals = currentUser[@"userGoals"];
+    startDate = currentUser[@"userStartDate"];
     
     NSLog(@"CURRENT USER: %@", username);
     NSLog(@"EMAIL ADDRESS: %@", emailAddress);
     NSLog(@"LOCATION: %@", location);
+    NSLog(@"START DATE: %@", startDate);
     
     [self setProfileView];
 }
@@ -206,11 +209,11 @@ CGRect rect;
     [goalsLabel setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:goalsLabel];
     
-    UIView * profileGoalsLabelView = [[UIView alloc] initWithFrame:CGRectMake(20.0f, 348.0f, 280.0f, 158.0f)];
+    UIView * profileGoalsLabelView = [[UIView alloc] initWithFrame:CGRectMake(20.0f, 348.0f, 280.0f, 76.0f)];
     [profileGoalsLabelView setBackgroundColor:[UIColor colorWithRed:83.0f/255.0f green:83.0f/255.0f blue:83.0f/255.0f alpha:0.7f]];
     [self.view addSubview:profileGoalsLabelView];
     
-    goalsTextView = [[UITextView alloc] initWithFrame:CGRectMake(4.0f, 0.0f, 276.0f, 158.0f)];
+    goalsTextView = [[UITextView alloc] initWithFrame:CGRectMake(4.0f, 0.0f, 272.0f, 76.0f)];
     [goalsTextView setEditable:NO];
     [goalsTextView setDelegate:self];
     [goalsTextView setText:[NSString stringWithFormat:@"%@", goals]];
@@ -218,6 +221,28 @@ CGRect rect;
     [goalsTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
     [goalsTextView setBackgroundColor:[UIColor clearColor]];
     [profileGoalsLabelView addSubview:goalsTextView];
+    
+    UILabel *startDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 426.0f, 110.0f, 14.0f)];
+    [startDateLabel setText:@"Sobriety Start Date:"];
+    [startDateLabel setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
+    [startDateLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:12]];
+    [startDateLabel setTextAlignment:NSTextAlignmentLeft];
+    [startDateLabel setBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview:startDateLabel];
+    
+    UIView * startDateTextFieldView = [[UIView alloc] initWithFrame:CGRectMake(20.0f, 442.0f, 280.0f, 38.0f)];
+    [startDateTextFieldView setBackgroundColor:[UIColor colorWithRed:83.0f/255.0f green:83.0f/255.0f blue:83.0f/255.0f alpha:0.7f]];
+    [self.view addSubview:startDateTextFieldView];
+    
+    startDateTextField = [[UITextField alloc] initWithFrame:CGRectMake(8.0f, 0.0f, 272.0f, 38.0f)];
+    [startDateTextField setBorderStyle:UITextBorderStyleNone];
+    [startDateTextField setEnabled:NO];
+    [startDateTextField setDelegate:self];
+    [startDateTextField setText:[NSString stringWithFormat:@"%@", startDate]];
+    [startDateTextField setTextColor:[UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
+    [startDateTextField setFont:[UIFont fontWithName:@"Avenir-Light" size:18]];
+    [startDateTextField setBackgroundColor:[UIColor clearColor]];
+    [startDateTextFieldView addSubview:startDateTextField];
     
     UILabel *publicLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 528.0f, 200.0f, 20.0f)];
     [publicLabel setText:@"Make Profile Public"];
@@ -274,22 +299,37 @@ CGRect rect;
     [emailAddressTextField setEnabled:YES];
     [interestsTextView setEditable:YES];
     [goalsTextView setEditable:YES];
+    [startDateTextField setEnabled:YES];
     [profileSwitch setEnabled:YES];
 }
 
 - (void)saveProfile
 {
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd 00:00:00 +0000"];
+    NSDate *date1 = [dateFormat dateFromString:startDateTextField.text];
+    NSDate *date2 = [NSDate date];
+    NSTimeInterval secondsBetween = [date2 timeIntervalSinceDate:date1];
+    
     if (emailAddressTextField.text.length == 0){
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Please enter an email address." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
         [alertView show];
     } else if (locationTextField.text.length == 0){
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Please enter your location." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
         [alertView show];
+    } else if (secondsBetween < 0){
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sobriety start date cannot be in the future." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+        [alertView show];
     } else if (emailAddressTextField.text.length && locationTextField.text.length > 0) {
+        
+        NSString *timeFormat = @"00:00:00 +0000";
+        NSString *dateText = [NSString stringWithFormat:@"%@ %@", startDateTextField.text, timeFormat];
+        
         [currentUser setObject:emailAddressTextField.text forKey:@"userEmailAddress"];
         [currentUser setObject:locationTextField.text forKey:@"userCurrentLocation"];
         [currentUser setObject:interestsTextView.text forKey:@"userInterests"];
         [currentUser setObject:goalsTextView.text forKey:@"userGoals"];
+        [currentUser setObject:startDateTextField.text forKey:@"userStartDate"];
         [currentUser saveEventually];
         
         PFQuery *query = [PFQuery queryWithClassName:@"profilesList"];
@@ -298,7 +338,7 @@ CGRect rect;
             userProfileSave[@"profileInterests"] = interestsTextView.text;
             userProfileSave[@"profileGoals"] = goalsTextView.text;
             userProfileSave[@"profilePublic"] = switchOn;
-            NSLog(@"Switch On = %@", switchOn);
+            userProfileSave[@"profileSobrietyStartDate"] = dateText;
             [userProfileSave saveEventually];
         }];
         
@@ -379,7 +419,21 @@ CGRect rect;
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    if ([textField isEqual:startDateTextField])
+    {
+        datePicker = [[UIDatePicker alloc] init];
+        datePicker.datePickerMode = UIDatePickerModeDate;
+        [datePicker addTarget:self action:@selector(incidentDateValueChanged:) forControlEvents:UIControlEventValueChanged];
+        textField.inputView = datePicker;
+    }
+    
     return YES;
+}
+
+- (IBAction)incidentDateValueChanged:(id)sender{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    startDateTextField.text = [dateFormatter stringFromDate:[datePicker date]];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

@@ -172,6 +172,7 @@
     user[@"userCurrentLocation"] = @"";
     user[@"userInterests"] = @"";
     user[@"userGoals"] = @"";
+    user[@"userStartDate"] = @"";
     
     PFObject *userProfileSave = [PFObject objectWithClassName:@"profilesList"];
     userProfileSave[@"friendsName"] = @"";
@@ -182,7 +183,7 @@
     userProfileSave[@"profileGoals"] = @"";
     userProfileSave[@"sponsorName"] = @"";
     userProfileSave[@"sponsorNumber"] = @"";
-    userProfileSave[@"startSobrietyDate"] = @"";
+    userProfileSave[@"profileSobrietyStartDate"] = @"";
     [userProfileSave saveEventually];
     
 	[user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

@@ -16,12 +16,13 @@
 @property (nonatomic, strong) NSString *goals;
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *profileId;
+@property (nonatomic, strong) NSString *dateText;
 
 @end
 
 @implementation HomeViewController
 
-@synthesize soberLabel, goalsTextView, goalsTitleLabel, currentUser, goals, username, profileId;
+@synthesize soberLabel, goalsTextView, goalsTitleLabel, currentUser, goals, username, profileId, sobrietyDate, date1, dateText;
 
 UIBackgroundTaskIdentifier counterTask;
 static NSString* dateString;
@@ -87,14 +88,22 @@ NSTimer *timer;
                 NSLog(@"Successfully retrieved %d profile.", objects.count);
                 for (PFObject *object in objects) {
                     profileId = object.objectId;
-                    dateString = object[@"startSobrietyDate"];
+                    sobrietyDate = object[@"profileSobrietyStartDate"];
+                    NSLog(@"Sobriety Date: %@", sobrietyDate);
+                    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+                    [dateFormat setDateFormat:@"yyyy-MM-dd 00:00:00 +0000"];
+                    date1 = [dateFormat dateFromString:sobrietyDate];
+                    NSDate *date2 = [NSDate date];
+                    NSTimeInterval secondsBetween = [date2 timeIntervalSinceDate:date1];
+                    
+                    days = secondsBetween / 86400;
+                    NSLog(@"Days: %d", days);
                 }
             } else {
                 // Log details of the failure
                 NSLog(@"Error: %@ %@", error, [error userInfo]);
             }
         }];
-
     }
     
     UIView * soberLabelView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, 50.0f)];
@@ -163,14 +172,21 @@ NSTimer *timer;
 
 - (void)startTimer
 {
-    if (days == 0){
+    if (days == 0 && timeString == nil){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Start Sobriety Watch"
                                                         message:@"Congrats! Today's Your First Day!"
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                               otherButtonTitles:@"Go", nil];
         [alert show];
-    } else {
+    } else if (days != 0 && timeString == nil){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Start Sobriety Watch"
+                                                        message:@"Congrats! Keep it going!"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"Go", nil];
+        [alert show];
+    } else if (timeString != nil) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sobriety Watch"
                                                         message:@"Reset or Stop Sobriety Watch?"
                                                        delegate:self
@@ -186,11 +202,21 @@ NSTimer *timer;
         NSDate *today = [NSDate date];
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"MMM dd yyyy"];
-        dateString = [dateFormat stringFromDate:today];
+        
+        NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc] init];
+        [dateFormat1 setDateFormat:@"yyyy-MM-dd 00:00:00 +0000"];
+        
+        if (days == 0){
+            dateString = [dateFormat stringFromDate:today];
+            dateText = [dateFormat1 stringFromDate:today];
+        } else {
+            dateString = [dateFormat stringFromDate:date1];
+            dateText = [dateFormat1 stringFromDate:date1];
+        }
         
         PFQuery *query = [PFQuery queryWithClassName:@"profilesList"];
         [query getObjectInBackgroundWithId:profileId block:^(PFObject *userProfileSave, NSError *error) {
-            userProfileSave[@"startSobrietyDate"] = dateString;
+            userProfileSave[@"profileSobrietyStartDate"] = dateText;
             [userProfileSave saveEventually];
         }];
         [[UIApplication sharedApplication] endBackgroundTask:counterTask];
@@ -201,7 +227,25 @@ NSTimer *timer;
         [[UIApplication sharedApplication] endBackgroundTask:counterTask];
         [timer invalidate];
         dateTextView.text = @"";
+        timeString = nil;
         days = 0;
+        
+        NSDate *today = [NSDate date];
+        NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc] init];
+        [dateFormat1 setDateFormat:@"yyyy-MM-dd 00:00:00 +0000"];
+        dateText = [dateFormat1 stringFromDate:today];
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"profilesList"];
+        [query getObjectInBackgroundWithId:profileId block:^(PFObject *userProfileSave, NSError *error) {
+            userProfileSave[@"profileSobrietyStartDate"] = dateText;
+            [userProfileSave saveEventually];
+        }];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSString *dateText2 = [dateFormatter stringFromDate:today];
+        [currentUser setObject:dateText2 forKey:@"userStartDate"];
+        [currentUser saveEventually];
     }
 }
 
@@ -218,10 +262,12 @@ NSTimer *timer;
                        
                    }];
     
-    days = 0;
-    
     if (days == 0){
         timeString = [[NSString alloc] initWithFormat:@"0 Days as of %@", dateString];
+    } else if (days == 1) {
+        timeString = [[NSString alloc] initWithFormat:@"%d Day as of %@", days, dateString];
+    } else if (days > 1) {
+        timeString = [[NSString alloc] initWithFormat:@"%d Days as of %@", days, dateString];
     }
     
     dateTextView.text = timeString;
@@ -231,8 +277,6 @@ NSTimer *timer;
 
 - (void)dayCounter
 {
-    NSLog(@"Day Counter Active");
-    
     days++;
     
     if (days == 0){

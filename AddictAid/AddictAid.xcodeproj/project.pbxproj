@@ -72,6 +72,7 @@
 		0BE6049519AD76CA00BDEE58 /* AboutAddTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6049419AD76CA00BDEE58 /* AboutAddTableViewController.m */; };
 		0BE6049819AD76DA00BDEE58 /* QuotesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6049719AD76DA00BDEE58 /* QuotesTableViewController.m */; };
 		0BE6049E19AD771800BDEE58 /* ContactUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6049D19AD771800BDEE58 /* ContactUsViewController.m */; };
+		0BE9D55519D4EC02000BF875 /* MeetingsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9D55419D4EC02000BF875 /* MeetingsDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +187,8 @@
 		0BE6049719AD76DA00BDEE58 /* QuotesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuotesTableViewController.m; sourceTree = "<group>"; };
 		0BE6049C19AD771800BDEE58 /* ContactUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUsViewController.h; sourceTree = "<group>"; };
 		0BE6049D19AD771800BDEE58 /* ContactUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUsViewController.m; sourceTree = "<group>"; };
+		0BE9D55319D4EC02000BF875 /* MeetingsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingsDetailViewController.h; sourceTree = "<group>"; };
+		0BE9D55419D4EC02000BF875 /* MeetingsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetingsDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,6 +329,8 @@
 				0BE0B12C19CBC4C7001D7DED /* DaysTableViewController.m */,
 				0B9E31C019A9252A00C06D82 /* MeetingsTableViewController.h */,
 				0B9E31C119A9252A00C06D82 /* MeetingsTableViewController.m */,
+				0BE9D55319D4EC02000BF875 /* MeetingsDetailViewController.h */,
+				0BE9D55419D4EC02000BF875 /* MeetingsDetailViewController.m */,
 				0BE6049319AD76CA00BDEE58 /* AboutAddTableViewController.h */,
 				0BE6049419AD76CA00BDEE58 /* AboutAddTableViewController.m */,
 				0B99959D19AFB98B002F95D6 /* DefinitionDetailViewController.h */,
@@ -557,6 +562,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B8EAD4919A9185200A1C8C0 /* AFHTTPRequestOperation.m in Sources */,
+				0BE9D55519D4EC02000BF875 /* MeetingsDetailViewController.m in Sources */,
 				0BE6049819AD76DA00BDEE58 /* QuotesTableViewController.m in Sources */,
 				0B8501E219BB84B2008AD9A9 /* MyProfileViewController.m in Sources */,
 				0B99959C19AFA2B3002F95D6 /* NSDictionary+Data.m in Sources */,

@@ -13,5 +13,7 @@
 @property (nonatomic, strong) UILabel *soberLabel;
 @property (nonatomic, strong) UILabel *goalsTitleLabel;
 @property (nonatomic, strong) UITextView *goalsTextView;
+@property (nonatomic, strong) NSString *sobrietyDate;
+@property (nonatomic, strong) NSDate *date1;
 
 @end

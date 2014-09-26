@@ -19,9 +19,11 @@
 @property (nonatomic, strong) UITextField *usernameTextField;
 @property (nonatomic, strong) UITextField *locationTextField;
 @property (nonatomic, strong) UITextField *emailAddressTextField;
+@property (nonatomic, strong) UITextField *startDateTextField;
 @property (nonatomic, strong) UITextView *interestsTextView;
 @property (nonatomic, strong) UITextView *goalsTextView;
 
 @property (nonatomic, strong) UISwitch *profileSwitch;
+@property (nonatomic, strong) UIDatePicker *datePicker;
 
 @end

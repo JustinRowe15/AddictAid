@@ -7,6 +7,7 @@
 //
 
 #import "MeetingsTableViewController.h"
+#import "MeetingsDetailViewController.h"
 #import "NSDictionary+Data.h"
 #import "MBProgressHUD.h"
 
@@ -63,7 +64,6 @@
 {
     NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"City contains[c] %@", searchText];
     searchData = [locationList filteredArrayUsingPredicate:resultPredicate];
-    NSLog(@"Search data: %@", searchData);
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
@@ -137,6 +137,29 @@
     [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@, %@", address, city]];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSMutableDictionary *dict;
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        dict = [searchData objectAtIndex:indexPath.row];
+    } else {
+        dict = [locationList objectAtIndex:indexPath.row];
+    }
+    
+    if (self.searchDisplayController.active) {
+        MeetingsDetailViewController *meetingsDetailViewController = [[MeetingsDetailViewController alloc]init];
+        meetingsDetailViewController.selectedMeeting = [NSString stringWithFormat:@"%@ starts at %@ at %@ %@", [dict groupNameString], [dict timeString], [dict addressString], [dict cityString]];
+        meetingsDetailViewController.title = [dict groupNameString];
+        [self.navigationController pushViewController:meetingsDetailViewController animated:YES];
+    } else {
+        MeetingsDetailViewController *meetingsDetailViewController = [[MeetingsDetailViewController alloc]init];
+        meetingsDetailViewController.selectedMeeting = [NSString stringWithFormat:@"%@ starts at %@ at %@ %@", [dict groupNameString], [dict timeString], [dict addressString], [dict cityString]];
+        meetingsDetailViewController.title = [NSString stringWithFormat:@"%@", [dict groupNameString]];
+        [self.navigationController pushViewController:meetingsDetailViewController animated:YES];
+    }
 }
 
 @end
