@@ -130,7 +130,7 @@ NSTimer *timer;
     } else {
         dateTextView = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, 114.0f, 320.0f, 160.0f)];
         [dateTextView setTextColor:[UIColor colorWithRed:225.0f/255.0f green:219.0f/255.0f blue:129.0f/255.0f alpha:1.0f]];
-        [dateTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:48]];
+        [dateTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:42]];
         [dateTextView setBackgroundColor:[UIColor clearColor]];
         [dateTextView setTextAlignment:NSTextAlignmentCenter];
         [dateTextView setEditable:NO];

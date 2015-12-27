@@ -72,7 +72,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"%d", quotesList.count);
+    NSLog(@"%lu", (unsigned long)quotesList.count);
     return quotesList.count;
 }
 

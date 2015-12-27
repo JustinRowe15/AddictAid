@@ -258,7 +258,7 @@ CGRect rect;
     [query whereKey:@"profileUserName" equalTo:username];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            NSLog(@"Successfully retrieved %d profile.", objects.count);
+            NSLog(@"Successfully retrieved %lu profile.", (unsigned long)objects.count);
             for (PFObject *object in objects) {
                 profileId = object.objectId;
                 switchOn = object[@"profilePublic"];
