@@ -18,6 +18,7 @@
 @property (strong, nonatomic) UIViewController *viewController;
 @property (nonatomic, strong) CLLocation * currentLocation;
 @property (nonatomic, assign) CLLocationAccuracy filterDistance;
+
 @property (strong, nonatomic) LoginViewController * loginViewController;
 @property (strong, nonatomic) SWRevealViewController * revealViewController;
 

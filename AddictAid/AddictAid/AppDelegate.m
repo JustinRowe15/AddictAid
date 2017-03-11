@@ -15,9 +15,10 @@ static NSString * const defaultsLocationKey = @"currentLocation";
 #import "HomeViewController.h"
 #import "SidebarTableViewController.h"
 #import "Constants.h"
-#import <Parse/Parse.h>
+#import "AWSMobileClient.h"
 
 @interface AppDelegate()<SWRevealViewControllerDelegate>
+
 @end
 
 @implementation AppDelegate
@@ -29,9 +30,8 @@ static NSString * const defaultsLocationKey = @"currentLocation";
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    //Load Parse application ID into database for analytics tracking
-    [Parse setApplicationId:@"nQdJZ7nnfvI7BVXFdv9vnSPMIn8bfj7VKq4xDk7c"
-                  clientKey:@"l5mSFdBZqCCGyUSWQ6qZi2YuWbgSkTgYqqqtGdez"];
+    return [[AWSMobileClient sharedInstance] didFinishLaunching:application
+                                                    withOptions:launchOptions];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
@@ -52,20 +52,16 @@ static NSString * const defaultsLocationKey = @"currentLocation";
 		self.filterDistance = 3000 * kAAFeetToMeters;
 	}
     
-    //Check to see if user is logged in
-	PFUser *currentUser = [PFUser currentUser];
-	if (currentUser) {
-		// User is logged in.  Skip straight to the main view.
-		[self presentMainViewController];
-	} else {
-		// Not logged in.  Go to the welcome screen and have them log in or create an account.
-		[self presentLoginViewController];
-	}
-    
-    //Tracking AddictAid analytics in Parse
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return [[AWSMobileClient sharedInstance] withApplication:application
+                                                     withURL:url
+                                       withSourceApplication:sourceApplication
+                                              withAnnotation:annotation];
 }
 
 - (void)presentLoginViewController;
@@ -129,7 +125,7 @@ static NSString * const defaultsLocationKey = @"currentLocation";
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [[AWSMobileClient sharedInstance] applicationDidBecomeActive:application];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

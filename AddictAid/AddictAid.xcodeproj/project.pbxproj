@@ -23,6 +23,18 @@
 		0B0AAE5819A90F0B00C8674D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B0AAE5719A90F0B00C8674D /* MapKit.framework */; };
 		0B0F205719AFF485005A9D02 /* quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B0F205619AFF485005A9D02 /* quotes.json */; };
 		0B0F205B19B001EB005A9D02 /* QuoteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F205A19B001EB005A9D02 /* QuoteDetailViewController.m */; };
+		0B48E3D81E7479B600BDD343 /* AWSConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B48E3D41E7479B600BDD343 /* AWSConfiguration.m */; };
+		0B48E3D91E7479B600BDD343 /* AWSMobileClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B48E3D61E7479B600BDD343 /* AWSMobileClient.m */; };
+		0B48E3DA1E7479B600BDD343 /* AWSMobileHubHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B48E3D71E7479B600BDD343 /* AWSMobileHubHelper.framework */; };
+		0B48E3E31E7479E600BDD343 /* AWSCognitoIdentityProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B48E3DC1E7479E600BDD343 /* AWSCognitoIdentityProvider.framework */; };
+		0B48E3E41E7479E600BDD343 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B48E3DD1E7479E600BDD343 /* AWSCore.framework */; };
+		0B48E3E51E7479E600BDD343 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B48E3DE1E7479E600BDD343 /* AWSS3.framework */; };
+		0B48E3E61E7479E600BDD343 /* Amazon_Software_License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0B48E3E01E7479E600BDD343 /* Amazon_Software_License.txt */; };
+		0B48E3E71E7479E600BDD343 /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B48E3E11E7479E600BDD343 /* AWSCognito.framework */; };
+		0B48E3E81E7479E600BDD343 /* NOTICE in Resources */ = {isa = PBXBuildFile; fileRef = 0B48E3E21E7479E600BDD343 /* NOTICE */; };
+		0B48E3EA1E747B1200BDD343 /* CheckXcodeVersion.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0B48E3E91E747B1200BDD343 /* CheckXcodeVersion.sh */; };
+		0B48E3ED1E747CB600BDD343 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B48E3EC1E747CB600BDD343 /* libsqlite3.tbd */; };
+		0B48E3EF1E747CD000BDD343 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B48E3EE1E747CD000BDD343 /* libz.tbd */; };
 		0B7A589919C4EAF800263489 /* ContactFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A589819C4EAF800263489 /* ContactFriendViewController.m */; };
 		0B8501E219BB84B2008AD9A9 /* MyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8501E119BB84B2008AD9A9 /* MyProfileViewController.m */; };
 		0B8EAD2219A9137200A1C8C0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8EAD2119A9137200A1C8C0 /* Parse.framework */; };
@@ -65,6 +77,7 @@
 		0BE6049E19AD771800BDEE58 /* ContactUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6049D19AD771800BDEE58 /* ContactUsViewController.m */; };
 		0BE9D55519D4EC02000BF875 /* MeetingsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9D55419D4EC02000BF875 /* MeetingsDetailViewController.m */; };
 		0BEDB6031C2FADE300D3B19F /* SWRevealViewController in Resources */ = {isa = PBXBuildFile; fileRef = 0BEDB6021C2FADE300D3B19F /* SWRevealViewController */; };
+		0BEDB60F1C2FB1E900D3B19F /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BEDB60E1C2FB1E900D3B19F /* SWRevealViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +113,20 @@
 		0B0F205619AFF485005A9D02 /* quotes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = quotes.json; path = ../quotes.json; sourceTree = "<group>"; };
 		0B0F205919B001EB005A9D02 /* QuoteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuoteDetailViewController.h; sourceTree = "<group>"; };
 		0B0F205A19B001EB005A9D02 /* QuoteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuoteDetailViewController.m; sourceTree = "<group>"; };
+		0B48E3D31E7479B600BDD343 /* AWSConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSConfiguration.h; sourceTree = "<group>"; };
+		0B48E3D41E7479B600BDD343 /* AWSConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSConfiguration.m; sourceTree = "<group>"; };
+		0B48E3D51E7479B600BDD343 /* AWSMobileClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSMobileClient.h; sourceTree = "<group>"; };
+		0B48E3D61E7479B600BDD343 /* AWSMobileClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSMobileClient.m; sourceTree = "<group>"; };
+		0B48E3D71E7479B600BDD343 /* AWSMobileHubHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSMobileHubHelper.framework; path = AmazonAws/AWSMobileHubHelper.framework; sourceTree = "<group>"; };
+		0B48E3DC1E7479E600BDD343 /* AWSCognitoIdentityProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognitoIdentityProvider.framework; path = AmazonAws/Aws/AWSCognitoIdentityProvider.framework; sourceTree = "<group>"; };
+		0B48E3DD1E7479E600BDD343 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCore.framework; path = AmazonAws/Aws/AWSCore.framework; sourceTree = "<group>"; };
+		0B48E3DE1E7479E600BDD343 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = AmazonAws/Aws/AWSS3.framework; sourceTree = "<group>"; };
+		0B48E3E01E7479E600BDD343 /* Amazon_Software_License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Amazon_Software_License.txt; sourceTree = "<group>"; };
+		0B48E3E11E7479E600BDD343 /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognito.framework; path = AmazonAws/Aws/extras/AWSCognito.framework; sourceTree = "<group>"; };
+		0B48E3E21E7479E600BDD343 /* NOTICE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NOTICE; sourceTree = "<group>"; };
+		0B48E3E91E747B1200BDD343 /* CheckXcodeVersion.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = CheckXcodeVersion.sh; sourceTree = "<group>"; };
+		0B48E3EC1E747CB600BDD343 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		0B48E3EE1E747CD000BDD343 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		0B7A589719C4EAF800263489 /* ContactFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactFriendViewController.h; sourceTree = "<group>"; };
 		0B7A589819C4EAF800263489 /* ContactFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactFriendViewController.m; sourceTree = "<group>"; };
 		0B8501E019BB84B2008AD9A9 /* MyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProfileViewController.h; sourceTree = "<group>"; };
@@ -161,7 +188,9 @@
 		0BE6049D19AD771800BDEE58 /* ContactUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUsViewController.m; sourceTree = "<group>"; };
 		0BE9D55319D4EC02000BF875 /* MeetingsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingsDetailViewController.h; sourceTree = "<group>"; };
 		0BE9D55419D4EC02000BF875 /* MeetingsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetingsDetailViewController.m; sourceTree = "<group>"; };
-		0BEDB6021C2FADE300D3B19F /* SWRevealViewController */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SWRevealViewController; sourceTree = "<group>"; };
+		0BEDB6021C2FADE300D3B19F /* SWRevealViewController */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SWRevealViewController; path = "/Users/justinrowe80/Documents/Dev Apps/AddictAid/AddictAid/AddictAid/SWRevealViewController"; sourceTree = "<absolute>"; };
+		0BEDB60D1C2FB1E900D3B19F /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		0BEDB60E1C2FB1E900D3B19F /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,9 +198,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B48E3EF1E747CD000BDD343 /* libz.tbd in Frameworks */,
+				0B48E3ED1E747CB600BDD343 /* libsqlite3.tbd in Frameworks */,
 				0B9E31C819A926F700C06D82 /* Bolts.framework in Frameworks */,
 				0B8EAD3419A913F700A1C8C0 /* SystemConfiguration.framework in Frameworks */,
 				0B8EAD3219A913F000A1C8C0 /* StoreKit.framework in Frameworks */,
+				0B48E3E31E7479E600BDD343 /* AWSCognitoIdentityProvider.framework in Frameworks */,
 				0B8EAD3019A913E900A1C8C0 /* Security.framework in Frameworks */,
 				0B8EAD2E19A913E100A1C8C0 /* QuartzCore.framework in Frameworks */,
 				0B8EAD2C19A913DA00A1C8C0 /* MobileCoreServices.framework in Frameworks */,
@@ -179,11 +211,15 @@
 				0B8EAD2819A913C600A1C8C0 /* CoreLocation.framework in Frameworks */,
 				0B0AAE2519A90D0000C8674D /* CoreGraphics.framework in Frameworks */,
 				0B8EAD2619A913B500A1C8C0 /* CFNetwork.framework in Frameworks */,
+				0B48E3DA1E7479B600BDD343 /* AWSMobileHubHelper.framework in Frameworks */,
 				0B8EAD2419A913AC00A1C8C0 /* AudioToolbox.framework in Frameworks */,
 				0B0AAE2719A90D0000C8674D /* UIKit.framework in Frameworks */,
+				0B48E3E71E7479E600BDD343 /* AWSCognito.framework in Frameworks */,
+				0B48E3E51E7479E600BDD343 /* AWSS3.framework in Frameworks */,
 				0B0AAE5819A90F0B00C8674D /* MapKit.framework in Frameworks */,
 				0B0AAE2319A90D0000C8674D /* Foundation.framework in Frameworks */,
 				0B8EAD2219A9137200A1C8C0 /* Parse.framework in Frameworks */,
+				0B48E3E41E7479E600BDD343 /* AWSCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +243,7 @@
 				0B0AAE4719A90D0000C8674D /* AddictAidTests */,
 				0B0AAE2119A90D0000C8674D /* Frameworks */,
 				0B0AAE2019A90D0000C8674D /* Products */,
+				0B48E3DB1E7479E600BDD343 /* Aws */,
 			);
 			sourceTree = "<group>";
 		};
@@ -222,6 +259,13 @@
 		0B0AAE2119A90D0000C8674D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B48E3EE1E747CD000BDD343 /* libz.tbd */,
+				0B48E3EC1E747CB600BDD343 /* libsqlite3.tbd */,
+				0B48E3E11E7479E600BDD343 /* AWSCognito.framework */,
+				0B48E3DE1E7479E600BDD343 /* AWSS3.framework */,
+				0B48E3DD1E7479E600BDD343 /* AWSCore.framework */,
+				0B48E3DC1E7479E600BDD343 /* AWSCognitoIdentityProvider.framework */,
+				0B48E3D71E7479B600BDD343 /* AWSMobileHubHelper.framework */,
 				0B9E31C719A926F700C06D82 /* Bolts.framework */,
 				0B8EAD3319A913F700A1C8C0 /* SystemConfiguration.framework */,
 				0B8EAD3119A913F000A1C8C0 /* StoreKit.framework */,
@@ -332,10 +376,42 @@
 			name = "Other View Controllers";
 			sourceTree = "<group>";
 		};
+		0B48E3D21E7479B600BDD343 /* AmazonAws */ = {
+			isa = PBXGroup;
+			children = (
+				0B48E3D31E7479B600BDD343 /* AWSConfiguration.h */,
+				0B48E3D41E7479B600BDD343 /* AWSConfiguration.m */,
+				0B48E3D51E7479B600BDD343 /* AWSMobileClient.h */,
+				0B48E3D61E7479B600BDD343 /* AWSMobileClient.m */,
+			);
+			name = AmazonAws;
+			path = ../AmazonAws;
+			sourceTree = "<group>";
+		};
+		0B48E3DB1E7479E600BDD343 /* Aws */ = {
+			isa = PBXGroup;
+			children = (
+				0B48E3E91E747B1200BDD343 /* CheckXcodeVersion.sh */,
+				0B48E3DF1E7479E600BDD343 /* extras */,
+			);
+			name = Aws;
+			path = AmazonAws/Aws;
+			sourceTree = "<group>";
+		};
+		0B48E3DF1E7479E600BDD343 /* extras */ = {
+			isa = PBXGroup;
+			children = (
+				0B48E3E01E7479E600BDD343 /* Amazon_Software_License.txt */,
+				0B48E3E21E7479E600BDD343 /* NOTICE */,
+			);
+			path = extras;
+			sourceTree = "<group>";
+		};
 		0B8EAD5219A918BE00A1C8C0 /* Supporting Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0BEDB6021C2FADE300D3B19F /* SWRevealViewController */,
+				0B48E3D21E7479B600BDD343 /* AmazonAws */,
+				0BEDB60C1C2FB1E900D3B19F /* SWRevealViewController */,
 				0BB549C61C2FAD1000140E55 /* AFNetworking */,
 				0B8EAD5619A918F000A1C8C0 /* MBProgressHUD */,
 				0B9E31BC19A9244700C06D82 /* Constants.h */,
@@ -386,6 +462,15 @@
 			name = "Home | Menu View Controllers";
 			sourceTree = "<group>";
 		};
+		0BEDB60C1C2FB1E900D3B19F /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0BEDB60D1C2FB1E900D3B19F /* SWRevealViewController.h */,
+				0BEDB60E1C2FB1E900D3B19F /* SWRevealViewController.m */,
+			);
+			path = SWRevealViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -396,6 +481,7 @@
 				0B0AAE1B19A90D0000C8674D /* Sources */,
 				0B0AAE1C19A90D0000C8674D /* Frameworks */,
 				0B0AAE1D19A90D0000C8674D /* Resources */,
+				0B48E3EB1E747BB100BDD343 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -430,7 +516,7 @@
 		0B0AAE1719A90D0000C8674D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Justin Rowe";
 				TargetAttributes = {
 					0B0AAE1E19A90D0000C8674D = {
@@ -474,15 +560,18 @@
 				0BB549C71C2FAD1000140E55 /* AFNetworking in Resources */,
 				0B99959719AFA169002F95D6 /* glossary.json in Resources */,
 				0BEDB6031C2FADE300D3B19F /* SWRevealViewController in Resources */,
+				0B48E3EA1E747B1200BDD343 /* CheckXcodeVersion.sh in Resources */,
 				0B9E31CD19A92A0000C06D82 /* Avenir_35_Light.ttf in Resources */,
 				0BE6049219AD74AB00BDEE58 /* background5.png in Resources */,
 				0B0AAE3B19A90D0000C8674D /* Images.xcassets in Resources */,
+				0B48E3E81E7479E600BDD343 /* NOTICE in Resources */,
 				0B8EAD6719A9214D00A1C8C0 /* welcome5.png in Resources */,
 				0B0AAE2D19A90D0000C8674D /* InfoPlist.strings in Resources */,
 				0B99958D19AF9F97002F95D6 /* reveal-icon@2x.png in Resources */,
 				0B8EAD6619A9214D00A1C8C0 /* welcome4.png in Resources */,
 				0BE6049119AD74AB00BDEE58 /* background4.png in Resources */,
 				0BE6048D19AD715800BDEE58 /* reveal-icon.png in Resources */,
+				0B48E3E61E7479E600BDD343 /* Amazon_Software_License.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +585,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0B48E3EB1E747BB100BDD343 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework/strip-frameworks.sh\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0B0AAE1B19A90D0000C8674D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -503,6 +608,7 @@
 			files = (
 				0BE9D55519D4EC02000BF875 /* MeetingsDetailViewController.m in Sources */,
 				0BE6049819AD76DA00BDEE58 /* QuotesTableViewController.m in Sources */,
+				0B48E3D81E7479B600BDD343 /* AWSConfiguration.m in Sources */,
 				0B8501E219BB84B2008AD9A9 /* MyProfileViewController.m in Sources */,
 				0B99959C19AFA2B3002F95D6 /* NSDictionary+Data.m in Sources */,
 				0B0AAE3919A90D0000C8674D /* LoginViewController.m in Sources */,
@@ -513,7 +619,9 @@
 				0B99959F19AFB98B002F95D6 /* DefinitionDetailViewController.m in Sources */,
 				0B0F205B19B001EB005A9D02 /* QuoteDetailViewController.m in Sources */,
 				0B9C66A219BBD92000CC3D6A /* UsersListViewController.m in Sources */,
+				0BEDB60F1C2FB1E900D3B19F /* SWRevealViewController.m in Sources */,
 				0B9C66A819BBE63D00CC3D6A /* ContactUserViewController.m in Sources */,
+				0B48E3D91E7479B600BDD343 /* AWSMobileClient.m in Sources */,
 				0BE6049519AD76CA00BDEE58 /* AboutAddTableViewController.m in Sources */,
 				0BE0B12D19CBC4C7001D7DED /* DaysTableViewController.m in Sources */,
 				0BE6049E19AD771800BDEE58 /* ContactUsViewController.m in Sources */,
@@ -579,14 +687,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -599,7 +712,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -618,20 +731,25 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -645,11 +763,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/AmazonAws",
+					"$(PROJECT_DIR)/AmazonAws/Aws",
+					"$(PROJECT_DIR)/AmazonAws/Aws/extras",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AddictAid/AddictAid-Prefix.pch";
 				INFOPLIST_FILE = "AddictAid/AddictAid-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.justinrowe.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -664,11 +785,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/AmazonAws",
+					"$(PROJECT_DIR)/AmazonAws/Aws",
+					"$(PROJECT_DIR)/AmazonAws/Aws/extras",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AddictAid/AddictAid-Prefix.pch";
 				INFOPLIST_FILE = "AddictAid/AddictAid-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.justinrowe.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
