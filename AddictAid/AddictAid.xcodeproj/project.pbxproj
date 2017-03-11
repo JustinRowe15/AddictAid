@@ -51,6 +51,7 @@
 		0B48E4231E74844B00BDD343 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B48E4181E74844B00BDD343 /* UIProgressView+AFNetworking.m */; };
 		0B48E4241E74844B00BDD343 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B48E41A1E74844B00BDD343 /* UIRefreshControl+AFNetworking.m */; };
 		0B48E4251E74844B00BDD343 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B48E41C1E74844B00BDD343 /* UIWebView+AFNetworking.m */; };
+		0B48E4281E7492B100BDD343 /* LoginViewAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B48E4271E7492B100BDD343 /* LoginViewAttributes.m */; };
 		0B7A589919C4EAF800263489 /* ContactFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A589819C4EAF800263489 /* ContactFriendViewController.m */; };
 		0B8501E219BB84B2008AD9A9 /* MyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8501E119BB84B2008AD9A9 /* MyProfileViewController.m */; };
 		0B8EAD2219A9137200A1C8C0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8EAD2119A9137200A1C8C0 /* Parse.framework */; };
@@ -176,6 +177,8 @@
 		0B48E41A1E74844B00BDD343 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		0B48E41B1E74844B00BDD343 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		0B48E41C1E74844B00BDD343 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		0B48E4261E7492B100BDD343 /* LoginViewAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewAttributes.h; sourceTree = "<group>"; };
+		0B48E4271E7492B100BDD343 /* LoginViewAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewAttributes.m; sourceTree = "<group>"; };
 		0B7A589719C4EAF800263489 /* ContactFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactFriendViewController.h; sourceTree = "<group>"; };
 		0B7A589819C4EAF800263489 /* ContactFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactFriendViewController.m; sourceTree = "<group>"; };
 		0B8501E019BB84B2008AD9A9 /* MyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProfileViewController.h; sourceTree = "<group>"; };
@@ -549,6 +552,8 @@
 			children = (
 				0B0AAE3719A90D0000C8674D /* LoginViewController.h */,
 				0B0AAE3819A90D0000C8674D /* LoginViewController.m */,
+				0B48E4261E7492B100BDD343 /* LoginViewAttributes.h */,
+				0B48E4271E7492B100BDD343 /* LoginViewAttributes.m */,
 				0B8EAD6119A91D9700A1C8C0 /* NewUserViewController.h */,
 				0B8EAD6219A91D9700A1C8C0 /* NewUserViewController.m */,
 			);
@@ -721,6 +726,7 @@
 				0B9C66A219BBD92000CC3D6A /* UsersListViewController.m in Sources */,
 				0B48E4071E74842700BDD343 /* AFURLSessionManager.m in Sources */,
 				0B9C66A819BBE63D00CC3D6A /* ContactUserViewController.m in Sources */,
+				0B48E4281E7492B100BDD343 /* LoginViewAttributes.m in Sources */,
 				0B48E3D91E7479B600BDD343 /* AWSMobileClient.m in Sources */,
 				0B48E4041E74842700BDD343 /* AFSecurityPolicy.m in Sources */,
 				0B48E41D1E74844B00BDD343 /* AFAutoPurgingImageCache.m in Sources */,
