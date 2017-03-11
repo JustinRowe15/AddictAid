@@ -46,7 +46,17 @@ LoginViewAttributes * setUpLogin;
         self.view.backgroundColor = [UIColor colorWithPatternImage:newImage];
     }
 	
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(newUser:)];
+    tapGestureRecognizer.numberOfTapsRequired = 1;
+    [[setUpLogin userLabel] addGestureRecognizer:tapGestureRecognizer];
+    [[setUpLogin userLabel] setUserInteractionEnabled:YES];
     
+    UITapGestureRecognizer *guestTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(skipLogin:)];
+    guestTapGestureRecognizer.numberOfTapsRequired = 1;
+    [[setUpLogin guestLabel] addGestureRecognizer:guestTapGestureRecognizer];
+    [[setUpLogin guestLabel] setUserInteractionEnabled:YES];
+    
+    [[setUpLogin loginButton] addTarget:self action:@selector(done:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)addSubviews:(NSArray *)views
