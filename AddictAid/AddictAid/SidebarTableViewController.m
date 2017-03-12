@@ -300,8 +300,6 @@
 	}
     else if (row == 8)
 	{
-        [PFUser logOut];
-        PFUser *currentUser = [PFUser currentUser];
         [(AppDelegate*)[[UIApplication sharedApplication] delegate] presentLoginViewController];
         [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 	}

@@ -16,6 +16,7 @@ static NSString * const defaultsLocationKey = @"currentLocation";
 #import "SidebarTableViewController.h"
 #import "Constants.h"
 #import "AWSMobileClient.h"
+#import <AWSMobileHubHelper/AWSMobileHubHelper.h>
 
 @interface AppDelegate()<SWRevealViewControllerDelegate>
 
@@ -30,10 +31,15 @@ static NSString * const defaultsLocationKey = @"currentLocation";
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    return [[AWSMobileClient sharedInstance] didFinishLaunching:application
-                                                    withOptions:launchOptions];
+    if ([[AWSIdentityManager defaultIdentityManager] isLoggedIn]) {
+        [self presentMainViewController];
+    }
     
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if (![[AWSIdentityManager defaultIdentityManager] isLoggedIn]) {
+        [self presentLoginViewController];
+    }
+    
+    [self.window makeKeyAndVisible];
     
     //Set Navigation Bar Text Attributes
     NSShadow *shadow = [[NSShadow alloc] init];
@@ -46,14 +52,8 @@ static NSString * const defaultsLocationKey = @"currentLocation";
                                                            }];
     [[UITableViewHeaderFooterView appearance] setTintColor:[UIColor colorWithRed:83.0f/255.0f green:83.0f/255.0f blue:83.0f/255.0f alpha:0.5f]];
     
-	if ([userDefaults doubleForKey:defaultsFilterDistanceKey]) {
-		filterDistance = [userDefaults doubleForKey:defaultsFilterDistanceKey];
-	} else {
-		self.filterDistance = 3000 * kAAFeetToMeters;
-	}
-    
-    [self.window makeKeyAndVisible];
-    return YES;
+    return [[AWSMobileClient sharedInstance] didFinishLaunching:application
+                                                    withOptions:launchOptions];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
@@ -78,15 +78,30 @@ static NSString * const defaultsLocationKey = @"currentLocation";
     {
         self.viewController.edgesForExtendedLayout = UIRectEdgeNone;
     }
+    
 	self.window.rootViewController = self.viewController;
 }
 
--(void)presentMainViewController{
-    // Go to the welcome screen and have them log in or create an account.
+-(void)presentMainViewController
+{
+    
+    // User is already logged in.  Go to the home screen.
+    
 	HomeViewController *homeViewController = [[HomeViewController alloc] init];
     SidebarTableViewController * sideBarViewController = [[SidebarTableViewController alloc] init];
     
 	homeViewController.title = @"Welcome to AddictAid";
+    
+    //Set Navigation Bar Text Attributes
+    NSShadow *shadow = [[NSShadow alloc] init];
+    [shadow setShadowColor:[UIColor colorWithWhite:0.0f alpha:0.750f]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:149.0f/255.0f green:213.0f/255.0f blue:230.0f/255.0f alpha:1.0f]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{
+                                                           NSForegroundColorAttributeName: [UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f],
+                                                           NSShadowAttributeName:shadow,
+                                                           NSFontAttributeName: [UIFont fontWithName:@"Avenir-Light" size:20]
+                                                           }];
+    [[UITableViewHeaderFooterView appearance] setTintColor:[UIColor colorWithRed:83.0f/255.0f green:83.0f/255.0f blue:83.0f/255.0f alpha:0.5f]];
     
 	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
     UINavigationController *sideBarNavController = [[UINavigationController alloc] initWithRootViewController:sideBarViewController];
@@ -102,6 +117,7 @@ static NSString * const defaultsLocationKey = @"currentLocation";
     {
         self.revealViewController.edgesForExtendedLayout = UIRectEdgeNone;
     }
+    
 	self.window.rootViewController = self.revealViewController;
 }
 

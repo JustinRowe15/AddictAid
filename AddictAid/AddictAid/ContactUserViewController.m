@@ -52,7 +52,7 @@
     currentUser = [PFUser currentUser];
     
     //Setting Right Bar Button Label
-    sendButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Send" style:UIBarButtonItemStyleBordered target:self action:@selector(sendMessage)];
+    sendButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Send" style:UIBarButtonItemStylePlain target:self action:@selector(sendMessage)];
     [sendButtonItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Avenir-Light" size:18.0f]} forState:UIControlStateNormal];
     [sendButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
     self.navigationItem.rightBarButtonItem = sendButtonItem;

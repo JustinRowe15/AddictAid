@@ -8,11 +8,9 @@
 
 #import "HomeViewController.h"
 #import "SWRevealViewController.h"
-#import <Parse/Parse.h>
 
 @interface HomeViewController ()
 
-@property (nonatomic, strong) PFUser *currentUser;
 @property (nonatomic, strong) NSString *goals;
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *profileId;
@@ -22,7 +20,7 @@
 
 @implementation HomeViewController
 
-@synthesize soberLabel, goalsTextView, goalsTitleLabel, currentUser, goals, username, profileId, sobrietyDate, date1, dateText;
+@synthesize soberLabel, goalsTextView, goalsTitleLabel, goals, username, profileId, sobrietyDate, date1, dateText;
 
 UIBackgroundTaskIdentifier counterTask;
 static NSString* dateString;
@@ -45,8 +43,6 @@ NSTimer *timer;
 {
     [super viewDidLoad];
     
-    currentUser = [PFUser currentUser];
-    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
     {
         UIGraphicsBeginImageContext(self.view.frame.size);
@@ -66,45 +62,9 @@ NSTimer *timer;
     [revealController panGestureRecognizer];
     [revealController tapGestureRecognizer];
     UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reveal-icon.png"]
-                                                                         style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
+                                                                         style:UIBarButtonItemStylePlain target:revealController action:@selector(revealToggle:)];
     [revealButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
     self.navigationItem.leftBarButtonItem = revealButtonItem;
-    
-    if (currentUser){
-        UIBarButtonItem *startButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(startTimer)];
-        [startButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
-        self.navigationItem.rightBarButtonItem = startButtonItem;
-    }
-    
-    //Getting User Data From Parse
-    username = [currentUser username];
-    goals = currentUser[@"userGoals"];
-    
-    if (currentUser){
-        PFQuery *query = [PFQuery queryWithClassName:@"profilesList"];
-        [query whereKey:@"profileUserName" equalTo:username];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error) {
-                NSLog(@"Successfully retrieved %d profile.", objects.count);
-                for (PFObject *object in objects) {
-                    profileId = object.objectId;
-                    sobrietyDate = object[@"profileSobrietyStartDate"];
-                    NSLog(@"Sobriety Date: %@", sobrietyDate);
-                    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-                    [dateFormat setDateFormat:@"yyyy-MM-dd 00:00:00 +0000"];
-                    date1 = [dateFormat dateFromString:sobrietyDate];
-                    NSDate *date2 = [NSDate date];
-                    NSTimeInterval secondsBetween = [date2 timeIntervalSinceDate:date1];
-                    
-                    days = secondsBetween / 86400;
-                    NSLog(@"Days: %d", days);
-                }
-            } else {
-                // Log details of the failure
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
-            }
-        }];
-    }
     
     UIView * soberLabelView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, 50.0f)];
     [soberLabelView setBackgroundColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:0.7f]];
@@ -118,7 +78,7 @@ NSTimer *timer;
     [soberLabel setTextAlignment:NSTextAlignmentCenter];
     [soberLabelView addSubview:soberLabel];
     
-    if (!currentUser){
+    /*if (!currentUser){
         dateTextView = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, 114.0f, 320.0f, 160.0f)];
         [dateTextView setTextColor:[UIColor colorWithRed:225.0f/255.0f green:219.0f/255.0f blue:129.0f/255.0f alpha:1.0f]];
         [dateTextView setFont:[UIFont fontWithName:@"Avenir-Light" size:26]];
@@ -135,7 +95,7 @@ NSTimer *timer;
         [dateTextView setTextAlignment:NSTextAlignmentCenter];
         [dateTextView setEditable:NO];
         [self.view addSubview:dateTextView];
-    }
+    }*/
     
     UIView * goalsLabelView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 274.0f, 320.0f, 50.0f)];
     [goalsLabelView setBackgroundColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:0.7f]];
@@ -157,11 +117,11 @@ NSTimer *timer;
     [goalsTextView setEditable:NO];
     [self.view addSubview:goalsTextView];
     
-    if (currentUser){
+    /*if (currentUser){
         [goalsTextView setText:goals];
     } else {
         [goalsTextView setText:@"Please Log In To Set Your Goals!"];
-    }
+    }*/
 }
 
 - (void)didReceiveMemoryWarning
@@ -214,11 +174,7 @@ NSTimer *timer;
             dateText = [dateFormat1 stringFromDate:date1];
         }
         
-        PFQuery *query = [PFQuery queryWithClassName:@"profilesList"];
-        [query getObjectInBackgroundWithId:profileId block:^(PFObject *userProfileSave, NSError *error) {
-            userProfileSave[@"profileSobrietyStartDate"] = dateText;
-            [userProfileSave saveEventually];
-        }];
+        
         [[UIApplication sharedApplication] endBackgroundTask:counterTask];
         
         [self resetTimer];
@@ -235,17 +191,11 @@ NSTimer *timer;
         [dateFormat1 setDateFormat:@"yyyy-MM-dd 00:00:00 +0000"];
         dateText = [dateFormat1 stringFromDate:today];
         
-        PFQuery *query = [PFQuery queryWithClassName:@"profilesList"];
-        [query getObjectInBackgroundWithId:profileId block:^(PFObject *userProfileSave, NSError *error) {
-            userProfileSave[@"profileSobrietyStartDate"] = dateText;
-            [userProfileSave saveEventually];
-        }];
-        
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-        NSString *dateText2 = [dateFormatter stringFromDate:today];
-        [currentUser setObject:dateText2 forKey:@"userStartDate"];
-        [currentUser saveEventually];
+        //NSString *dateText2 = [dateFormatter stringFromDate:today];
+        //[currentUser setObject:dateText2 forKey:@"userStartDate"];
+        //[currentUser saveEventually];
     }
 }
 

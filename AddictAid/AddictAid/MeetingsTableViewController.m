@@ -42,21 +42,22 @@
     
     backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background5.png"]];
     [self.tableView setBackgroundView:backgroundImageView];
-    
-    searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    searchBar.delegate = self;
-    searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
-    
-    self.searchDisplayController.delegate = self;
-    self.searchDisplayController.searchResultsDataSource = self;
-    self.searchDisplayController.searchResultsDelegate = self;
-    self.tableView.tableHeaderView = searchBar;
+
+    searchDisplayController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    searchDisplayController.searchResultsUpdater = self;
+    searchDisplayController.searchBar.delegate = self;
+    searchDisplayController.delegate = self;
+    searchDisplayController.dimsBackgroundDuringPresentation = NO;
+    self.tableView.tableHeaderView = searchDisplayController.searchBar;
+    self.definesPresentationContext = YES;
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"locations" ofType:@"json"];
     
     NSData *JSONData = [[NSData alloc] initWithContentsOfFile:filePath];
     NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:JSONData options:kNilOptions error:nil];
     locationList = [jsonObject objectForKey:[NSString stringWithFormat:@"%@", daySelected]];
+    [self.tableView setDelegate:self];
+    [self.tableView setDataSource:self];
     [self.tableView reloadData];
 }
 
@@ -66,14 +67,26 @@
     searchData = [locationList filteredArrayUsingPredicate:resultPredicate];
 }
 
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+- (BOOL)searchDisplayController:(UISearchController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
     [self filterContentForSearchText:searchString
                                scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
                                       objectAtIndex:[self.searchDisplayController.searchBar
                                                      selectedScopeButtonIndex]]];
     
-    return YES;}
+    return YES;
+}
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
+{
+    [self updateSearchResultsForSearchController:searchDisplayController];
+    [self.tableView reloadData];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope
+{
+    [self updateSearchResultsForSearchController:searchDisplayController];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -90,7 +103,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (searchDisplayController.active) {
         return [searchData count];
         
     } else {
@@ -110,7 +123,7 @@
     
     NSMutableDictionary *dict;
     
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (searchDisplayController.active) {
         dict = [searchData objectAtIndex:indexPath.row];
     } else {
         dict = [locationList objectAtIndex:indexPath.row];
@@ -143,7 +156,7 @@
 {
     NSMutableDictionary *dict;
     
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (searchDisplayController.active) {
         dict = [searchData objectAtIndex:indexPath.row];
     } else {
         dict = [locationList objectAtIndex:indexPath.row];

@@ -13,7 +13,6 @@
 @property (strong, nonatomic) UIWindow *window;
 
 - (IBAction)newUser:(id)sender;
-- (IBAction)skipLogin:(id)sender;
 - (IBAction)done:(id)sender;
 
 @end

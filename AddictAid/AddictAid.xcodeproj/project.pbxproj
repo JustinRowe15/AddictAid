@@ -23,11 +23,17 @@
 		0B0AAE5819A90F0B00C8674D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B0AAE5719A90F0B00C8674D /* MapKit.framework */; };
 		0B0F205719AFF485005A9D02 /* quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B0F205619AFF485005A9D02 /* quotes.json */; };
 		0B0F205B19B001EB005A9D02 /* QuoteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F205A19B001EB005A9D02 /* QuoteDetailViewController.m */; };
+		0B16ED641E74DF20007A4285 /* AWSCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0B16ED611E74DCBC007A4285 /* AWSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0B16ED661E74DF31007A4285 /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B48E3E11E7479E600BDD343 /* AWSCognito.framework */; };
+		0B16ED671E74DF31007A4285 /* AWSCognito.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0B48E3E11E7479E600BDD343 /* AWSCognito.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0B16ED681E74DF3A007A4285 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B48E3DE1E7479E600BDD343 /* AWSS3.framework */; };
+		0B16ED691E74DF3A007A4285 /* AWSS3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0B48E3DE1E7479E600BDD343 /* AWSS3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0B16ED6A1E74DF82007A4285 /* AWSCognitoIdentityProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B48E3DC1E7479E600BDD343 /* AWSCognitoIdentityProvider.framework */; };
+		0B16ED6B1E74DF82007A4285 /* AWSCognitoIdentityProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0B48E3DC1E7479E600BDD343 /* AWSCognitoIdentityProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0B48E3D81E7479B600BDD343 /* AWSConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B48E3D41E7479B600BDD343 /* AWSConfiguration.m */; };
 		0B48E3D91E7479B600BDD343 /* AWSMobileClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B48E3D61E7479B600BDD343 /* AWSMobileClient.m */; };
 		0B48E3DA1E7479B600BDD343 /* AWSMobileHubHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B48E3D71E7479B600BDD343 /* AWSMobileHubHelper.framework */; };
 		0B48E3E31E7479E600BDD343 /* AWSCognitoIdentityProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B48E3DC1E7479E600BDD343 /* AWSCognitoIdentityProvider.framework */; };
-		0B48E3E41E7479E600BDD343 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B48E3DD1E7479E600BDD343 /* AWSCore.framework */; };
 		0B48E3E51E7479E600BDD343 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B48E3DE1E7479E600BDD343 /* AWSS3.framework */; };
 		0B48E3E61E7479E600BDD343 /* Amazon_Software_License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0B48E3E01E7479E600BDD343 /* Amazon_Software_License.txt */; };
 		0B48E3E71E7479E600BDD343 /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B48E3E11E7479E600BDD343 /* AWSCognito.framework */; };
@@ -83,6 +89,7 @@
 		0B9E31C519A9257C00C06D82 /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E31C419A9257C00C06D82 /* SidebarTableViewController.m */; };
 		0B9E31C819A926F700C06D82 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9E31C719A926F700C06D82 /* Bolts.framework */; };
 		0B9E31CD19A92A0000C06D82 /* Avenir_35_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B9E31CC19A92A0000C06D82 /* Avenir_35_Light.ttf */; };
+		0BBDEA2B1E75D99300429126 /* NewUserViewAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBDEA2A1E75D99300429126 /* NewUserViewAttributes.m */; };
 		0BE0B12D19CBC4C7001D7DED /* DaysTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0B12C19CBC4C7001D7DED /* DaysTableViewController.m */; };
 		0BE6048A19AD6BCE00BDEE58 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6048919AD6BCE00BDEE58 /* HomeViewController.m */; };
 		0BE6048D19AD715800BDEE58 /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BE6048B19AD715800BDEE58 /* reveal-icon.png */; };
@@ -104,6 +111,23 @@
 			remoteInfo = AddictAid;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0B16ED651E74DF20007A4285 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0B16ED671E74DF31007A4285 /* AWSCognito.framework in Embed Frameworks */,
+				0B16ED641E74DF20007A4285 /* AWSCore.framework in Embed Frameworks */,
+				0B16ED691E74DF3A007A4285 /* AWSS3.framework in Embed Frameworks */,
+				0B16ED6B1E74DF82007A4285 /* AWSCognitoIdentityProvider.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0B0AAE1F19A90D0000C8674D /* AddictAid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AddictAid.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,13 +152,13 @@
 		0B0F205619AFF485005A9D02 /* quotes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = quotes.json; path = ../quotes.json; sourceTree = "<group>"; };
 		0B0F205919B001EB005A9D02 /* QuoteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuoteDetailViewController.h; sourceTree = "<group>"; };
 		0B0F205A19B001EB005A9D02 /* QuoteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuoteDetailViewController.m; sourceTree = "<group>"; };
+		0B16ED611E74DCBC007A4285 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCore.framework; sourceTree = "<group>"; };
 		0B48E3D31E7479B600BDD343 /* AWSConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSConfiguration.h; sourceTree = "<group>"; };
 		0B48E3D41E7479B600BDD343 /* AWSConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSConfiguration.m; sourceTree = "<group>"; };
 		0B48E3D51E7479B600BDD343 /* AWSMobileClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSMobileClient.h; sourceTree = "<group>"; };
 		0B48E3D61E7479B600BDD343 /* AWSMobileClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSMobileClient.m; sourceTree = "<group>"; };
 		0B48E3D71E7479B600BDD343 /* AWSMobileHubHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSMobileHubHelper.framework; path = AmazonAws/AWSMobileHubHelper.framework; sourceTree = "<group>"; };
 		0B48E3DC1E7479E600BDD343 /* AWSCognitoIdentityProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognitoIdentityProvider.framework; path = AmazonAws/Aws/AWSCognitoIdentityProvider.framework; sourceTree = "<group>"; };
-		0B48E3DD1E7479E600BDD343 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCore.framework; path = AmazonAws/Aws/AWSCore.framework; sourceTree = "<group>"; };
 		0B48E3DE1E7479E600BDD343 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = AmazonAws/Aws/AWSS3.framework; sourceTree = "<group>"; };
 		0B48E3E01E7479E600BDD343 /* Amazon_Software_License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Amazon_Software_License.txt; sourceTree = "<group>"; };
 		0B48E3E11E7479E600BDD343 /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognito.framework; path = AmazonAws/Aws/extras/AWSCognito.framework; sourceTree = "<group>"; };
@@ -224,6 +248,8 @@
 		0B9E31C419A9257C00C06D82 /* SidebarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTableViewController.m; sourceTree = "<group>"; };
 		0B9E31C719A926F700C06D82 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		0B9E31CC19A92A0000C06D82 /* Avenir_35_Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Avenir_35_Light.ttf; sourceTree = "<group>"; };
+		0BBDEA291E75D99300429126 /* NewUserViewAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUserViewAttributes.h; sourceTree = "<group>"; };
+		0BBDEA2A1E75D99300429126 /* NewUserViewAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUserViewAttributes.m; sourceTree = "<group>"; };
 		0BE0B12B19CBC4C7001D7DED /* DaysTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaysTableViewController.h; sourceTree = "<group>"; };
 		0BE0B12C19CBC4C7001D7DED /* DaysTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaysTableViewController.m; sourceTree = "<group>"; };
 		0BE6048819AD6BCE00BDEE58 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -252,8 +278,10 @@
 				0B9E31C819A926F700C06D82 /* Bolts.framework in Frameworks */,
 				0B8EAD3419A913F700A1C8C0 /* SystemConfiguration.framework in Frameworks */,
 				0B8EAD3219A913F000A1C8C0 /* StoreKit.framework in Frameworks */,
+				0B16ED661E74DF31007A4285 /* AWSCognito.framework in Frameworks */,
 				0B48E3E31E7479E600BDD343 /* AWSCognitoIdentityProvider.framework in Frameworks */,
 				0B8EAD3019A913E900A1C8C0 /* Security.framework in Frameworks */,
+				0B16ED681E74DF3A007A4285 /* AWSS3.framework in Frameworks */,
 				0B8EAD2E19A913E100A1C8C0 /* QuartzCore.framework in Frameworks */,
 				0B8EAD2C19A913DA00A1C8C0 /* MobileCoreServices.framework in Frameworks */,
 				0B8EAD2A19A913D100A1C8C0 /* libz.dylib in Frameworks */,
@@ -264,11 +292,11 @@
 				0B8EAD2419A913AC00A1C8C0 /* AudioToolbox.framework in Frameworks */,
 				0B0AAE2719A90D0000C8674D /* UIKit.framework in Frameworks */,
 				0B48E3E71E7479E600BDD343 /* AWSCognito.framework in Frameworks */,
+				0B16ED6A1E74DF82007A4285 /* AWSCognitoIdentityProvider.framework in Frameworks */,
 				0B48E3E51E7479E600BDD343 /* AWSS3.framework in Frameworks */,
 				0B0AAE5819A90F0B00C8674D /* MapKit.framework in Frameworks */,
 				0B0AAE2319A90D0000C8674D /* Foundation.framework in Frameworks */,
 				0B8EAD2219A9137200A1C8C0 /* Parse.framework in Frameworks */,
-				0B48E3E41E7479E600BDD343 /* AWSCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,11 +336,11 @@
 		0B0AAE2119A90D0000C8674D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B16ED611E74DCBC007A4285 /* AWSCore.framework */,
 				0B48E3EE1E747CD000BDD343 /* libz.tbd */,
 				0B48E3EC1E747CB600BDD343 /* libsqlite3.tbd */,
 				0B48E3E11E7479E600BDD343 /* AWSCognito.framework */,
 				0B48E3DE1E7479E600BDD343 /* AWSS3.framework */,
-				0B48E3DD1E7479E600BDD343 /* AWSCore.framework */,
 				0B48E3DC1E7479E600BDD343 /* AWSCognitoIdentityProvider.framework */,
 				0B48E3D71E7479B600BDD343 /* AWSMobileHubHelper.framework */,
 				0B9E31C719A926F700C06D82 /* Bolts.framework */,
@@ -556,6 +584,8 @@
 				0B48E4271E7492B100BDD343 /* LoginViewAttributes.m */,
 				0B8EAD6119A91D9700A1C8C0 /* NewUserViewController.h */,
 				0B8EAD6219A91D9700A1C8C0 /* NewUserViewController.m */,
+				0BBDEA291E75D99300429126 /* NewUserViewAttributes.h */,
+				0BBDEA2A1E75D99300429126 /* NewUserViewAttributes.m */,
 			);
 			name = "Login | New User View Controllers";
 			sourceTree = "<group>";
@@ -582,6 +612,7 @@
 				0B0AAE1C19A90D0000C8674D /* Frameworks */,
 				0B0AAE1D19A90D0000C8674D /* Resources */,
 				0B48E3EB1E747BB100BDD343 /* ShellScript */,
+				0B16ED651E74DF20007A4285 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -696,7 +727,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework/strip-frameworks.sh\"";
+			shellScript = "";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -746,6 +777,7 @@
 				0B48E41E1E74844B00BDD343 /* AFImageDownloader.m in Sources */,
 				0B48E4251E74844B00BDD343 /* UIWebView+AFNetworking.m in Sources */,
 				0B48E4061E74842700BDD343 /* AFURLResponseSerialization.m in Sources */,
+				0BBDEA2B1E75D99300429126 /* NewUserViewAttributes.m in Sources */,
 				0B0AAE2F19A90D0000C8674D /* main.m in Sources */,
 				0B48E4241E74844B00BDD343 /* UIRefreshControl+AFNetworking.m in Sources */,
 			);
@@ -886,6 +918,7 @@
 				GCC_PREFIX_HEADER = "AddictAid/AddictAid-Prefix.pch";
 				INFOPLIST_FILE = "AddictAid/AddictAid-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.justinrowe.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -908,6 +941,7 @@
 				GCC_PREFIX_HEADER = "AddictAid/AddictAid-Prefix.pch";
 				INFOPLIST_FILE = "AddictAid/AddictAid-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.justinrowe.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

@@ -21,17 +21,14 @@
 @property (nonatomic, strong) NSString *friendsNumber;
 @property (nonatomic, strong) NSString *profileId;
 @property (nonatomic, strong) NSString *username;
-@property (nonatomic, strong) PFUser *currentUser;
 
 @end
 
 @implementation ContactFriendViewController
 
-@synthesize sponsorTextField, friendsPhoneNumberTextField, sponsorNumberTextField, friendsNameTextField, sponsorsName, sponsorsPhoneNumber, friendsName, friendsNumber, currentUser, saveButtonItem, editButtonItem, profileId, username;
+@synthesize sponsorTextField, friendsPhoneNumberTextField, sponsorNumberTextField, friendsNameTextField, sponsorsName, sponsorsPhoneNumber, friendsName, friendsNumber, saveButtonItem, editButtonItem, profileId, username;
 
-BOOL interestsBool;
 BOOL matches;
-CGRect rect;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -67,41 +64,21 @@ CGRect rect;
     [revealController panGestureRecognizer];
     [revealController tapGestureRecognizer];
     UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reveal-icon.png"]
-                                                                         style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
+                                                                         style:UIBarButtonItemStylePlain target:revealController action:@selector(revealToggle:)];
     [revealButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
     self.navigationItem.leftBarButtonItem = revealButtonItem;
     
     //Setting Right Bar Button Label
-    editButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(editFriends)];
+    editButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(editFriends)];
     [editButtonItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Avenir-Light" size:18.0f]} forState:UIControlStateNormal];
     [editButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
     self.navigationItem.rightBarButtonItem = editButtonItem;
     
-    saveButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleBordered target:self action:@selector(saveFriends)];
+    saveButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveFriends)];
     [saveButtonItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Avenir-Light" size:18.0f]} forState:UIControlStateNormal];
     [saveButtonItem setTintColor:[UIColor colorWithRed:38.0f/255.0f green:38.0f/255.0f blue:38.0f/255.0f alpha:1.0f]];
     
     [self setFriendsView];
-    
-    currentUser = [PFUser currentUser];
-    username = [currentUser username];
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"profilesList"];
-    [query whereKey:@"profileUserName" equalTo:username];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            for (PFObject *object in objects) {
-                profileId = object.objectId;
-                sponsorTextField.text = object[@"sponsorName"];
-                sponsorNumberTextField.text = object[@"sponsorNumber"];
-                friendsNameTextField.text = object[@"friendsName"];
-                friendsPhoneNumberTextField.text = object [@"friendsNumber"];
-            }
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
 }
 
 - (void)setFriendsView
@@ -257,14 +234,6 @@ CGRect rect;
             [alertView show];
         } else if (matches == YES && sponsorTextField.text.length && sponsorNumberTextField.text.length > 0) {
             NSLog(@"Saving object.");
-            PFQuery *query = [PFQuery queryWithClassName:@"profilesList"];
-            [query getObjectInBackgroundWithId:profileId block:^(PFObject *userProfileSave, NSError *error) {
-                userProfileSave[@"sponsorName"] = sponsorTextField.text;
-                userProfileSave[@"sponsorNumber"] = sponsorNumberTextField.text;
-                userProfileSave[@"friendsName"] = friendsNameTextField.text;
-                userProfileSave[@"friendsNumber"] = friendsPhoneNumberTextField.text ;
-                [userProfileSave saveEventually];
-            }];
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Friends Updated"
                                                             message:@"Friends Successfully Saved!"
